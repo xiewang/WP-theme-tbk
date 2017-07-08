@@ -7,7 +7,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">	
 
 	<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
-	<meta name="keywords" content="超级折扣,优惠券,内部优惠券,淘宝优惠券,天猫优惠券,淘宝内部优惠券,天猫内部优惠券" />
+	<meta name="keywords" content="半刀,半刀网,优惠券,内部优惠券,淘宝优惠券,天猫优惠券,淘宝内部优惠券,天猫内部优惠券" />
 	<meta name="description" content="<?php bloginfo('description'); ?>">
 
 	<link href="<?php bloginfo('template_url'); ?>/ui/pintuer.css" rel="stylesheet" type="text/css" />
@@ -17,11 +17,8 @@
 	<script src="<?php bloginfo('template_url'); ?>/ui/pintuer.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/respond.js" type="text/javascript" ></script>
 
-	<link href="http://xbaba.cn/wp-content/themes/hao-Super/img/favicon.ico" rel="shortcut icon">
-        <link href="http://xbaba.cn/wp-content/themes/hao-Super/img/touch.png" rel="apple-touch-icon-precomposed">
+	<link href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" rel="shortcut icon">
+        <link href="<?php echo get_template_directory_uri(); ?>/img/touch.png" rel="apple-touch-icon-precomposed">
 
 </head>
 <body>
-<div style='margin:0 auto;width:0px;height:0px;overflow:hidden;'>
-	<img src="http://xbaba.cn/wp-content/themes/hao-Super/img/logo2.jpg" width='700'>
-</div>
