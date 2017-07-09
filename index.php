@@ -15,14 +15,14 @@
             </div>
         </div>
 
-        <div class="item-title"><p>内部隐藏优惠券发布平台</p></div>
+
 
         <div class="line-middle">
             <div class="xl6 xs3 padding-bottom">
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_1'); ?>">
                     <div class="sy-hd pt_3c text-center">
                         <div class="iconfont">&#xe605;</div>
-                	<div class="sy-txt">男装男鞋</div>
+                	<div class="sy-txt">男装</div>
                     </div>
 		</a>
             </div>
@@ -30,7 +30,7 @@
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_2'); ?>">
                     <div class="sy-hd pt_beauty text-center">
                         <div class="iconfont">&#xe602;</div>
-                	<div class="sy-txt">女装女鞋</div>
+                	<div class="sy-txt">女装</div>
                     </div>
 		</a>
             </div>
@@ -38,7 +38,7 @@
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_3'); ?>">
                     <div class="sy-hd pt_electronic text-center">
                         <div class="iconfont">&#xe624;</div>
-                	<div class="sy-txt">包包配饰</div>
+                	<div class="sy-txt">箱包配饰</div>
                     </div>
 		</a>
             </div>
@@ -46,7 +46,7 @@
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_4'); ?>">
                     <div class="sy-hd pt_phone text-center">
                         <div class="iconfont">&#xe618;</div>
-                	<div class="sy-txt">运动户外</div>
+                	<div class="sy-txt">户外运动</div>
                     </div>
 		</a>
             </div>
@@ -54,7 +54,7 @@
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_5'); ?>">
                     <div class="sy-hd pt_cloth text-center">
                         <div class="iconfont">&#xe622;</div>
-                	<div class="sy-txt">美妆彩妆</div>
+                	<div class="sy-txt">化妆品</div>
                     </div>
 		</a>
             </div>
@@ -62,7 +62,7 @@
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_6'); ?>">
                     <div class="sy-hd pt_sport text-center">
                         <div class="iconfont">&#xe679;</div>
-                	<div class="sy-txt">童装母婴</div>
+                	<div class="sy-txt">母婴</div>
                     </div>
 		</a>
             </div>
@@ -70,18 +70,11 @@
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_7'); ?>">
                     <div class="sy-hd pt_baby text-center">
                         <div class="iconfont">&#xe619;</div>
-                	<div class="sy-txt">零食茶饮</div>
+                	<div class="sy-txt">美食</div>
                     </div>
 		</a>
             </div>
-            <div class="xl6 xs2 padding-bottom">
-		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_8'); ?>">
-                    <div class="sy-hd pt_family text-center">
-                        <div class="iconfont">&#xe651;</div>
-                	<div class="sy-txt">内衣情趣</div>
-                    </div>
-		</a>
-            </div>
+
             <div class="xl6 xs2 padding-bottom">
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_9'); ?>">
                     <div class="sy-hd pt_game text-center">
@@ -94,7 +87,7 @@
 		<a target="_blank" href="<?php bloginfo('url'); ?>/?cat=<?php echo get_option('ID_10'); ?>">
                     <div class="sy-hd pt_travel text-center">
                         <div class="iconfont">&#xe62f;</div>
-                	<div class="sy-txt">居家生活</div>
+                	<div class="sy-txt">居家</div>
                     </div>
 		</a>
             </div>

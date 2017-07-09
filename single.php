@@ -71,9 +71,12 @@
             <?php $posts=get_posts('numberposts=20&category='.$category->term_id.'&exclude='.get_the_ID());foreach($posts as $post) : ?> 
             <div class="xl12 xs4 xm3 padding-bottom">
                 <div class="box">
-                    <a class="box-img" href="<?php the_permalink(); ?>" target="_blank">
-                        <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt="<?php the_title(); ?>"/>
-                    </a>
+                    <div class="box-image">
+                        <a class="box-img" href="<?php the_permalink(); ?>" target="_blank">
+                            <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt="<?php the_title(); ?>"/>
+                        </a>   
+                    </div>
+                    
                     <div class="box-prod">
                         <div class="box-name">
                             <dt> 
