@@ -36,8 +36,9 @@
 <body>
 
 <header class="layout page header">
-	<div class="container padding-top">
-    		<div class="line padding-big-bottom">
+	<div class="container-layout padding-top" id="headerC">
+		<div class="container">
+			<div class="line padding-big-bottom">
         		<div class="xs12 xm4 xb4 text-float">
             			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
                 			<img src="<?php echo get_option('logo'); ?>" alt="<?php bloginfo('name'); ?>"  />
@@ -48,12 +49,14 @@
 					<img class="float-right br-img" src="<?php echo get_option('AD1'); ?>" />
             			</a>
         		</div>
+			</div>
 		</div>
+    		
 		<?php if ( wp_is_mobile() ){ ?>
 		    <div class="find_nav fixed">
 	                <div class="find_nav_left">
 	                    <div class="find_nav_list">
-	                        <ul>
+	                        <ul class="mNav">
 	                            <?php wp_nav_menu(array('theme_location'=>'header-menu'));?>
 	                            <li class="sideline"></li>
 	                        </ul>
