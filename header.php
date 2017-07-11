@@ -45,9 +45,12 @@
             			</a>
         		</div>
         		<div class="xs12 xm8 xb8 hidden-s hidden-l">
-            			<a href="#" target="_blank">
-					<img class="float-right br-img" src="<?php echo get_option('AD1'); ?>" />
-            			</a>
+            			<div class="search">
+			                <form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
+			                	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
+			                	<input class="sy-input" type="search" name="s" placeholder="搜索..." value="<?php the_search_query(); ?>">
+			                </form>
+			            </div>
         		</div>
 			</div>
 		</div>
