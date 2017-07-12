@@ -13,17 +13,15 @@
  */
 
 get_header(); ?>
+<?php get_sidebar(); ?>
 
 <div class="layout page padding-top padding-bottom">
 	<div id="content" class="container">
 		<?php if(function_exists('breadcrumbs')) breadcrumbs();?>
-		<div class="main">
-			<?php while ( have_posts() ) : the_post(); ?>
-				
-				<?php the_content(); ?>
 
-			<?php endwhile; // End of the loop. ?>
-		</div>
+
+		<?php include 'category.php' ?>
+
 	</div>
 </div>
 <?php get_footer(); ?>

@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+<?php get_sidebar(); ?>
 <div class="layout page padding-top">
     <div class="container">
         <div id="content" class="line-middle">

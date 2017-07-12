@@ -74,8 +74,6 @@
 	                </ul>
 		    </div>
 		<?php } ?>
-		<marquee style="font-size: 14px;color: #ff5777;margin-top: 10px;font-weight: bold;" scrollamount="3">
-			<?php echo get_option('gg'); ?>
-		</marquee>
+
 	</div>
 </header>
