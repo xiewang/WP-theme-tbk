@@ -19,9 +19,13 @@ get_header(); ?>
 	<div id="content" class="container">
 		<?php if(function_exists('breadcrumbs')) breadcrumbs();?>
 
+		<?php the_content(); ?>
 
-		<?php include 'category.php' ?>
-
+		<?php if ( wp_is_mobile() ){ ?>
+			<?php wp_redirect('https://temai.m.taobao.com/new/index.htm?pid=mm_14661123_33544947_119412095'); exit; ?> 
+		<?php }else { ?>
+			<?php wp_redirect('http://uland.taobao.com/coupon/list?pid=mm_14661123_33544947_119412095'); exit; ?>
+		<?php } ?>
 	</div>
 </div>
 <?php get_footer(); ?>
