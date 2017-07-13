@@ -1,7 +1,7 @@
 <footer class="footer padding-large-top padding-large-bottom">
 	<div class="container">
             <div class="line-middle">
-
+                <span class="beian">沪ICP备17030262号-1</span>
             </div>            
 	</div>
 	<div id="gotop" class="toTop icon-arrow-circle-up"></div>
