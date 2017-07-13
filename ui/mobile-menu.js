@@ -196,6 +196,28 @@ function navName(c_nav) {
 
             break;
 
+        case "今日更新":
+
+            sessionStorage.pagecount = "今日更新";
+
+            break;
+
+        case "人气推荐":
+
+            sessionStorage.pagecount = "人气推荐";
+            break;
+
+        case "9块9包邮":
+
+            sessionStorage.pagecount = "9块9包邮";
+            break;
+
+        case "购物券大全":
+
+            sessionStorage.pagecount = "购物券大全";
+
+            break;
+
     }
 
 }
