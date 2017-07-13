@@ -1,4 +1,6 @@
 <?php get_header(1); ?>
+            
+<?php wp_redirect('/category/today/'); exit; ?> 
 
 <div class="layout page padding-large-top padding-large-bottom">
     <div id="content" class="container">
