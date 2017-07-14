@@ -9,7 +9,7 @@
 	<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
 	<meta name="keywords" content="半刀,半刀网,优惠券,内部优惠券,淘宝优惠券,天猫优惠券,淘宝内部优惠券,天猫内部优惠券" />
 	<meta name="description" content="<?php bloginfo('description'); ?>">
-
+	<meta name="baidu-site-verification" content="XvZ5JrfmTv" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/pintuer.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/iconfont.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />

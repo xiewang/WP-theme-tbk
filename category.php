@@ -13,13 +13,21 @@
                         </a>
                     </div>
                     <div class="box-prod">
+                        <div class="box-btn">
+                            <?php if(get_post_meta($post->ID, "hao_leix", true) == '天猫'){ ?>
+                                <img src="<?php bloginfo('template_url'); ?>/img/tm.png?>">
+                            <?php };?>
+                        </div>
+
                         <div class="box-name">
-                            <dt> 
+                            <dt style="text-indent: <?php echo get_post_meta($post->ID, "hao_leix", true) == '天猫'? '20px': '0px'?>"> 
                                 <a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a>
                             </dt> 
-                            <p class="box-txt">
-                                 优惠券：<strong><?php echo get_post_meta($post->ID, "hao_youh", true);?>元</strong>
-                            </p>
+                            <div class="box-txt">
+                                <div class="box-juan-price"><span><?php echo get_post_meta($post->ID, "hao_youh", true);?>元</span></div>
+                                <div class="box-juan"><span>券</span></div>
+                            </div>
+
                             <dd class="box-price">
                                  <span>￥<?php echo get_post_meta($post->ID, "hao_xianj", true);?></span>
                                  <del>￥<?php echo get_post_meta($post->ID, "hao_yuanj", true);?></del>  
@@ -27,12 +35,7 @@
                             <dd class="box-send">已有<?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人购买</dd>
                         </div>
                     </div>
-                    <div class="box-btn">
-                        <?php if(get_post_meta($post->ID, "hao_leix", true) == '天猫'){ ?>
-                            <img src="<?php bloginfo('template_url'); ?>/img/tm.png?>">
-                        <?php };?>
-                    </div>
-                    <a class="box-btn" target="_blank" href="<?php the_permalink(); ?>"></a>
+                    
                 </div>
             </div>
 

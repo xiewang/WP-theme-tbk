@@ -9,7 +9,7 @@
 	<title><?php wp_title(''); ?><?php if(wp_title('', false)) { echo ' :'; } ?> <?php bloginfo('name'); ?></title>
 	<meta name="keywords" content="<?php echo get_option('keywords'); ?>" />
 	<meta name="description" content="<?php bloginfo('description'); ?>">
-
+	<meta name="baidu-site-verification" content="XvZ5JrfmTv" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/pintuer.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/iconfont.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />
