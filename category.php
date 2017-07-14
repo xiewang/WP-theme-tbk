@@ -6,7 +6,7 @@
             <?php while (have_posts()) : the_post(); ?>
 
             <div class="post xl12 xs4 xm3 padding-bottom">
-                <div class="box">
+                <div class="box" onclick="window.open('<?php the_permalink(); ?>')">
                     <div class="box-image">
                         <a class="box-img" href="<?php the_permalink(); ?>" target="_blank">
                             <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt="<?php the_title(); ?>"/>
@@ -15,7 +15,7 @@
                     <div class="box-prod">
                         <div class="box-name">
                             <dt> 
-				<span><?php echo get_post_meta($post->ID, "hao_leix", true);?></span><a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a>
+                                <a href="<?php the_permalink(); ?>" target="_blank"><?php the_title(); ?></a>
                             </dt> 
                             <p class="box-txt">
                                  优惠券：<strong><?php echo get_post_meta($post->ID, "hao_youh", true);?>元</strong>
@@ -26,6 +26,11 @@
                             </dd>
                             <dd class="box-send">已有<?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人购买</dd>
                         </div>
+                    </div>
+                    <div class="box-btn">
+                        <?php if(get_post_meta($post->ID, "hao_leix", true) == '天猫'){ ?>
+                            <img src="<?php bloginfo('template_url'); ?>/img/tm.png?>">
+                        <?php };?>
                     </div>
                     <a class="box-btn" target="_blank" href="<?php the_permalink(); ?>"></a>
                 </div>
