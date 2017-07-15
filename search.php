@@ -4,7 +4,7 @@
     <div class="container">
         <div id="content" class="line-middle">
             <?php while (have_posts()) : the_post(); ?>
-
+            <?php if ( get_post_meta($post->ID, "hao_zhutu", true) ){ ?>
             <div class="post xl12 xs4 xm3 padding-bottom">
                 <div class="box" onclick="window.open('<?php the_permalink(); ?>')">
                     <div class="box-image">
@@ -38,6 +38,7 @@
                     
                 </div>
             </div>
+            <?php }?>
             <?php endwhile; ?>
         </div>
       <div class="pagenavi"><?php next_posts_link('下一页') ?>	<?php previous_posts_link('上一页') ?></div>

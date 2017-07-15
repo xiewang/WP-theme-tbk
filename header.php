@@ -37,26 +37,29 @@
 
 <header class="layout page header">
 	<div class="container-layout padding-top" id="headerC">
-		<div class="container">
-			<div class="line padding-big-bottom">
-        		<div class="xs12 xm4 xb4 text-float">
-            			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
-                			<img src="<?php echo get_option('logo'); ?>" alt="<?php bloginfo('name'); ?>"  />
-            			</a>
-        		</div>
-        		<div class="xs12 xm8 xb8 hidden-s hidden-l">
-            			<div class="search">
-			                <form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
-			                	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
-			                	<input class="sy-input" type="search" name="s" placeholder="搜索..." value="<?php the_search_query(); ?>">
-			                </form>
-			            </div>
-        		</div>
+		<?php if ( !wp_is_mobile() ){ ?>
+			<div class="container">
+				<div class="line padding-big-bottom">
+	        		<div class="xs12 xm4 xb4 text-float">
+	            			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
+	                			<img src="<?php echo get_option('logo'); ?>" alt="<?php bloginfo('name'); ?>"  />
+	            			</a>
+	        		</div>
+	        		<div class="xs12 xm8 xb8 hidden-s hidden-l">
+	            			<div class="search">
+				                <form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
+				                	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
+				                	<input class="sy-input" type="search" name="s" placeholder="搜索..." value="<?php the_search_query(); ?>">
+				                </form>
+				            </div>
+	        		</div>
+				</div>
 			</div>
-		</div>
+		<?php } ?>
+		
     		
 		<?php if ( wp_is_mobile() ){ ?>
-		    <div class="find_nav fixed">
+		    <!-- <div class="find_nav fixed">
 	                <div class="find_nav_left">
 	                    <div class="find_nav_list">
 	                        <ul class="mNav">
@@ -65,7 +68,7 @@
 	                        </ul>
 	                    </div>
 	                </div>
-		    </div>
+		    </div> -->
 		<?php }else { ?>
 		    <button class="hao-button button icon-navicon" data-target="#nav">菜单</button>
 		    <div class="hao-nav bg-inverse nav-navicon fixed"  id="nav">
@@ -77,3 +80,42 @@
 
 	</div>
 </header>
+
+<?php if ( wp_is_mobile() ){ ?>
+	<div class="m-header">
+		<div class="m-logo">
+			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
+				<span><?php bloginfo('name'); ?></span>
+			</a>
+		</div>
+		<div class="m-search">
+			<form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
+            	
+            	<input class="sy-input" type="search" name="s" placeholder="搜索..." value="<?php the_search_query(); ?>">
+            	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
+            </form>
+		</div>
+		<div class="m-cate">
+			<img src="<?php bloginfo('template_url'); ?>/img/item.png">
+		</div>
+	</div>
+
+	<div class="layout">
+		<div class="m-slider">
+            	<div class="banner">
+					<div class="carousel">
+						<div class="item">
+							<div id="img1" class="sliderImg" ></div>
+						</div>
+						<div class="item">
+							<div id="img2" class="sliderImg" ></div>
+						</div>
+						<div class="item">
+							<div id="img3" class="sliderImg" ></div>
+						</div>
+					</div>
+				</div>
+			</div>
+	</div>
+<?php } ?>
+
