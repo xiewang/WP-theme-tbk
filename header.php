@@ -19,7 +19,7 @@
 	<script src="<?php bloginfo('template_url'); ?>/ui/mobile-menu.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/ZeroClipboard.min.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/respond.js" type="text/javascript" ></script>
-
+	<script src="<?php bloginfo('template_url'); ?>/ui/common.js" type="text/javascript" ></script>
 	<link href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" rel="shortcut icon">
         <link href="<?php echo get_template_directory_uri(); ?>/img/touch.png" rel="apple-touch-icon-precomposed">
 
@@ -95,7 +95,7 @@
             	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
             </form>
 		</div>
-		<div class="m-cate">
+		<div class="m-cate" id='m-cate-icon'>
 			<img src="<?php bloginfo('template_url'); ?>/img/item.png">
 		</div>
 	</div>
@@ -116,6 +116,17 @@
 					</div>
 				</div>
 			</div>
+	</div>
+
+	<div class="m-cate-drop hide">
+		<div class="m-cate-container">
+			<ul class="m-cate-list">
+				<?php wp_nav_menu(array('theme_location'=>'sidebar-menu','walker' => new description_walker() ));?>	
+			</ul>
+			<div class="m-packup" id="m-packup">
+				<span>收起</span>
+			</div>
+		</div>
 	</div>
 <?php } ?>
 
