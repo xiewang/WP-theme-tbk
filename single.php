@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="layout page padding-top">
+<div class="layout page padding-top" style="<?php echo wp_is_mobile() ? 'padding-top: 0;margin-top:-8px':''?>">
     <div id="content" class="container">
         <div class="main">
             <?php while (have_posts()) : the_post(); ?>
