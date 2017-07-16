@@ -84,8 +84,8 @@
 <?php if ( wp_is_mobile() ){ ?>
 	<div class="m-header">
 		<?php if ( is_single() ){ ?>
-			<div class="m-back" onclick="history.go(-1)">
-				
+			<div class="m-back " onclick="history.length>1?history.go(-1) :location.href='<?php bloginfo('url'); ?>'" >
+				<img class='hide' src="<?php bloginfo('template_url'); ?>/img/home.png">
 			</div> 
 		<?php }else { ?>
 			<div class="m-logo">

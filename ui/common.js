@@ -19,5 +19,12 @@ $(function(){
 	$('.m-main-cate ul li').on('click', function(){
 		$('.m-main-cate ul li').removeClass('current-menu-item');
 		$(this).addClass('current-menu-item');
-	})
+	});
+
+
+	if(history.length<=1){
+		$('.m-back').addClass('home')
+		$('.m-back img').removeClass('hide');
+	}
+	
 });
