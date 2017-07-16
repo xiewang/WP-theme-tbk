@@ -9,10 +9,10 @@
          <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt="<?php the_title(); ?>"/>
     </div>
     <div class="xl12 xs6 xm6 col1">
-        <h3><?php the_title(); ?></h3>
+        <span class='single-title'><?php the_title(); ?></span>
     
         <div class="col1-a">
-             <span class="text"><?php the_content(); ?></span> 
+             <span class="text">推荐理由：<?php the_content(); ?></span> 
         </div>
         <div class="col1-b">
             <span class="xj">用券后<i>¥<strong><?php echo get_post_meta($post->ID, "hao_xianj", true);?></strong></i></span>
@@ -33,13 +33,13 @@
                     </script>
                 </div>
             <?php } else { ?>
-                    <div class="col1-d">
-                        <a href="<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>" target="_blank">领券 & 购买</a>
+                    <div class="col1-d" onclick=" window.open('<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>')">
+                        <a href="#" >领券 & 购买</a>
                     </div>
             <?php } ?>
         <?php }else { ?>
-            <div class="col1-d">
-                <a href="<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>" target="_blank">领券 & 购买</a>
+            <div class="col1-d" onclick=" window.open('<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>')">
+                <a href="#" >领券 & 购买</a>
             </div>
         <?php } ?>
 
