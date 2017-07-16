@@ -49,7 +49,7 @@
 	            			<div class="search">
 				                <form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
 				                	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
-				                	<input class="sy-input" type="search" name="s" placeholder="搜索..." value="<?php the_search_query(); ?>">
+				                	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
 				                </form>
 				            </div>
 	        		</div>
@@ -99,7 +99,7 @@
 		<div class="m-search">
 			<form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
             	
-            	<input class="sy-input" type="search" name="s" placeholder="搜索..." value="<?php the_search_query(); ?>">
+            	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
             	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
             </form>
 		</div>
@@ -108,7 +108,7 @@
 		</div>
 	</div>
 
-	<?php if ( !is_single() ){ ?>
+	<?php if ( !is_single()&&!is_search()&&!is_404() ){ ?>
 		<div class="layout">
 			<div class="m-slider">
 	            	<div class="banner">
@@ -126,8 +126,9 @@
 					</div>
 				</div>
 		</div>
+	<?php } else { ?>
+		<div style="width: 100%;height:40px;background:#fff"></div>
 	<?php } ?>
-	
 
 	<div class="m-cate-drop hide">
 		<div class="m-cate-container">

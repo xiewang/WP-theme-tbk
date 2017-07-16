@@ -3,16 +3,15 @@
 <div class="layout page padding-large-top padding-large-bottom">
     <div id="content" class="container">
 	<div class="text-center">
-            <h1 class="padding-large-bottom">啊呜~404，不过您可以直接搜索~^o^~</h1>
+            <h1 class="padding-large-bottom"> 好可惜，您要找宝贝不在！</h1>
             <div class="padding">
                 <form class="s" method="get" action="http://xbaba.cn" role="search">
-                	<input class="sy-input" type="search" name="s" placeholder="懒得找，直接输入...如：男装，女装">
+                	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索...">
                 	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
                 </form>
             </div>
         </div>
 
-        <div class="item-title"><p>您还可以直接点击分类选购</p></div>
 
         <div class="line-middle">
             <div class="xl6 xs3 padding-bottom">
