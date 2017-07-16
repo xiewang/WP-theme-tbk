@@ -83,11 +83,19 @@
 
 <?php if ( wp_is_mobile() ){ ?>
 	<div class="m-header">
-		<div class="m-logo">
-			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
-				<span><?php bloginfo('name'); ?></span>
-			</a>
-		</div>
+		<?php if ( is_single() ){ ?>
+			<div class="m-back" onclick="history.go(-1)">
+				
+			</div> 
+		<?php }else { ?>
+			<div class="m-logo">
+				<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
+					<span><?php bloginfo('name'); ?></span>
+				</a>
+			</div>  
+		<?php } ?>
+	
+		
 		<div class="m-search">
 			<form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
             	
@@ -100,23 +108,26 @@
 		</div>
 	</div>
 
-	<div class="layout">
-		<div class="m-slider">
-            	<div class="banner">
-					<div class="carousel">
-						<div class="item">
-							<div id="img1" class="sliderImg" ></div>
-						</div>
-						<div class="item">
-							<div id="img2" class="sliderImg" ></div>
-						</div>
-						<div class="item">
-							<div id="img3" class="sliderImg" ></div>
+	<?php if ( !is_single() ){ ?>
+		<div class="layout">
+			<div class="m-slider">
+	            	<div class="banner">
+						<div class="carousel">
+							<div class="item">
+								<div id="img1" class="sliderImg" ></div>
+							</div>
+							<div class="item">
+								<div id="img2" class="sliderImg" ></div>
+							</div>
+							<div class="item">
+								<div id="img3" class="sliderImg" ></div>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-	</div>
+		</div>
+	<?php } ?>
+	
 
 	<div class="m-cate-drop hide">
 		<div class="m-cate-container">
