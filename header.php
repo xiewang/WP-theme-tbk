@@ -126,6 +126,14 @@
 					</div>
 				</div>
 		</div>
+		<div class="layout">
+			<div class="m-main-cate">
+				<ul>
+	                <?php wp_nav_menu(array('theme_location'=>'header-menu'));?>
+	            </ul>
+			</div>
+			
+		</div>
 	<?php } else { ?>
 		<div style="width: 100%;height:40px;background:#fff"></div>
 	<?php } ?>

@@ -16,4 +16,8 @@ $(function(){
 		event.stopPropagation(); 
 	});
 
+	$('.m-main-cate ul li').on('click', function(){
+		$('.m-main-cate ul li').removeClass('current-menu-item');
+		$(this).addClass('current-menu-item');
+	})
 });
