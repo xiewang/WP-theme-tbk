@@ -8,13 +8,13 @@
             <div class="slider">
             	<div class="banner">
 					<div class="carousel">
-						<div class="item">
+						<!-- <div class="item">
 							<div id="img1" class="sliderImg" ></div>
-						</div>
-						<div class="item">
+						</div> -->
+						<div class="item" onclick="location.href='http://www.996shop.com/category/popular/'">
 							<div id="img2" class="sliderImg" ></div>
 						</div>
-						<div class="item">
+						<div class="item" onclick="location.href='http://www.996shop.com/category/9h9/'">
 							<div id="img3" class="sliderImg" ></div>
 						</div>
 					</div>

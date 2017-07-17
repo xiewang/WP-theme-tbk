@@ -1,5 +1,33 @@
 <?php get_header(); ?>
 
+<?php 
+    include "taobao/TopSdk.php";
+
+    function is_weixin(){ 
+        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
+                return true;
+        }   
+        return false;
+    }
+    $kouling = '';
+    if (is_weixin()){
+        $c = new TopClient;
+        $c->appkey = "24545248";
+        $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
+        $req = new WirelessShareTpwdCreateRequest;
+        $tpwd_param = new GenPwdIsvParamDto;
+        // $tpwd_param->ext="{\"xx\":\"xx\"}";
+        $tpwd_param->logo=get_post_meta($post->ID, "hao_zhutu", true);
+        $tpwd_param->url=get_post_meta($post->ID, "hao_ljgm", true);;
+        $tpwd_param->text= '来自半刀网分享的一件优质宝贝优惠券';
+        // $tpwd_param->user_id="24234234234";
+        $req->setTpwdParam(json_encode($tpwd_param));
+        $resp = $c->execute($req);
+         
+        $kouling = $resp->model;
+    }
+    
+?>
 <div class="layout page padding-top" style="<?php echo wp_is_mobile() ? 'padding-top: 0;margin-top:-8px':''?>">
     <div id="content" class="container">
         <div class="main">
@@ -24,23 +52,18 @@
         </div>
         <?php if ( wp_is_mobile() ){ ?>
             <?php if (get_post_meta($post->ID, "hao_tkl", true)) { ?>
-                <div class="col1-tkl">
-                    <textarea id="tkl" class="tkl" rows="5"><?php the_title(); ?>&#13;&#10;【在售价】 <?php echo get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;复制这条信息，{<?php echo get_post_meta($post->ID, "hao_tkl", true);?>}，打开【手机淘宝】即可查看。</textarea>
-                    <input id="copy" class="but-tkl" type="button" data-clipboard-target="tkl" value="一键复制">
-                    <p>如果无法一键复制，请长按手动复制。</p>
-                    <script type="text/javascript">
-                        var clip = new ZeroClipboard( document.getElementById("copy") );
-                    </script>
-                </div>
+                
             <?php } else { ?>
-                    <div class="col1-d" onclick=" window.open('<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>')">
+                    <div class="col1-d" onclick="jumpToTaobao()">
                         <a href="#" >领券 & 购买</a>
                     </div>
+                     
             <?php } ?>
         <?php }else { ?>
             <div class="col1-d" onclick=" window.open('<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>')">
                 <a href="#" >领券 & 购买</a>
             </div>
+           
         <?php } ?>
 
         <div class="col1-e">
@@ -60,6 +83,52 @@
     </div>
 
 </article>
+<div class="kouling invisible" id="kouling">
+    <div class="col1-tkl">
+        <div class="kouling-title">淘宝口令</div>
+        <div class="kouling-content">
+            <textarea id="tkl" class="tkl" rows="6">
+            <?php the_title();?>
+                &#13;&#10;---------------&#13;&#10;【在售价】 <?php echo get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券。
+            </textarea>
+            <input id="copy" class="but-tkl" type="button" data-clipboard-target="tkl" value="一键复制" onclick="copy()">
+            <p>如果无法一键复制，请长按手动复制。</p>
+        </div>
+        
+    </div>
+</div>
+<script type="text/javascript">
+    function copy(){
+        var clip = new ZeroClipboard( document.getElementById("copy"), {
+          moviePath: "<?php bloginfo('template_url'); ?>/ui/ZeroClipboard.swf"
+        }  );
+
+        clip.on( 'complete', function(client, args) {
+           alert("复制成功，打开‘淘宝’APP去领券吧！");
+           $('#kouling').addClass('invisible');
+        } );
+    }
+    function jumpToTaobao(){
+        <?php if(is_weixin()){?>
+            $('#kouling').removeClass('invisible');
+            $('body').addClass('fixed');
+        <?php }else {?>
+            window.open('<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>');
+        <?php }?>
+
+    }
+
+    $('#kouling').on('click', function(e){
+        var $target  = $(e.target);
+        if($target.is("#kouling")){
+            $('#kouling').addClass('invisible');
+            $('body').removeClass('fixed');
+        }
+        
+    });
+    
+</script>
+
             <?php endwhile; ?>
         </div>
 
