@@ -87,11 +87,11 @@
     <div class="col1-tkl">
         <div class="kouling-title">淘宝口令</div>
         <div class="kouling-content">
-            <textarea id="tkl" class="tkl" rows="6">复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券。
-                &#13;&#10;---------------&#13;&#10;【在售价】 <?php echo get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;<?php the_title();?>
+            <textarea style="overflow-y:scroll" id="tkl" class="tkl" rows="7">复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券。&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;<?php the_title();?>
             </textarea>
-            <input id="copy" class="but-tkl" type="button" data-clipboard-target="tkl" value="一键复制" onclick="copy()">
-            <p>如果无法一键复制，请长按手动复制。</p>
+           
+            <input id="copy" class="but-tkl btn" type="button" data-clipboard-action="copy" data-clipboard-target="#tkl" value="一键复制" onclick="copy()">
+            <p style="text-align: center;">如果无法一键复制，请长按手动复制。</p>
         </div>
         
     </div>
@@ -99,19 +99,23 @@
 <script type="text/javascript">
     var showKL = false;
     function copy(){
-        var clip = new ZeroClipboard( document.getElementById("copy"), {
-          moviePath: "<?php bloginfo('template_url'); ?>/ui/ZeroClipboard.swf"
-        }  );
+        // var clip = new ZeroClipboard( document.getElementById("copy"), {
+        //   moviePath: "<?php bloginfo('template_url'); ?>/ui/ZeroClipboard.swf"
+        // }  );
 
-        clip.on( 'complete', function(client, args) {
-           alert("复制成功，打开‘淘宝’APP去领券吧！");
-           showKL = false;
-        } );
+        // clip.on( 'complete', function(client, args) {
+        //    alert("复制成功，打开‘淘宝’APP去领券吧！");
+        //    showKL = false;
+        // } );
     }
     function jumpToTaobao(){
         <?php if(is_weixin()){?>
             $('#kouling').removeClass('hide');
             howKL = true;
+            var clipboard = new Clipboard('.btn');
+            clipboard.on('success', function(e) {
+                alert("复制成功，快打开"淘宝"APP去领券吧！");
+            });
         <?php }else {?>
             window.open('<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>');
         <?php }?>
