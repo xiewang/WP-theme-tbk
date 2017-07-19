@@ -93,7 +93,6 @@
         <?php } ?>
 
         <div class="col1-e">
-            <p>提示：微信和QQ，请使用手机浏览器打开</p>
             <div class="text">
                 你还可以把这个宝贝分享给你的朋友：
                 <div class="bdsharebuttonbox">

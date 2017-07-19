@@ -115,9 +115,9 @@
 			<div class="m-slider">
 	            	<div class="banner">
 						<div class="carousel">
-							<div class="item">
+							<!-- <div class="item">
 								<div id="img1" class="sliderImg" ></div>
-							</div>
+							</div> -->
 							<div class="item">
 								<div id="img2" class="sliderImg" ></div>
 							</div>
