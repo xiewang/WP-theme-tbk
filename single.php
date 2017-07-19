@@ -3,6 +3,19 @@
 <?php 
     include "taobao/TopSdk.php";
 
+    $params = explode("&",$_SERVER["QUERY_STRING"]);
+    if(count($params)>1){
+        $coupon_click_url = substr($params[0],17,strlen($params[0])-17);
+        $coupon = substr($params[1],7,strlen($params[1])-7);
+        $price = substr($params[2],6,strlen($params[2])-6);
+        $final_price = substr($params[3],12,strlen($params[3])-12);
+        $volume = substr($params[4],7,strlen($params[4])-7);
+        $pict_url = substr($params[5],9,strlen($params[5])-9);
+        $content = substr($params[6],8,strlen($params[6])-8);
+        $title = substr($params[7],6,strlen($params[7])-6);
+        $coupon_total_count = substr($params[8],19,strlen($params[8])-19);
+    }
+
     function is_weixin(){ 
         if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
                 return true;
@@ -10,15 +23,16 @@
         return false;
     }
     $kouling = '';
+    $c = new TopClient;
+    $c->appkey = "24545248";
+    $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
     if (is_weixin()){
-        $c = new TopClient;
-        $c->appkey = "24545248";
-        $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
+        
         $req = new WirelessShareTpwdCreateRequest;
         $tpwd_param = new GenPwdIsvParamDto;
         // $tpwd_param->ext="{\"xx\":\"xx\"}";
-        $tpwd_param->logo=get_post_meta($post->ID, "hao_zhutu", true);
-        $tpwd_param->url=get_post_meta($post->ID, "hao_ljgm", true);;
+        $tpwd_param->logo= count($params)>1?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);
+        $tpwd_param->url= count($params)>1?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);;
         $tpwd_param->text= '来自半刀网分享的一件优质宝贝优惠券';
         // $tpwd_param->user_id="24234234234";
         $req->setTpwdParam(json_encode($tpwd_param));
@@ -27,28 +41,40 @@
         $kouling = $resp->model;
     }
     
+
+    
+   
+    // echo $coupon_click_url.'</br>';
+    // echo $coupon.'</br>';
+    // echo $price.'</br>';
+    // echo $final_price.'</br>';
+    // echo $volume.'</br>';
+    // echo $pict_url.'</br>';
+    // echo $content.'</br>';
+    // print_r($params);
 ?>
+
 <div class="layout page padding-top" style="<?php echo wp_is_mobile() ? 'padding-top: 0;margin-top:-8px':''?>">
     <div id="content" class="container">
         <div class="main">
             <?php while (have_posts()) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" class="line-big">
     <div class="xl12 xs6 xm4" style="<?php echo wp_is_mobile()?'padding: 0px':''?>">
-         <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt="<?php the_title(); ?>"/>
+         <img src="<?php echo count($params)>1?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt=""/>
     </div>
     <div class="xl12 xs6 xm6 col1">
-        <span class='single-title'><?php the_title(); ?></span>
+        <span class='single-title'><?php echo count($params)>1?urldecode($title):the_title(); ?></span>
     
         <div class="col1-a">
-             <span class="text">推荐理由：<?php the_content(); ?></span> 
+             <span class="text">推荐理由：<?php echo count($params)>1?urldecode($content):the_content(); ?></span> 
         </div>
         <div class="col1-b">
-            <span class="xj">用券后<i>¥<strong><?php echo get_post_meta($post->ID, "hao_xianj", true);?></strong></i></span>
-            <span class="yj">在售价<i>¥<?php echo get_post_meta($post->ID, "hao_yuanj", true);?></i></span>
+            <span class="xj">用券后<i>¥<strong><?php echo count($params)>1?$final_price:get_post_meta($post->ID, "hao_xianj", true);?></strong></i></span>
+            <span class="yj">在售价<i>¥<?php echo count($params)>1?$price:get_post_meta($post->ID, "hao_yuanj", true);?></i></span>
         </div>
         <div class="col1-c">
-            <span class="zl">商家提供<strong><?php echo get_post_meta($post->ID, "hao_zongl", true);?></strong>张优惠券丨</span>
-            <span class="xl">月销量<strong><?php echo get_post_meta($post->ID, "hao_xiaol", true);?></strong>件</span>
+            <span class="zl">商家提供<strong><?php echo count($params)>1?$coupon_total_count:get_post_meta($post->ID, "hao_zongl", true);?></strong>张优惠券丨</span>
+            <span class="xl">月销量<strong><?php echo count($params)>1?$volume:get_post_meta($post->ID, "hao_xiaol", true);?></strong>件</span>
         </div>
         <?php if ( wp_is_mobile() ){ ?>
             <?php if (get_post_meta($post->ID, "hao_tkl", true)) { ?>
@@ -60,7 +86,7 @@
                      
             <?php } ?>
         <?php }else { ?>
-            <div class="col1-d" onclick=" window.open('<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>')">
+            <div class="col1-d" onclick=" window.open('<?php echo count($params)>1?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>')">
                 <a href="#" >领券 & 购买</a>
             </div>
            
@@ -87,7 +113,7 @@
     <div class="col1-tkl">
         <div class="kouling-title">淘宝口令</div>
         <div class="kouling-content">
-            <textarea style="overflow-y:scroll" id="tkl" class="tkl" rows="7">复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券。&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;<?php the_title();?>
+            <textarea style="overflow-y:scroll" id="tkl" class="tkl" rows="7">复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券。&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo count($params)>1?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo count($params)>1?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;<?php echo count($params)>1?urldecode($title):the_title();?>
             </textarea>
            
             <input id="copy" class="but-tkl btn" type="button" data-clipboard-action="copy" data-clipboard-target="#tkl" value="一键复制" onclick="copy()">
@@ -114,10 +140,10 @@
             howKL = true;
             var clipboard = new Clipboard('.btn');
             clipboard.on('success', function(e) {
-                alert("复制成功，快打开"淘宝"APP去领券吧！");
+                alert("复制成功，快打开' 淘宝 'APP去领券吧！");
             });
         <?php }else {?>
-            window.open('<?php echo get_post_meta($post->ID, "hao_ljgm", true);?>');
+            window.open('<?php echo count($params)>1?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>');
         <?php }?>
 
     }
