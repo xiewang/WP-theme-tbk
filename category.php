@@ -36,10 +36,39 @@
         $favorites=array('8678327','8678264'); 
         $main = true;
     }
-    $req->setFavoritesId($favorites[0]);
+    
+    function array2object($array) {
+      if (is_array($array)) {
+        $obj = new StdClass();
+        foreach ($array as $key => $val){
+          $obj->$key = $val;
+        }
+      }
+      else { $obj = $array; }
+      return $obj;
+    }
     if($main == true){
-        $resp = $c->execute($req);
-        // print_r($resp->results);
+        $req->setFavoritesId($favorites[0]);
+        $resp0 = $c->execute($req);
+        $req->setFavoritesId($favorites[1]);
+        $resp1 = $c->execute($req);
+
+        // $uatm_tbk_item = array();
+        foreach ($favorites as $key => $value) {
+            $req->setFavoritesId($favorites[$key]);
+            $resp = $c->execute($req);
+
+            $temp = json_decode(json_encode($resp),TRUE);
+            if($key == 0){
+                $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
+            }else {
+                $uatm_tbk_item = array_merge($uatm_tbk_item, $temp['results']['uatm_tbk_item']);
+            }
+            
+        }
+        // print_r( array2object($uatm_tbk_item));
+
+        $c = array2object($uatm_tbk_item);
     }
     
 
@@ -50,9 +79,9 @@
     <div class="container">
         <div id="content" class="line-middle">
             <?php  
-                if($main && isset($resp->results)){
-                    foreach ($resp->results->uatm_tbk_item as $item){ 
-
+                if($main && isset($c)){
+                    foreach ($c as $item){ 
+                        $item = array2object($item);
                         $coupon = 0;
                         if(isset($item->coupon_info)){
                             $str = $item->coupon_info;
