@@ -46,7 +46,28 @@ function infinite_scroll_js() {
     if (!is_singular() ) {
         ?>
         <script type="text/javascript">
-        jQuery(document).ready(function(){            
+        var loadImg = function(){
+            $('.box-img img').each(function() {
+                var img = new Image();
+                img.src = $(this)[0].src;
+                 
+                if(img.complete) {
+                    console.log('该图片已经存在于缓存之中，不会再去重新下载');
+                    $(this).prev().addClass('hide');
+                    $(this).removeClass('hide');
+                } else {
+                    $(this).load(function(){
+                        // console.log($.inArray($(this)[0], $('.box-img img')));
+                        $(this).prev().addClass('hide');
+                        $(this).removeClass('hide');
+                    });
+                }
+                
+            });  
+        }
+ 
+        jQuery(document).ready(function(){ 
+            loadImg();
             var infinite_scroll = {
                 loading: {
                     img: "<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif",
@@ -58,7 +79,9 @@ function infinite_scroll_js() {
                 itemSelector:".post",
                 contentSelector:"#content",              
             };
-            jQuery( infinite_scroll.contentSelector ).infinitescroll( infinite_scroll );
+            jQuery( infinite_scroll.contentSelector ).infinitescroll( infinite_scroll,function(arrayOfNewElems){  
+              loadImg();
+            } );
         });
         </script>
         <?php

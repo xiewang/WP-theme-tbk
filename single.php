@@ -60,7 +60,8 @@
             <?php while (have_posts()) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" class="line-big">
     <div class="xl12 xs6 xm4" style="<?php echo wp_is_mobile()?'padding: 0px':''?>">
-         <img src="<?php echo count($params)>1?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt=""/>
+
+         <img src="<?php echo count($params)>1?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>" class=" img-responsive" alt=""/>
     </div>
     <div class="xl12 xs6 xm6 col1">
         <span class='single-title'><?php echo count($params)>1?urldecode($title):the_title(); ?></span>
@@ -187,7 +188,8 @@
                 <?php }?>
                     <div class="box-image">
                         <a class="box-img" href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>>
-                            <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt="<?php the_title(); ?>"/>
+                            <span class="icon-spinner for-img"></span>
+                            <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="hide img-responsive" alt="<?php the_title(); ?>"/>
                         </a>
                     </div>
                     <div class="box-prod">

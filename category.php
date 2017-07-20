@@ -152,7 +152,8 @@
                     <?php }?>
                         <div class="box-image">
                             <a class="box-img" href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>>
-                                <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="img-responsive" alt="<?php the_title(); ?>"/>
+                                <span class="icon-spinner for-img"></span>
+                                <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="hide img-responsive" alt="<?php the_title(); ?>"/>
                             </a>
                         </div>
                         <div class="box-prod">
