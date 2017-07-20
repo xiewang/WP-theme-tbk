@@ -93,6 +93,7 @@
         <?php } ?>
 
         <div class="col1-e">
+            <p></p>
             <div class="text">
                 你还可以把这个宝贝分享给你的朋友：
                 <div class="bdsharebuttonbox">
@@ -160,6 +161,12 @@
         if(howKL)
             e.preventDefault();
     })
+
+    $(function(){
+        <?php if(count($params)>1){?>
+            document.title = '<?php echo "半刀网推荐：".urldecode($title);?>'
+        <?php }?>
+    });
     
 </script>
 

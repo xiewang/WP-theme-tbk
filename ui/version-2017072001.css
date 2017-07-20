@@ -3,8 +3,10 @@
     top: 0;
     left: 0;
 }
-
 #kouling{
 	position: fixed;
 	z-index: 10000;
+}
+#title-logo img{
+	width: 220px;
 }

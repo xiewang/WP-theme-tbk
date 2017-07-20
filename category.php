@@ -62,7 +62,7 @@
             if($key == 0){
                 $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
             }else {
-                $uatm_tbk_item = array_merge($uatm_tbk_item, $temp['results']['uatm_tbk_item']);
+                $uatm_tbk_item = count($uatm_tbk_item)>0?array_merge($uatm_tbk_item, $temp['results']['uatm_tbk_item']):$temp['results']['uatm_tbk_item'];
             }
             
         }

@@ -13,7 +13,7 @@
 	<link href="<?php bloginfo('template_url'); ?>/ui/pintuer.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/iconfont.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />
-	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017071701.css" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017072001.css" rel="stylesheet" type="text/css" />
 	<script src="<?php bloginfo('template_url'); ?>/ui/jquery.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/pintuer.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/jquery.infinitescroll.min.js" type="text/javascript" ></script>
@@ -42,7 +42,7 @@
 		<?php if ( !wp_is_mobile() ){ ?>
 			<div class="container">
 				<div class="line padding-big-bottom">
-	        		<div class="xs12 xm4 xb4 text-float">
+	        		<div class="xs12 xm4 xb4 text-float" id="title-logo">
 	            			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
 	                			<img src="<?php echo get_option('logo'); ?>" alt="<?php bloginfo('name'); ?>"  />
 	            			</a>
