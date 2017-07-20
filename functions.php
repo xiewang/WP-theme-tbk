@@ -62,12 +62,15 @@ function infinite_scroll_js() {
                         $(this).removeClass('hide');
                     });
                 }
-                
+                setTimeout(function(){
+                    $(this).prev().addClass('hide');
+                    $(this).removeClass('hide');
+                },1500);
             });  
         }
- 
+ loadImg();
         jQuery(document).ready(function(){ 
-            loadImg();
+            
             var infinite_scroll = {
                 loading: {
                     img: "<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif",
@@ -105,7 +108,10 @@ function infinite_scroll_js() {
                         $(this).removeClass('hide');
                     });
                 }
-                
+                setTimeout(function(){
+                    $(this).prev().addClass('hide');
+                    $(this).removeClass('hide');
+                },1500);    
             });  
         </script>
     <?php

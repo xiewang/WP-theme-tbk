@@ -23,7 +23,31 @@
 	display: none !important;
 }
 
-@-webkit-keyframes circle{
+
+@keyframes circle
+{
+	0%{ transform:rotate(0deg); }
+	100%{ transform:rotate(360deg); }
+}
+
+@-moz-keyframes circle 
+{
+	0%{ transform:rotate(0deg); }
+	100%{ transform:rotate(360deg); }
+}
+
+@-webkit-keyframes circle 
+{
+	0%{ transform:rotate(0deg); }
+	100%{ transform:rotate(360deg); }
+}
+
+@-o-keyframes circle 
+{
+	0%{ transform:rotate(0deg); }
+	100%{ transform:rotate(360deg); }
+}
+@-ms-keyframes circle{
 	0%{ transform:rotate(0deg); }
 	100%{ transform:rotate(360deg); }
 }
