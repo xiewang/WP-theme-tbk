@@ -85,7 +85,31 @@ function infinite_scroll_js() {
         });
         </script>
         <?php
-    }
+    }?>
+    <?php 
+        if (is_singular() ) {
+    ?>
+        <script type="text/javascript">
+            $('.box-img img').each(function() {
+                var img = new Image();
+                img.src = $(this)[0].src;
+                 
+                if(img.complete) {
+                    console.log('该图片已经存在于缓存之中，不会再去重新下载');
+                    $(this).prev().addClass('hide');
+                    $(this).removeClass('hide');
+                } else {
+                    $(this).load(function(){
+                        // console.log($.inArray($(this)[0], $('.box-img img')));
+                        $(this).prev().addClass('hide');
+                        $(this).removeClass('hide');
+                    });
+                }
+                
+            });  
+        </script>
+    <?php
+        }
 }
 add_action('wp_footer', 'infinite_scroll_js', 100);
 

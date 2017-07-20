@@ -27,23 +27,23 @@ $(function(){
 		$('.m-back img').removeClass('hide');
 	}
 	
-	$('.box-img img').each(function() {
-		var the = $(this);
-        var img = new Image();
-        img.src = $(this)[0].src;
+	// $('.box-img img').each(function() {
+	// 	var the = $(this);
+ //        var img = new Image();
+ //        img.src = $(this)[0].src;
          
-        if(img.complete) {
-        	setTimeout(function(){
-        		the.prev().addClass('hide');
-            	the.removeClass('hide');
-        	},300);
-        } else {
-            $(this).load(function(){
-                // console.log($.inArray($(this)[0], $('.box-img img')));
-                $(this).prev().addClass('hide');
-                $(this).removeClass('hide');
-            });
-        }
+ //        if(img.complete) {
+ //        	setTimeout(function(){
+ //        		the.prev().addClass('hide');
+ //            	the.removeClass('hide');
+ //        	},300);
+ //        } else {
+ //            $(this).load(function(){
+ //                // console.log($.inArray($(this)[0], $('.box-img img')));
+ //                $(this).prev().addClass('hide');
+ //                $(this).removeClass('hide');
+ //            });
+ //        }
         
-    });  
+ //    });  
 });
