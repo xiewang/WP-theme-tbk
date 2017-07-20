@@ -68,9 +68,14 @@ function infinite_scroll_js() {
                 },1500);
             });  
         }
- loadImg();
+        <?php  if(strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
+            loadImg();
+        <?php }?>
+        
         jQuery(document).ready(function(){ 
-            
+            <?php  if(!strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
+                loadImg();
+            <?php }?>
             var infinite_scroll = {
                 loading: {
                     img: "<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif",
@@ -93,26 +98,37 @@ function infinite_scroll_js() {
         if (is_singular() ) {
     ?>
         <script type="text/javascript">
-            $('.box-img img').each(function() {
-                var img = new Image();
-                img.src = $(this)[0].src;
-                 
-                if(img.complete) {
-                    console.log('该图片已经存在于缓存之中，不会再去重新下载');
-                    $(this).prev().addClass('hide');
-                    $(this).removeClass('hide');
-                } else {
-                    $(this).load(function(){
-                        // console.log($.inArray($(this)[0], $('.box-img img')));
+            var loadImg = function(){
+                $('.box-img img').each(function() {
+                    var img = new Image();
+                    img.src = $(this)[0].src;
+                     
+                    if(img.complete) {
+                        console.log('该图片已经存在于缓存之中，不会再去重新下载');
                         $(this).prev().addClass('hide');
                         $(this).removeClass('hide');
-                    });
-                }
-                setTimeout(function(){
-                    $(this).prev().addClass('hide');
-                    $(this).removeClass('hide');
-                },1500);    
-            });  
+                    } else {
+                        $(this).load(function(){
+                            // console.log($.inArray($(this)[0], $('.box-img img')));
+                            $(this).prev().addClass('hide');
+                            $(this).removeClass('hide');
+                        });
+                    }
+                    setTimeout(function(){
+                        $(this).prev().addClass('hide');
+                        $(this).removeClass('hide');
+                    },1500);
+                });  
+            }
+            <?php  if(strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
+                loadImg();
+            <?php }?>
+
+             jQuery(document).ready(function(){ 
+                <?php  if(!strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
+                    loadImg();
+                <?php }?>
+            });
         </script>
     <?php
         }
