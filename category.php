@@ -125,7 +125,7 @@
                                 </dt> 
                                 
                                 <div class="box-txt">
-                                    <div class="box-juan-price"><span><?php echo $coupon;?>元</span></div>
+                                    <div class="box-juan-price"><span><?php echo $coupon==0?'领完了':$coupon.'元';?></span></div>
                                     <div class="box-juan"><span>券</span></div>
                                 </div>
 
