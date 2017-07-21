@@ -177,9 +177,34 @@
         <div class="jingp">
             <img src="<?php bloginfo('template_directory'); ?>/img/jingpintuijian.png" />
         </div>
+
         <div class="line-middle">
             <?php if ( is_single() ) : global $post;   $categories = get_the_category();  foreach ($categories as $category) :  ?>  
-            <?php $posts=get_posts('numberposts=20&category='.$category->term_id.'&exclude='.get_the_ID());foreach($posts as $post) : ?> 
+            
+            <?php
+                function wt_get_category_count($input = '') {
+                    global $wpdb;
+
+                    if($input == '') {
+                        $category = get_the_category();
+                        return $category[0]->category_count;
+                    }
+                    elseif(is_numeric($input)) {
+                        $SQL = "SELECT $wpdb->term_taxonomy.count FROM $wpdb->terms, $wpdb->term_taxonomy WHERE $wpdb->terms.term_id=$wpdb->term_taxonomy.term_id AND $wpdb->term_taxonomy.term_id=$input";
+                        return $wpdb->get_var($SQL);
+                    }
+                    else {
+                        $SQL = "SELECT $wpdb->term_taxonomy.count FROM $wpdb->terms, $wpdb->term_taxonomy WHERE $wpdb->terms.term_id=$wpdb->term_taxonomy.term_id AND $wpdb->terms.slug='$input'";
+                        return $wpdb->get_var($SQL);
+                    }
+                }
+
+                $cate_count =  wt_get_category_count($category->cat_ID);
+                $offset = rand(0,$cate_count-20);
+                echo $offset;
+                // echo get_category($category->cat_ID)->count;
+            ?>
+            <?php $posts=get_posts('offset='.$offset.'&numberposts=20&category='.$category->term_id.'&exclude='.get_the_ID());foreach($posts as $post) : ?> 
             <div class="post xl12 xs4 xm3 padding-bottom">
                 <?php if(wp_is_mobile()){?>
                     <div class="box" onclick=" location.href='<?php the_permalink(); ?>'">
