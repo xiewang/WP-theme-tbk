@@ -54,3 +54,25 @@
 .m-cate-drop{
 	position: fixed;
 }
+body{
+	background: #fff5d4;
+}
+.search form {
+    padding-top: 45px;
+}
+ul.cate-list{
+	background: #fff;
+}
+.sliderImg{
+	height: 350px;
+	background-size: cover;
+}
+.m-main-cate ul li{
+	background: #fff;
+	border: 1px solid #ffc900;
+	height: 36px;
+    line-height: 36px;
+}
+.m-main-cate ul li.current-menu-item{
+	background: #ffc900;
+}

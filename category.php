@@ -96,7 +96,7 @@
                                    
 
                         if(isset($item->coupon_click_url)){
-                            $jump_url = '/2017/07/19/forever/?coupon_click_url='.$item->coupon_click_url.'&coupon='.$coupon.'&price='.$item->zk_final_price.'&final_price='.($item->zk_final_price-$coupon).'&volume='.$item->volume.'&pict_url='.$item->pict_url.'&content='.$item->coupon_info.'&title='.$item->title.'&coupon_total_count='.$item->coupon_total_count;
+                            $jump_url = '/2017/07/21/forever/?coupon_click_url='.$item->coupon_click_url.'&coupon='.$coupon.'&price='.$item->zk_final_price.'&final_price='.($item->zk_final_price-$coupon).'&volume='.$item->volume.'&pict_url='.$item->pict_url.'&content='.$item->coupon_info.'&title='.$item->title.'&coupon_total_count='.$item->coupon_total_count;
                         } else {
                             $jump_url = $item->item_url;
                         }
@@ -143,7 +143,10 @@
             <?php
                } }
             ?>
-            <?php while (have_posts()) : the_post(); ?>
+            <?php while (have_posts()) : the_post(); 
+                if(get_post_meta($post->ID, "hao_zhutu", true) !=''){
+            ?>
+
                 <div class="post xl12 xs4 xm3 padding-bottom">
                     <?php if(wp_is_mobile()){?>
                         <div class="box" onclick=" location.href='<?php the_permalink(); ?>'">
@@ -184,7 +187,7 @@
                 </div>
             
 
-            <?php endwhile; ?>
+            <?php } endwhile; ?>
         </div>
       <div class="pagenavi"><?php next_posts_link('下一页') ?>	<?php previous_posts_link('上一页') ?></div>
      </div>

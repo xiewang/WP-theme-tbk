@@ -41,7 +41,7 @@
 	<div class="container-layout padding-top" id="headerC">
 		<?php if ( !wp_is_mobile() ){ ?>
 			<div class="container">
-				<div class="line padding-big-bottom">
+				<div class="line">
 	        		<div class="xs12 xm4 xb4 text-float" id="title-logo">
 	            			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
 	                			<img src="<?php echo get_option('logo'); ?>" alt="<?php bloginfo('name'); ?>"  />
