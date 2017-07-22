@@ -201,7 +201,8 @@
 
                 $cate_count =  wt_get_category_count($category->cat_ID);
                 $offset = rand(0,$cate_count-20);
-                echo $offset;
+                // print_r($category);
+                // echo $cate_count;
                 // echo get_category($category->cat_ID)->count;
             ?>
             <?php $posts=get_posts('offset='.$offset.'&numberposts=20&category='.$category->term_id.'&exclude='.get_the_ID());foreach($posts as $post) : ?> 
