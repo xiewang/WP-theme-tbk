@@ -75,4 +75,9 @@ ul.cate-list{
 }
 .m-main-cate ul li.current-menu-item{
 	background: #ffc900;
+	background-image: -webkit-linear-gradient(180deg,rgb(251, 228, 155),#ffc300);
+    background-image: -moz-linear-gradient(180deg,rgb(251, 228, 155),#ffc300);
+	background-image: linear-gradient(180deg,rgb(251, 228, 155),#ffc300);
+    border: none;
+	box-shadow: 0px 4px 8px 0px rgba(80, 27, 0, 0.47);
 }
