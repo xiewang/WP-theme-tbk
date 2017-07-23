@@ -44,7 +44,7 @@
 				<div class="line">
 	        		<div class="xs12 xm4 xb4 text-float" id="title-logo">
 	            			<a href="<?php bloginfo('url'); ?>" title="<?php bloginfo('name'); ?>">
-	                			<img src="<?php echo get_option('logo'); ?>" alt="<?php bloginfo('name'); ?>"  />
+	                			<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="<?php bloginfo('name'); ?>"  />
 	            			</a>
 	        		</div>
 	        		<div class="xs12 xm8 xb8 hidden-s hidden-l">
