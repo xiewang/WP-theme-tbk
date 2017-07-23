@@ -25,15 +25,15 @@
     $cate = $thiscat ->name;
     $main = false;
     if($cate == '人气推荐'){
-         $favorites=array('8658715','8678149');
+         $favorites=array('8678149','8658715');
          $main = true;
     } 
     elseif($cate == '9块9包邮'){
-        $favorites=array('8678349','8678161'); 
+        $favorites=array('8678161','8678349'); 
         $main = true;
     }
     elseif($cate == '明星周边'){
-        $favorites=array('8678327','8678264'); 
+        $favorites=array('8678264','8678327'); 
         $main = true;
     }
     
@@ -96,7 +96,7 @@
                                    
 
                         if(isset($item->coupon_click_url)){
-                            $jump_url = '/2017/07/21/forever/?coupon_click_url='.$item->coupon_click_url.'&coupon='.$coupon.'&price='.$item->zk_final_price.'&final_price='.($item->zk_final_price-$coupon).'&volume='.$item->volume.'&pict_url='.$item->pict_url.'&content='.$item->coupon_info.'&title='.$item->title.'&coupon_total_count='.$item->coupon_total_count;
+                            $jump_url = '/bd/32322/?coupon_click_url='.$item->coupon_click_url.'&coupon='.$coupon.'&price='.$item->zk_final_price.'&final_price='.($item->zk_final_price-$coupon).'&volume='.$item->volume.'&pict_url='.$item->pict_url.'&content='.$item->coupon_info.'&title='.$item->title.'&coupon_total_count='.$item->coupon_total_count;
                         } else {
                             $jump_url = $item->item_url;
                         }
