@@ -11,10 +11,10 @@
 						<!-- <div class="item">
 							<div id="img1" class="sliderImg" ></div>
 						</div> -->
-						<div class="item" onclick="location.href='http://www.996shop.com/category/popular/'">
+						<div class="item" onclick="location.href='http://www.996shop.com/bd/category/popular/'">
 							<div id="img2" class="sliderImg" ></div>
 						</div>
-						<div class="item" onclick="location.href='http://www.996shop.com/category/9h9/'">
+						<div class="item" onclick="location.href='http://www.996shop.com/bd/category/9h9/'">
 							<div id="img3" class="sliderImg" ></div>
 						</div>
 					</div>
