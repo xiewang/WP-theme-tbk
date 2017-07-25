@@ -49,7 +49,12 @@ function infinite_scroll_js() {
         var loadImg = function(){
             $('.box-img img').each(function() {
                 var img = new Image();
-                img.src = $(this)[0].src;
+                if($(this).attr('original')){
+                    img.src = $(this).attr('original');
+                } else {
+                    img.src = $(this)[0].src;
+                }
+                
                  
                 if(img.complete) {
                     console.log('该图片已经存在于缓存之中，不会再去重新下载');

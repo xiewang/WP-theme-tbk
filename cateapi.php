@@ -7,7 +7,15 @@
 
     //100000list
     if (!$main ) {
-        $page_no = 1;
+        
+        // echo $_SERVER['QUERY_STRING'];
+        if(isset($_SERVER['QUERY_STRING'])){
+            $params = explode("=",$_SERVER["QUERY_STRING"]);
+            $temp = $params[count($params)-1];
+            $page_no = $temp + 1;
+        } else {
+            $page_no = 1;
+        }
         $req = new TbkDgItemCouponGetRequest;
         if(wp_is_mobile()){
             $req->setPlatform("2");
@@ -18,7 +26,7 @@
         $req->setPageSize("6");
         $req->setCat("16,18");
         // $req->setQ("女装");
-        $req->setPageNo($page_no);
+        $req->setPageNo(strval($page_no));
         $resp = $c->execute($req);
 
         $temp = json_decode(json_encode($resp),TRUE);

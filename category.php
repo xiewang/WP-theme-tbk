@@ -192,7 +192,7 @@
         </div>
         <?php if($main){?>
             <div class="pagenavi">
-                <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];?>">更多</a>
+                <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'?page_no='.$page_no;?>">更多</a>
             </div>
         <?php }else{?>
             <div class="pagenavi"><?php next_posts_link('下一页') ?> <?php previous_posts_link('上一页') ?></div>
