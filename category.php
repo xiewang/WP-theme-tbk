@@ -68,19 +68,20 @@
         }
         // print_r( array2object($uatm_tbk_item));
 
-        $c = array2object($uatm_tbk_item);
+        $mainList = array2object($uatm_tbk_item);
     }
     
+?>
 
-    
-    
+<?php 
+    include "cateapi.php";
 ?>
 <div class="layout page padding-top">
     <div class="container">
         <div id="content" class="line-middle">
             <?php  
-                if($main && isset($c)){
-                    foreach ($c as $item){ 
+                if($main && isset($mainList)){
+                    foreach ($mainList as $item){ 
                         $item = array2object($item);
                         $coupon = 0;
                         if(isset($item->coupon_info)){
@@ -143,7 +144,7 @@
             <?php
                } }
             ?>
-            <?php while (have_posts()) : the_post(); 
+            <?php while (have_posts()&&!$main) : the_post(); 
                 if(get_post_meta($post->ID, "hao_zhutu", true) !=''){
             ?>
 
@@ -189,7 +190,13 @@
 
             <?php } endwhile; ?>
         </div>
-      <div class="pagenavi"><?php next_posts_link('下一页') ?>	<?php previous_posts_link('上一页') ?></div>
+        <?php if($main){?>
+            <div class="pagenavi">
+                <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];?>">更多</a>
+            </div>
+        <?php }else{?>
+            <div class="pagenavi"><?php next_posts_link('下一页') ?> <?php previous_posts_link('上一页') ?></div>
+        <?php }?>
      </div>
 </div>
 
