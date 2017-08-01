@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
 <?php 
+
     include "taobao/TopSdk.php";
     include "taobao/top/request/TbkUatmFavoritesItemGetRequest.php";
     $c = new TopClient;
@@ -74,7 +75,7 @@
 ?>
 
 <?php 
-    include "cateapi.php";
+    // include "cateapi.php";
 ?>
 <div class="layout page padding-top">
     <div class="container">

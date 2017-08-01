@@ -24,7 +24,7 @@
         }
         $req->setAdzoneId("119412095");
         $req->setPageSize("6");
-        $req->setCat("16,18");
+        $req->setCat("16");
         // $req->setQ("女装");
         $req->setPageNo(strval($page_no));
         $resp = $c->execute($req);
