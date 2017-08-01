@@ -26,15 +26,15 @@
     $cate = $thiscat ->name;
     $main = false;
     if($cate == '人气推荐'){
-         $favorites=array('8678149','8658715');
+         $favorites= getFavoritArr('人气');
          $main = true;
     } 
     elseif($cate == '9块9包邮'){
-        $favorites=array('8678161','8678349'); 
+        $favorites= getFavoritArr('9块9');
         $main = true;
     }
     elseif($cate == '明星周边'){
-        $favorites=array('8678264','8678327'); 
+        $favorites= getFavoritArr('明星'); 
         $main = true;
     }
     
@@ -48,12 +48,35 @@
       else { $obj = $array; }
       return $obj;
     }
+    function getFavoritArr($name){
+        $arr=array();
+        $c = new TopClient;
+        $c->appkey = "24545248";
+        $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
+        $req1 = new TbkUatmFavoritesGetRequest;
+        $req1->setPageNo("1");
+        $req1->setPageSize("20");
+        $req1->setFields("favorites_title,favorites_id,type");
+        $req1->setType("-1");
+        $resp11 = $c->execute($req1);
+        $temp = json_decode(json_encode($resp11),TRUE);
+        $fList = array2object($temp['results']['tbk_favorites']);
+        foreach ($fList as $item){
+            $item = array2object($item);
+            if(strpos($item->favorites_title,$name) !== false){
+                array_push($arr,$item->favorites_id);
+            }
+        }
+        return $arr;
+    }
+
     if($main == true){
+        
+
         $req->setFavoritesId($favorites[0]);
         $resp0 = $c->execute($req);
         $req->setFavoritesId($favorites[1]);
         $resp1 = $c->execute($req);
-
         // $uatm_tbk_item = array();
         foreach ($favorites as $key => $value) {
             $req->setFavoritesId($favorites[$key]);
