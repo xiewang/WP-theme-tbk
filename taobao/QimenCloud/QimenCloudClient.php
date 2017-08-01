@@ -1,10 +1,13 @@
 <?php
-class DingTalkClient
+class QimenCloudClient
 {
-	/**@Author chaohui.zch copy from TopClient and modify 2016-12-14 **/
+	public $appkey;
 
-    /**@Author chaohui.zch modify $gatewayUrl 2017-07-18 **/
-    public $gatewayUrl = "https://eco.taobao.com/router/rest";
+	public $secretKey;
+	
+	public $targetAppkey = "";
+
+	public $gatewayUrl = null;
 
 	public $format = "xml";
 
@@ -15,11 +18,38 @@ class DingTalkClient
 	/** 是否打开入参check**/
 	public $checkRequest = true;
 
+	protected $signMethod = "md5";
+
 	protected $apiVersion = "2.0";
 
-	protected $sdkVersion = "dingtalk-sdk-php-20161214";
+	protected $sdkVersion = "top-sdk-php-20151012";
 
-	public function __construct(){
+	public function getAppkey()
+	{
+		return $this->appkey;
+	}
+
+	public function __construct($appkey = "",$secretKey = ""){
+		$this->appkey = $appkey;
+		$this->secretKey = $secretKey ;
+	}
+
+	protected function generateSign($params)
+	{
+		ksort($params);
+
+		$stringToBeSigned = $this->secretKey;
+		foreach ($params as $k => $v)
+		{
+			if(is_string($v) && "@" != substr($v, 0, 1))
+			{
+				$stringToBeSigned .= "$k$v";
+			}
+		}
+		unset($k, $v);
+		$stringToBeSigned .= $this->secretKey;
+
+		return strtoupper(md5($stringToBeSigned));
 	}
 
 	public function curl($url, $postFields = null)
@@ -34,7 +64,7 @@ class DingTalkClient
 		if ($this->connectTimeout) {
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
 		}
-		curl_setopt ( $ch, CURLOPT_USERAGENT, "dingtalk-sdk-php" );
+		curl_setopt ( $ch, CURLOPT_USERAGENT, "top-sdk-php" );
 		//https 请求
 		if(strlen($url) > 5 && strtolower(substr($url,0,5)) == "https" ) {
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -111,7 +141,7 @@ class DingTalkClient
 		if ($this->connectTimeout) {
 			curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->connectTimeout);
 		}
-		curl_setopt ( $ch, CURLOPT_USERAGENT, "dingtalk-sdk-php" );
+		curl_setopt ( $ch, CURLOPT_USERAGENT, "top-sdk-php" );
 		//https 请求
 		if(strlen($url) > 5 && strtolower(substr($url,0,5)) == "https" ) {
 			curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
@@ -176,11 +206,12 @@ class DingTalkClient
 	{
 		$localIp = isset($_SERVER["SERVER_ADDR"]) ? $_SERVER["SERVER_ADDR"] : "CLI";
 		$logger = new TopLogger;
-		$logger->conf["log_file"] = rtrim(TOP_SDK_WORK_DIR, '\\/') . '/' . "logs/top_comm_err_" . "_" . date("Y-m-d") . ".log";
+		$logger->conf["log_file"] = rtrim(TOP_SDK_WORK_DIR, '\\/') . '/' . "logs/top_comm_err_" . $this->appkey . "_" . date("Y-m-d") . ".log";
 		$logger->conf["separator"] = "^_^";
 		$logData = array(
 		date("Y-m-d H:i:s"),
 		$apiName,
+		$this->appkey,
 		$localIp,
 		PHP_OS,
 		$this->sdkVersion,
@@ -193,6 +224,10 @@ class DingTalkClient
 
 	public function execute($request, $session = null,$bestUrl = null)
 	{
+		if($this->gatewayUrl == null) {
+			throw new Exception("client-check-error:Need Set gatewayUrl.", 40);
+		}
+
 		$result =  new ResultSet(); 
 		if($this->checkRequest) {
 			try {
@@ -205,10 +240,13 @@ class DingTalkClient
 			}
 		}
 		//组装系统参数
+		$sysParams["app_key"] = $this->appkey;
 		$sysParams["v"] = $this->apiVersion;
 		$sysParams["format"] = $this->format;
+		$sysParams["sign_method"] = $this->signMethod;
 		$sysParams["method"] = $request->getApiMethodName();
 		$sysParams["timestamp"] = date("Y-m-d H:i:s");
+		$sysParams["target_app_key"] = $this->targetAppkey;
 		if (null != $session)
 		{
 			$sysParams["session"] = $session;
@@ -226,6 +264,8 @@ class DingTalkClient
 			$requestUrl = $this->gatewayUrl."?";
 			$sysParams["partner_id"] = $this->sdkVersion;
 		}
+		//签名
+		$sysParams["sign"] = $this->generateSign(array_merge($apiParams, $sysParams));
 
 		foreach ($sysParams as $sysParamKey => $sysParamValue)
 		{
@@ -300,7 +340,7 @@ class DingTalkClient
 		if (isset($respObject->code))
 		{
 			$logger = new TopLogger;
-			$logger->conf["log_file"] = rtrim(TOP_SDK_WORK_DIR, '\\/') . '/' . "logs/top_biz_err_" .  "_" . date("Y-m-d") . ".log";
+			$logger->conf["log_file"] = rtrim(TOP_SDK_WORK_DIR, '\\/') . '/' . "logs/top_biz_err_" . $this->appkey . "_" . date("Y-m-d") . ".log";
 			$logger->log(array(
 				date("Y-m-d H:i:s"),
 				$resp
@@ -320,7 +360,7 @@ class DingTalkClient
 		$requestClassName = ucfirst($inflector->camelize(substr($paramsArray["method"], 7))) . "Request";
 		if (!class_exists($requestClassName))
 		{
-			trigger_error("No such dingtalk-api: " . $paramsArray["method"]);
+			trigger_error("No such api: " . $paramsArray["method"]);
 		}
 
 		$session = isset($paramsArray["session"]) ? $paramsArray["session"] : null;

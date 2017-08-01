@@ -2,7 +2,6 @@
 // register_activation_hook(__FILE__, 'my_activation');
 function my_activation() {
 		// my_deactivation();
-	echo 'test=============';
 	// get_all_auto_post();
 	if ( !wp_next_scheduled( 'my_hourly_event' ) ) {
 		// wp_schedule_event(time(), 'hourly', 'my_hourly_event');

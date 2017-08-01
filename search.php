@@ -1,3 +1,7 @@
+<?php 
+    require 'searchapi.php';
+    return;
+?>
 <?php get_header(); ?>
 
 <div class="layout page padding-top">
@@ -46,7 +50,7 @@
             <?php }?>
             <?php endwhile; ?>
         </div>
-      <div class="pagenavi"><?php next_posts_link('下一页') ?>	<?php previous_posts_link('上一页') ?></div>
+      <div class="pagenavi"><?php next_posts_link('下一页') ?> <?php previous_posts_link('上一页') ?></div>
      </div>
 </div>
 
