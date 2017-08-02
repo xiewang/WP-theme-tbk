@@ -13,15 +13,39 @@
     } else {
         $req->setPlatform("1");
     }
-    
-    $req->setPageSize("100");
+    $pageSize = 60;
+    $req->setPageSize((string)$pageSize);
     $req->setAdzoneId("119412095");
     $req->setUnid("3456");
-    
-    $req->setPageNo("1");
+    if(isset($_SERVER['QUERY_STRING'])){
+        parse_str($_SERVER['QUERY_STRING'], $get);
+
+        if(isset($get['page'])){
+            $page_no = $get['page'];
+        } else {
+            $page_no = 1;
+        }
+
+        if(isset($get['total'])){
+            $total = $get['total'];
+        } else {
+            $total = 100;
+        }
+        
+        if(isset($get['fav'])){
+            $fav = $get['fav'];
+        } else {
+            $fav = 0;
+        }
+    } else {
+        $page_no = 1;
+        $total = 100;
+        $fav = 0;
+    }
+    echo $page_no;
+    $req->setPageNo((string)$page_no);
     $req->setFields("coupon_total_count,coupon_info,coupon_click_url,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type");
     
-
     $thiscat = get_category($cat); 
     $cate = $thiscat ->name;
     $main = false;
@@ -70,29 +94,47 @@
         return $arr;
     }
 
+    
     if($main == true){
         
-
-        $req->setFavoritesId($favorites[0]);
-        $resp0 = $c->execute($req);
-        $req->setFavoritesId($favorites[1]);
-        $resp1 = $c->execute($req);
-        // $uatm_tbk_item = array();
-        foreach ($favorites as $key => $value) {
-            $req->setFavoritesId($favorites[$key]);
-            $resp = $c->execute($req);
-
-            $temp = json_decode(json_encode($resp),TRUE);
-            if($key == 0){
-                $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
-            }else {
-                $uatm_tbk_item = count($uatm_tbk_item)>0?array_merge($uatm_tbk_item, $temp['results']['uatm_tbk_item']):$temp['results']['uatm_tbk_item'];
-            }
-            
+        if(($page_no-1)*$pageSize >= $total){
+            $fav = $fav+1;
+            $page_no=1;
+            $req->setPageNo("1");
         }
-        // print_r( array2object($uatm_tbk_item));
+        echo $page_no;
 
+        if(count($favorites) < ($fav+1)){
+            return null;
+        }
+
+        $req->setFavoritesId($favorites[$fav]);
+        $resp = $c->execute($req);
+
+        $temp = json_decode(json_encode($resp),TRUE);
+        $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
+        $total = $temp['total_results'];
         $mainList = array2object($uatm_tbk_item);
+
+        // foreach ($favorites as $key => $value) {
+        //     $req->setFavoritesId($favorites[$key]);
+        //     $resp = $c->execute($req);
+
+
+        //     $temp = json_decode(json_encode($resp),TRUE);
+        //     $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
+        //     $total_results = $temp['results']['total_results'];
+        //     if()
+        //     // if($key == 0){
+        //     //     $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
+        //     // }else {
+        //     //     $uatm_tbk_item = count($uatm_tbk_item)>0?array_merge($uatm_tbk_item, $temp['results']['uatm_tbk_item']):$temp['results']['uatm_tbk_item'];
+        //     // }
+            
+        // }
+        // // print_r( array2object($uatm_tbk_item));
+
+        // $mainList = array2object($uatm_tbk_item);
     }
     
 ?>
@@ -214,9 +256,13 @@
 
             <?php } endwhile; ?>
         </div>
-        <?php if($main){?>
+        <?php if($main){ 
+            $next = (int)$page_no+1; 
+            $temp = explode("?",$_SERVER["REQUEST_URI"]);
+            $route = $temp[0];
+            ?>
             <div class="pagenavi">
-                <a href="<?php echo 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'].'?page_no='.$page_no;?>">更多</a>
+              <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$route.'?page='.$next.'&total='.$total.'&fav='.$fav?>">更多</a>
             </div>
         <?php }else{?>
             <div class="pagenavi"><?php next_posts_link('下一页') ?> <?php previous_posts_link('上一页') ?></div>

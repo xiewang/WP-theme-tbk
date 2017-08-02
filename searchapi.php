@@ -25,12 +25,6 @@
         if(!isset($page_no)){
             $page_no = 1;
         }
-        // if($params[count($params)-2] == 'page'){
-        //     $temp = $params[count($params)-1];
-        //     $page_no = $temp;
-        // } else {
-        //     $page_no = 1;
-        // }
         
     } else {
         $page_no = 1;
