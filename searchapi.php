@@ -16,12 +16,21 @@
         $temp = explode("?",$_SERVER["REQUEST_URI"]);
 
         $params = explode("/",$temp[0]);
-        if($params[count($params)-2] == 'page'){
-            $temp = $params[count($params)-1];
-            $page_no = $temp;
-        } else {
+
+        foreach ($params as $key => $value){ 
+            if($value == 'page'){
+                $page_no = $params[$key+1];
+            }
+        }
+        if(!isset($page_no)){
             $page_no = 1;
         }
+        // if($params[count($params)-2] == 'page'){
+        //     $temp = $params[count($params)-1];
+        //     $page_no = $temp;
+        // } else {
+        //     $page_no = 1;
+        // }
         
     } else {
         $page_no = 1;
@@ -117,7 +126,9 @@
             <?php }}?>
 
         </div>
-      <div class="pagenavi"><?php next_posts_link('下一页') ?>	<?php previous_posts_link('上一页') ?></div>
+      <div class="pagenavi">
+      <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].'/page/'.($page_no+1).$_SERVER["REQUEST_URI"]?>">更多</a>
+      </div>
      </div>
 </div>
 
