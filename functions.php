@@ -81,21 +81,33 @@ function infinite_scroll_js() {
             <?php  if(!strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
                 loadImg();
             <?php }?>
-            var infinite_scroll = {
-                loading: {
-                    img: "<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif",
-                    msgText: "自动加载中...",
-                    finishedMsg: "已加载所有产品..."
-                },
-                nextSelector:".pagenavi a",
-                navSelector:".pagenavi",
-                itemSelector:".post",
-                contentSelector:"#content",              
-            };
-            jQuery( infinite_scroll.contentSelector ).infinitescroll( infinite_scroll,function(arrayOfNewElems){  
-              loadImg();
-            } );
-        });
+            // var infinite_scroll = {
+            //     loading: {
+            //         img: "<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif",
+            //         msgText: "自动加载中...",
+            //         finishedMsg: "已加载所有产品..."
+            //     },
+            //     nextSelector:".pagenavi a",
+            //     navSelector:".pagenavi",
+            //     itemSelector:".post",
+            //     contentSelector:"#content",              
+            // };
+            // jQuery( infinite_scroll.contentSelector ).infinitescroll( infinite_scroll,function(arrayOfNewElems){  
+            //   loadImg();
+            // } );
+
+                var infScroll = new InfiniteScroll( '#content', {
+                  append: '.post',
+                  path: '.pagenavi a',
+                  status: '.page-load-status',
+                });
+
+                infScroll.on( 'load.infiniteScroll', function(){
+                    loadImg();
+                } );
+
+
+            });
         </script>
         <?php
     }?>

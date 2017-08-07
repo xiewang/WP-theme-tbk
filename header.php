@@ -16,7 +16,7 @@
 	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017072002.css" rel="stylesheet" type="text/css" />
 	<script src="<?php bloginfo('template_url'); ?>/ui/jquery.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/pintuer.js" type="text/javascript" ></script>
-	<script src="<?php bloginfo('template_url'); ?>/ui/jquery.infinitescroll.min.js" type="text/javascript" ></script>
+	<script src="<?php bloginfo('template_url'); ?>/ui/infinite-scroll.pkgd.min.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/mobile-menu.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/ZeroClipboard.min.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/respond.js" type="text/javascript" ></script>

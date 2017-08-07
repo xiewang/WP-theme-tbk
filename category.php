@@ -42,7 +42,7 @@
         $total = 100;
         $fav = 0;
     }
-    echo $page_no;
+    // echo $page_no;
     $req->setPageNo((string)$page_no);
     $req->setFields("coupon_total_count,coupon_info,coupon_click_url,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type");
     
@@ -99,10 +99,10 @@
         
         if(($page_no-1)*$pageSize >= $total){
             $fav = $fav+1;
-            $page_no=1;
-            $req->setPageNo("1");
+            $page_no= $page_no- 1;
+            $req->setPageNo($page_no);
         }
-        echo $page_no;
+        // echo $page_no;
 
         if(count($favorites) < ($fav+1)){
             return null;
@@ -257,7 +257,7 @@
             <?php } endwhile; ?>
         </div>
         <?php if($main){ 
-            $next = (int)$page_no+1; 
+            $next = ++$page_no;
             $temp = explode("?",$_SERVER["REQUEST_URI"]);
             $route = $temp[0];
             ?>
@@ -267,6 +267,15 @@
         <?php }else{?>
             <div class="pagenavi"><?php next_posts_link('下一页') ?> <?php previous_posts_link('上一页') ?></div>
         <?php }?>
+        <div class="page-load-status">
+          <div class="infinite-scroll-request">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif" alt="Loading" />
+            加载中...
+          </div>
+          <p class="infinite-scroll-error infinite-scroll-last">
+            到底了
+          </p>
+        </div>
      </div>
 </div>
 
