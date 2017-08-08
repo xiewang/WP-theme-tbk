@@ -1,7 +1,6 @@
 <?php get_header(); ?>
 <?php get_sidebar(); ?>
 <?php 
-
     include "taobao/TopSdk.php";
     include "taobao/top/request/TbkUatmFavoritesItemGetRequest.php";
     $c = new TopClient;
@@ -13,7 +12,7 @@
     } else {
         $req->setPlatform("1");
     }
-    $pageSize = 60;
+    $pageSize = 120;
     $req->setPageSize((string)$pageSize);
     $req->setAdzoneId("119412095");
     $req->setUnid("3456");
@@ -21,29 +20,32 @@
         parse_str($_SERVER['QUERY_STRING'], $get);
 
         if(isset($get['page'])){
-            $page_no = $get['page'];
+            $page_no = $get['page']+1;
         } else {
             $page_no = 1;
         }
-
-        if(isset($get['total'])){
-            $total = $get['total'];
-        } else {
-            $total = 100;
-        }
-        
-        if(isset($get['fav'])){
-            $fav = $get['fav'];
-        } else {
-            $fav = 0;
-        }
     } else {
         $page_no = 1;
-        $total = 100;
-        $fav = 0;
     }
-    // echo $page_no;
-    $req->setPageNo((string)$page_no);
+
+    if(isset($_SESSION['favNo'])){
+        $favNo = $_SESSION['favNo'];
+    } else {
+        $favNo = 1;
+    }
+
+    if(isset($_SESSION['PageNo'])){
+        $PageNo = $_SESSION['PageNo'] + 1;
+    } else {
+        $PageNo = 1;
+    }
+    // echo $_SESSION['PageNo'];
+
+    if($page_no == 1){
+        $favNo = 1;
+        $PageNo = 1;
+    }
+    
     $req->setFields("coupon_total_count,coupon_info,coupon_click_url,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type");
     
     $thiscat = get_category($cat); 
@@ -61,7 +63,33 @@
         $favorites= getFavoritArr('明星'); 
         $main = true;
     }
-    
+
+    if($main == true){
+        $_SESSION['favNo'] = $favNo;
+        $_SESSION['PageNo'] = $PageNo;
+        $req->setFavoritesId($favorites[$favNo-1]);
+        $req->setPageNo((string)$PageNo);
+        $resp = $c->execute($req);
+        $temp = json_decode(json_encode($resp),TRUE);
+        $total = isset($temp['total_results'])?$temp['total_results']:0;
+        if($total > 0){
+            $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
+            $mainList = array2object($uatm_tbk_item);
+        } elseif(($total == 0) && (count($favorites) != $favNo)){
+            $_SESSION['favNo'] = $favNo+1;
+            $_SESSION['PageNo'] = 1;
+            $req->setFavoritesId($favorites[$favNo]);
+            $req->setPageNo(1);
+            $resp = $c->execute($req);
+            $temp = json_decode(json_encode($resp),TRUE);
+            $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
+            $mainList = array2object($uatm_tbk_item);
+        } elseif(($total == 0) && (count($favorites) == $favNo)){
+            $mainList  = array();
+        }
+        
+    }
+
     function array2object($array) {
       if (is_array($array)) {
         $obj = new StdClass();
@@ -72,6 +100,7 @@
       else { $obj = $array; }
       return $obj;
     }
+
     function getFavoritArr($name){
         $arr=array();
         $c = new TopClient;
@@ -93,49 +122,6 @@
         }
         return $arr;
     }
-
-    
-    if($main == true){
-        
-        if(($page_no-1)*$pageSize >= $total){
-            $fav = $fav+1;
-            $page_no= $page_no- 1;
-            $req->setPageNo($page_no);
-        }
-        // echo $page_no;
-
-        if(count($favorites) < ($fav+1)){
-            return null;
-        }
-
-        $req->setFavoritesId($favorites[$fav]);
-        $resp = $c->execute($req);
-
-        $temp = json_decode(json_encode($resp),TRUE);
-        $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
-        $total = $temp['total_results'];
-        $mainList = array2object($uatm_tbk_item);
-
-        // foreach ($favorites as $key => $value) {
-        //     $req->setFavoritesId($favorites[$key]);
-        //     $resp = $c->execute($req);
-
-
-        //     $temp = json_decode(json_encode($resp),TRUE);
-        //     $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
-        //     $total_results = $temp['results']['total_results'];
-        //     if()
-        //     // if($key == 0){
-        //     //     $uatm_tbk_item = $temp['results']['uatm_tbk_item'];
-        //     // }else {
-        //     //     $uatm_tbk_item = count($uatm_tbk_item)>0?array_merge($uatm_tbk_item, $temp['results']['uatm_tbk_item']):$temp['results']['uatm_tbk_item'];
-        //     // }
-            
-        // }
-        // // print_r( array2object($uatm_tbk_item));
-
-        // $mainList = array2object($uatm_tbk_item);
-    }
     
 ?>
 
@@ -146,7 +132,7 @@
     <div class="container">
         <div id="content" class="line-middle">
             <?php  
-                if($main && isset($mainList)){
+                if($main && isset($mainList) && count($mainList)>0){
                     foreach ($mainList as $item){ 
                         $item = array2object($item);
                         $coupon = 0;
@@ -208,8 +194,10 @@
             </div>
 
             <?php
-               } }
+               } } elseif($main && isset($mainList)&&count($mainList)==0){
             ?>
+                
+            <?php }?>
             <?php while (have_posts()&&!$main) : the_post(); 
                 if(get_post_meta($post->ID, "hao_zhutu", true) !=''){
             ?>
@@ -257,12 +245,12 @@
             <?php } endwhile; ?>
         </div>
         <?php if($main){ 
-            $next = ++$page_no;
+            $next = $page_no;
             $temp = explode("?",$_SERVER["REQUEST_URI"]);
             $route = $temp[0];
             ?>
             <div class="pagenavi">
-              <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$route.'?page='.$next.'&total='.$total.'&fav='.$fav?>">更多</a>
+              <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$route?>">更多</a>
             </div>
         <?php }else{?>
             <div class="pagenavi"><?php next_posts_link('下一页') ?> <?php previous_posts_link('上一页') ?></div>
@@ -278,5 +266,41 @@
         </div>
      </div>
 </div>
+<script type="text/javascript">
+    
+    jQuery(document).ready(function(){ 
+        <?php if($main){?>
+            var infScroll = new InfiniteScroll( '#content', {
+              append: '.post',
+              path: function() {
+                    <?php 
+                        $favs = count($favorites);
+                        $maxPage = ceil(200/$pageSize)*$favs;
+                    ?>
+                  if(this.loadCount < parseInt('<?php echp $favs?>')){
+                        var pageNumber = this.loadCount + 1;
+                        var path = $('.pagenavi a').attr('href')+'?page='+pageNumber;
+                        return path;
+                  }
+                  
+                },
+              history: false,
+              checkLastPage: true,
+              status: '.page-load-status',
+            });
+        <?php }else{?>
+            var infScroll = new InfiniteScroll( '#content', {
+              append: '.post',
+              path: '.pagenavi a',
+              status: '.page-load-status',
+              history: false,
+              checkLastPage: true,
+            });
+        <?php }?>
+        infScroll.on( 'load', function(){
+            loadImg();
+        } );
 
+    });
+</script>
 <?php get_footer(); ?>

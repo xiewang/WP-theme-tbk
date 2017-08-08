@@ -85,3 +85,12 @@ ul.cate-list{
 	width: 250px;
     margin: 20px 0px;
 }
+.page-load-status{
+	text-align: center;
+    font-size: 16px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.pagenavi{
+	display: none;
+}
