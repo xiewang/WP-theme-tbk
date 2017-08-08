@@ -261,7 +261,7 @@
             加载中...
           </div>
           <p class="infinite-scroll-error infinite-scroll-last">
-            到底了
+            到底了噢！
           </p>
         </div>
      </div>
@@ -277,7 +277,7 @@
                         $favs = count($favorites);
                         $maxPage = ceil(200/$pageSize)*$favs;
                     ?>
-                  if(this.loadCount < parseInt('<?php echp $favs?>')){
+                  if(this.loadCount < parseInt('<?php echo $favs;?>')){
                         var pageNumber = this.loadCount + 1;
                         var path = $('.pagenavi a').attr('href')+'?page='+pageNumber;
                         return path;
