@@ -13,17 +13,10 @@
     if(isset($_SERVER['QUERY_STRING'])){
         parse_str($_SERVER['QUERY_STRING'], $get);
 
-        $temp = explode("?",$_SERVER["REQUEST_URI"]);
-
-        $params = explode("/",$temp[0]);
-
-        foreach ($params as $key => $value){ 
-            if($value == 'page'){
-                $page_no = $params[$key+1];
-            }
-        }
-        if(!isset($page_no)){
+        if(!isset($get['page'])){
             $page_no = 1;
+        } else {
+            $page_no = $get['page'];
         }
         
     } else {
@@ -42,7 +35,7 @@
         $req->setPlatform("1");
     }
     $req->setAdzoneId("119412095");
-    $req->setPageSize("100");
+    $req->setPageSize("10");
     $req->setCat("");
     $req->setQ($get['s']);
     $req->setPageNo(strval($page_no));
@@ -121,7 +114,7 @@
 
         </div>
       <div class="pagenavi">
-      <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].'/page/'.($page_no+1).$_SERVER["REQUEST_URI"]?>">更多</a>
+      <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"].'&'.'page='.($page_no+1)?>">更多</a>
       </div>
       <div class="page-load-status">
           <div class="infinite-scroll-request">
@@ -144,6 +137,9 @@
               checkLastPage: true,
               status: '.page-load-status',
             });
+            infScroll.on( 'load', function(){
+                loadImg();
+            } );
         });
 </script>
 <?php get_footer(); ?>
