@@ -12,7 +12,7 @@
     } else {
         $req->setPlatform("1");
     }
-    $pageSize = 120;
+    $pageSize = 10;
     $req->setPageSize((string)$pageSize);
     $req->setAdzoneId("119412095");
     $req->setUnid("3456");
@@ -277,7 +277,7 @@
                         $favs = count($favorites);
                         $maxPage = ceil(200/$pageSize)*$favs;
                     ?>
-                  if(this.loadCount < parseInt('<?php echo $favs;?>')){
+                  if(this.loadCount < parseInt('<?php echo $maxPage;?>')){
                         var pageNumber = this.loadCount + 1;
                         var path = $('.pagenavi a').attr('href')+'?page='+pageNumber;
                         return path;
