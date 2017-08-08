@@ -42,7 +42,7 @@
         $req->setPlatform("1");
     }
     $req->setAdzoneId("119412095");
-    $req->setPageSize("6");
+    $req->setPageSize("100");
     $req->setCat("");
     $req->setQ($get['s']);
     $req->setPageNo(strval($page_no));
@@ -123,7 +123,27 @@
       <div class="pagenavi">
       <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].'/page/'.($page_no+1).$_SERVER["REQUEST_URI"]?>">更多</a>
       </div>
+      <div class="page-load-status">
+          <div class="infinite-scroll-request">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif" alt="Loading" />
+            加载中...
+          </div>
+          <p class="infinite-scroll-error infinite-scroll-last">
+            到底了噢！
+          </p>
+        </div>
      </div>
 </div>
-
+<script type="text/javascript">
+    
+    jQuery(document).ready(function(){ 
+            var infScroll = new InfiniteScroll( '#content', {
+              append: '.post',
+              path: '.pagenavi a',
+              history: false,
+              checkLastPage: true,
+              status: '.page-load-status',
+            });
+        });
+</script>
 <?php get_footer(); ?>
