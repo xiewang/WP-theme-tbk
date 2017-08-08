@@ -46,7 +46,7 @@ function infinite_scroll_js() {
     if (!is_singular() ) {
         ?>
         <script type="text/javascript">
-        var loadImg = function(){
+        function loadImg(){
             $('.box-img img').each(function() {
                 var img = new Image();
                 if($(this).attr('original')){

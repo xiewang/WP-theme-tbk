@@ -294,10 +294,9 @@
               path: '.pagenavi a',
               status: '.page-load-status',
               history: false,
-              checkLastPage: true,
             });
         <?php }?>
-        infScroll.on( 'load', function(){
+        infScroll.on( 'append', function(){
             loadImg();
         } );
 

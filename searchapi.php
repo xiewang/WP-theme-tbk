@@ -137,7 +137,7 @@
               checkLastPage: true,
               status: '.page-load-status',
             });
-            infScroll.on( 'load', function(){
+            infScroll.on( 'append', function(){
                 loadImg();
             } );
         });
