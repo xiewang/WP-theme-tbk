@@ -5,7 +5,7 @@
             </div>            
 	</div>
     <div id='rightContact'>
-        <div><span>联系客服</span></div>
+        <div class="title"><span>联系客服</span></div>
         <div class="blank"><span>微信群</span></div>
         <div class="blank"><span>微信公众号</span></div>
         <div class="blank"><span>意见反馈</span></div>

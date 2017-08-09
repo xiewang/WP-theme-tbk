@@ -98,7 +98,11 @@ ul.cate-list{
 #gotop{
 	background: #ffc300;
     cursor: pointer;
-    padding: 14px;
+    height: 45px;
+    line-height: 45px;
+    position: initial;
+    padding: 8px 0;
+    width: 100%;
 }
 #gotop:hover{
 	background: #ffc300;
@@ -107,20 +111,39 @@ ul.cate-list{
     color: #fff;
 }
 #rightContact{
-	width: 60px;
-    height: 200px;
+	width: 64px;
+    height: 208px;
     padding-top: 28px;
     background: #ffc300;
     color: #fff;
     position: fixed;
     bottom: 20px;
     right: 10px;
+    border: 1px solid #ffc300;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
 }
 #rightContact:before {
     content: '';
     background: url(../img/wechat.png) 0px 0px no-repeat;
+    background-size: 100%;
     position: absolute;
-    width: 40px;
-    height: 40px;
-    top: -8px;
+    width: 50px;
+    height: 50px;
+    top: -20px;
+    left: 5px;
+}
+#rightContact .title{
+	padding-bottom: 6px;
+}
+#rightContact .blank {
+    background: #fff;
+    color: #000;
+    border-top: 1px solid #ffc300;
+    height: 34px;
+    line-height: 28px;
+    text-align: center;
+    padding: 4px 0;
+    cursor: pointer;
 }
