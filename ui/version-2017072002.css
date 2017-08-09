@@ -94,3 +94,33 @@ ul.cate-list{
 .pagenavi{
 	display: none;
 }
+
+#gotop{
+	background: #ffc300;
+    cursor: pointer;
+    padding: 14px;
+}
+#gotop:hover{
+	background: #ffc300;
+}
+#gotop.icon-arrow-circle-up:before {
+    color: #fff;
+}
+#rightContact{
+	width: 60px;
+    height: 200px;
+    padding-top: 28px;
+    background: #ffc300;
+    color: #fff;
+    position: fixed;
+    bottom: 20px;
+    right: 10px;
+}
+#rightContact:before {
+    content: '';
+    background: url(../img/wechat.png) 0px 0px no-repeat;
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    top: -8px;
+}

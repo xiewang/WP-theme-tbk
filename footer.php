@@ -4,7 +4,13 @@
                 <span class="beian">沪ICP备17030262号-1</span>
             </div>            
 	</div>
-	<div id="gotop" class="toTop icon-arrow-circle-up"></div>
+    <div id='rightContact'>
+        <div><span>联系客服</span></div>
+        <div class="blank"><span>微信群</span></div>
+        <div class="blank"><span>微信公众号</span></div>
+        <div class="blank"><span>意见反馈</span></div>
+        <div id="gotop" class="toTop icon-arrow-circle-up"></div>
+    </div>
 </footer>
 
 <?php wp_footer(); ?>
