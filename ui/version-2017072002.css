@@ -147,3 +147,22 @@ ul.cate-list{
     padding: 4px 0;
     cursor: pointer;
 }
+#qr{
+	position: fixed;
+    right: 80px;
+    bottom: 20px;
+    overflow: hidden;
+}
+.qrImg{
+	display: none;
+}
+#gzh img{
+	width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+}
+#qun img{
+	width: 200px;
+    height: 200px;
+    border: 1px solid #ddd;
+}

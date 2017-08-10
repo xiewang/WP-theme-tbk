@@ -6,10 +6,14 @@
 	</div>
     <div id='rightContact'>
         <div class="title"><span>联系客服</span></div>
-        <div class="blank"><span>微信群</span></div>
-        <div class="blank"><span>微信公众号</span></div>
+        <div class="blank" id="qunH"><span>微信群</span></div>
+        <div class="blank" id="gzhH"><span>微信公众号</span></div>
         <div class="blank"><span>意见反馈</span></div>
         <div id="gotop" class="toTop icon-arrow-circle-up"></div>
+    </div>
+    <div id="qr">
+        <div id="gzh" class="qrImg"><img src="<?php bloginfo('template_url'); ?>/img/gzh.jpg"></div>
+        <div id="qun" class="qrImg"><img src="<?php bloginfo('template_url'); ?>/img/qun.jpg"></div>
     </div>
 </footer>
 
@@ -29,6 +33,14 @@
                         return false;    
                     })  
                 })  
+            $('#qunH').hover(function(){
+                $('.qrImg').hide();
+                $('#qun').show();
+            })
+            $('#gzhH').hover(function(){
+                $('.qrImg').hide();
+                $('#gzh').show();
+            })
         }) 
 </script>
 
