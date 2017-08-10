@@ -43,7 +43,13 @@
 
     $temp = json_decode(json_encode($resp),TRUE);
     $tbk_item = $temp['results']['tbk_coupon'];
-    $searchList = array2object($tbk_item);
+    if(count($tbk_item) > 10){
+        $a=array();
+        array_push($a,$tbk_item);
+        $searchList = array2object($a);
+    } else {
+        $searchList = array2object($tbk_item);
+    }
 ?>
 
 <div class="layout page padding-top">

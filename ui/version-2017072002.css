@@ -112,7 +112,7 @@ ul.cate-list{
 }
 #rightContact{
 	width: 64px;
-    height: 208px;
+    height: auto;
     padding-top: 28px;
     background: #ffc300;
     color: #fff;
