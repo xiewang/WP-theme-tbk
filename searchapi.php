@@ -42,14 +42,14 @@
     $resp = $c->execute($req);
 
     $temp = json_decode(json_encode($resp),TRUE);
-    $tbk_item = $temp['results']['tbk_coupon'];
-    if(count($tbk_item) > 10){
+    $tbk_item = isset($temp['results'])?$temp['results']['tbk_coupon']:'';
+    if(count($tbk_item) > 10 && is_array($tbk_item)){
         $a=array();
         array_push($a,$tbk_item);
         $searchList = array2object($a);
-    } else {
+    } else if(count($tbk_item) <= 10 && is_array($tbk_item)){
         $searchList = array2object($tbk_item);
-    }
+    } 
 ?>
 
 <div class="layout page padding-top">
@@ -123,12 +123,15 @@
       <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"].'&'.'page='.($page_no+1)?>">更多</a>
       </div>
       <div class="page-load-status">
-          <div class="infinite-scroll-request">
-            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif" alt="Loading" />
-            加载中...
-          </div>
+            <?php if(isset($searchList)):?>
+              <div class="infinite-scroll-request">
+                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif" alt="Loading" />
+                加载中...
+              </div>
+          <?php endif;?>
+
           <p class="infinite-scroll-error infinite-scroll-last">
-            到底了噢！
+            <?php echo isset($searchList)?'到底了噢':'抱歉，没帮你找到相关宝贝，试试其他的关键词呢？';?>
           </p>
         </div>
      </div>
