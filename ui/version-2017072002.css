@@ -166,3 +166,69 @@ ul.cate-list{
     height: 260px;
     border: 1px solid #ddd;
 }
+#rightContactMobile{
+	position: fixed;
+    right: 10px;
+    bottom: 10px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 10px;
+    transform: rotate(-135deg);
+    transform-origin: center;
+}
+#plus{
+	position: absolute;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    border: 2px solid #000;
+    border-radius: 20px;
+    font-size: 30px;
+    transform: rotate(45deg);
+    transform-origin: center;
+}
+.bling{
+	    position: absolute;
+    width: 36px;
+    height: 36px;
+    line-height: 12px;
+    padding-top: 6px;
+    font-size: 10px;
+    border-radius: 18px;
+    border: 1px solid #000;
+    left: 2px;
+    top: -70px;
+}
+.bling span {
+    display: block;
+}
+.bling:nth-child(2){
+	right: 49.5px;
+    bottom: 49.5px;
+    left: initial;
+    top: initial;
+}
+.bling:nth-child(3){
+	top: 2px;
+    right: 70px;
+    left: initial;
+}
+#rightContactMobile.rotate {
+	animation: rotate 1.5s;
+	transform: rotate(0deg);
+}
+#rightContactMobile.rotateR {
+	animation: rotateR 1.5s;
+	transform: rotate(-135deg);
+}
+@keyframes rotate
+{
+	from {transform: rotate(-135deg);}
+	to {transform: rotate(0deg);}
+}
+@keyframes rotateR
+{
+	from {transform: rotate(0deg);}
+	to {transform: rotate(-135deg);}
+}

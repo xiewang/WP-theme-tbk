@@ -4,17 +4,26 @@
                 <span class="beian">沪ICP备17030262号-1</span>
             </div>            
 	</div>
-    <div id='rightContact'>
-        <div class="title"><span>联系客服</span></div>
-        <div class="blank qrImgH" id="qunH"><span>微信群</span></div>
-        <div class="blank qrImgH" id="gzhH"><span>微信公众号</span></div>
-        <div class="blank"><span>意见反馈</span></div>
-        <div id="gotop" class="toTop icon-arrow-circle-up"></div>
-    </div>
-    <div id="qr">
-        <div id="gzh" class="qrImg"><img src="<?php bloginfo('template_url'); ?>/img/gzh.jpg"></div>
-        <div id="qun" class="qrImg"><img src="<?php bloginfo('template_url'); ?>/img/qun.jpg"></div>
-    </div>
+    <?php if(!wp_is_mobile()){?>
+        <div id='rightContact'>
+            <div class="title"><span>联系客服</span></div>
+            <div class="blank qrImgH" id="qunH"><span>微信群</span></div>
+            <div class="blank qrImgH" id="gzhH"><span>微信公众号</span></div>
+            <div class="blank"><span>意见反馈</span></div>
+            <div id="gotop" class="toTop icon-arrow-circle-up"></div>
+        </div>
+        <div id="qr">
+            <div id="gzh" class="qrImg"><img src="<?php bloginfo('template_url'); ?>/img/gzh.jpg"></div>
+            <div id="qun" class="qrImg"><img src="<?php bloginfo('template_url'); ?>/img/qun.jpg"></div>
+        </div>
+    <?php } else {?>
+        <div id="rightContactMobile">
+            <div id="plus"><span>+</span></div>
+            <div class="bling"><span>意见</span><span>反馈</span></div>
+            <div class="bling"><span>微信</span><span>群</span></div>
+            <div class="bling"><span>公众</span><span>号</span></div>
+        </div>
+    <?php }?>
 </footer>
 
 <?php wp_footer(); ?>
@@ -43,6 +52,18 @@
             })
             $('.qrImgH').mouseout(function(){
                 $('.qrImg').hide();
+            })
+
+            $('#rightContactMobile').click(function(){
+                if($(this).hasClass('rotate')){
+                    $(this).removeClass('rotate');
+                    $(this).addClass('rotateR');
+                }else if($(this).hasClass('rotateR')) {
+                    $(this).removeClass('rotateR');
+                    $(this).addClass('rotate');
+                } else {
+                    $(this).addClass('rotate');
+                }
             })
         }) 
 </script>
