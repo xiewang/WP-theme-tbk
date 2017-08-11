@@ -181,15 +181,25 @@ ul.cate-list{
 	position: absolute;
     width: 40px;
     height: 40px;
-    line-height: 40px;
-    border: 2px solid #000;
     border-radius: 20px;
-    font-size: 30px;
     transform: rotate(45deg);
     transform-origin: center;
+    -webkit-transform-origin: center;
+    -o-transform-origin: center;
+    background: #ffc300;
+    border-color: #ffc300;
+    color: #fff;
+    opacity: 0.7;
+}
+#plus{
+	font-size: 40px;
+	display: block;
+	width: 40px;
+    height: 40px;
+    line-height: 48px;
 }
 .bling{
-	    position: absolute;
+	position: absolute;
     width: 36px;
     height: 36px;
     line-height: 12px;
@@ -199,6 +209,21 @@ ul.cate-list{
     border: 1px solid #000;
     left: 2px;
     top: -70px;
+    background: #ffc300;
+    color: #fff;
+    border-color: #ffc300;
+}
+.bling:nth-child(2){
+	background: #f50;
+    border-color: #f50;
+}
+.bling:nth-child(3){
+	background: #0ae;
+    border-color: #0ae;
+}
+.bling:nth-child(4){
+	background: #149a0f;
+    border-color: #149a0f;
 }
 .bling span {
     display: block;
@@ -215,11 +240,11 @@ ul.cate-list{
     left: initial;
 }
 #rightContactMobile.rotate {
-	animation: rotate 1.5s;
+	animation: rotate 1s;
 	transform: rotate(0deg);
 }
 #rightContactMobile.rotateR {
-	animation: rotateR 1.5s;
+	animation: rotateR 1s;
 	transform: rotate(-135deg);
 }
 @keyframes rotate
