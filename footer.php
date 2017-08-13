@@ -54,15 +54,15 @@
                 $('.qrImg').hide();
             })
 
-            $('#rightContactMobile').click(function(){
-                if($(this).hasClass('rotate')){
-                    $(this).removeClass('rotate');
-                    $(this).addClass('rotateR');
-                }else if($(this).hasClass('rotateR')) {
-                    $(this).removeClass('rotateR');
-                    $(this).addClass('rotate');
+            $('#plus').click(function(){
+                if($(this).parent().hasClass('rotate')){
+                    $(this).parent().removeClass('rotate');
+                    $(this).parent().addClass('rotateR');
+                }else if($(this).parent().hasClass('rotateR')) {
+                    $(this).parent().removeClass('rotateR');
+                    $(this).parent().addClass('rotate');
                 } else {
-                    $(this).addClass('rotate');
+                    $(this).parent().addClass('rotate');
                 }
             })
         }) 
