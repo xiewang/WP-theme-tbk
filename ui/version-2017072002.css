@@ -263,3 +263,27 @@ ul.cate-list{
 	from {transform: rotate(0deg);}
 	to {transform: rotate(-135deg);}
 }
+.shade{
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+.shade .content{
+    width: 60%;
+    height: 60%;
+    overflow: auto;
+    margin: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.shade .content>*{
+    width: 100%;
+}

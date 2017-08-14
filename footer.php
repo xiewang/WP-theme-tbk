@@ -20,10 +20,21 @@
         <div id="rightContactMobile">
             <div id="plus"><span>+</span></div>
             <div class="bling"><span>意见</span><span>反馈</span></div>
-            <div class="bling"><span>微信</span><span>群</span></div>
-            <div class="bling"><span>公众</span><span>号</span></div>
+            <div class="bling" id="qunC"><span>微信</span><span>群</span></div>
+            <div class="bling" id="gzhC"><span>公众</span><span>号</span></div>
         </div>
     <?php }?>
+
+    <div class="shade" id="gzhMobile">
+        <div class="content">
+            <img src="<?php bloginfo('template_url'); ?>/img/gzh.jpg">
+        </div>
+    </div>
+    <div class="shade" id="qunMobile">
+        <div class="content">
+            <img src="<?php bloginfo('template_url'); ?>/img/qun.jpg">
+        </div>
+    </div>
 </footer>
 
 <?php wp_footer(); ?>
@@ -65,6 +76,21 @@
                     $(this).parent().addClass('rotate');
                 }
             })
+
+            $('#gzhC').click(function(){
+                // $('#gzhMobile').show();
+                $("#gzhMobile").slideToggle();
+            });
+            $('#qunC').click(function(){
+                $('#qunMobile').slideToggle();
+            });
+            $(document).bind("click",function(e){  
+                var target = $(e.target);  
+                if((target.closest(".shade .content>*,.bling").length == 0)){  
+                    $(".shade").slideUp('slow');
+                }  
+            });  
+            
         }) 
 </script>
 
