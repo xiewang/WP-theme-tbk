@@ -51,6 +51,7 @@
 	0%{ transform:rotate(0deg); }
 	100%{ transform:rotate(360deg); }
 }
+
 .m-cate-drop{
 	position: fixed;
 }
@@ -218,6 +219,7 @@ ul.cate-list{
     background: #ffc300;
     color: #fff;
     border-color: #ffc300;
+    transform: scale(0.5);
 }
 .bling:nth-child(2){
 	background: #f50;
@@ -246,12 +248,16 @@ ul.cate-list{
     left: initial;
 }
 #rightContactMobile.rotate {
-	animation: rotate 1s;
+	animation: rotate .8s;
 	transform: rotate(0deg);
 }
 #rightContactMobile.rotateR {
-	animation: rotateR 1s;
+	animation: rotateR .8s;
 	transform: rotate(-135deg);
+}
+.bling.scale{
+    animation: scale .3s cubic-bezier(0.25, 1.15, 0.48, 1.35);
+    transform: scale(1);
 }
 @keyframes rotate
 {
@@ -262,6 +268,11 @@ ul.cate-list{
 {
 	from {transform: rotate(0deg);}
 	to {transform: rotate(-135deg);}
+}
+@keyframes scale
+{
+    from {transform: scale(0.5);}
+    to {transform: scale(1);}
 }
 .shade{
     display: none;

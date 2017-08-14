@@ -66,14 +66,24 @@
             })
 
             $('#plus').click(function(){
+                var the = this;
                 if($(this).parent().hasClass('rotate')){
                     $(this).parent().removeClass('rotate');
                     $(this).parent().addClass('rotateR');
+                    $(the).parent().find('.bling').removeClass('scale');
                 }else if($(this).parent().hasClass('rotateR')) {
                     $(this).parent().removeClass('rotateR');
                     $(this).parent().addClass('rotate');
+                    var timeout = setTimeout(function(){
+                        $(the).parent().find('.bling').addClass('scale');
+                        clearTimeout(timeout);
+                    },800);
                 } else {
                     $(this).parent().addClass('rotate');
+                    var timeout = setTimeout(function(){
+                        $(the).parent().find('.bling').addClass('scale');
+                        clearTimeout(timeout);
+                    },800);
                 }
             })
 
