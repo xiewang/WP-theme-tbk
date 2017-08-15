@@ -4,16 +4,27 @@
     include "taobao/TopSdk.php";
 
     $params = explode("&",$_SERVER["QUERY_STRING"]);
+    parse_str($_SERVER['QUERY_STRING'], $get);
     if(count($params)>1){
-        $coupon_click_url = substr($params[0],17,strlen($params[0])-17);
-        $coupon = substr($params[1],7,strlen($params[1])-7);
-        $price = substr($params[2],6,strlen($params[2])-6);
-        $final_price = substr($params[3],12,strlen($params[3])-12);
-        $volume = substr($params[4],7,strlen($params[4])-7);
-        $pict_url = substr($params[5],9,strlen($params[5])-9);
-        $content = substr($params[6],8,strlen($params[6])-8);
-        $title = substr($params[7],6,strlen($params[7])-6);
-        $coupon_total_count = substr($params[8],19,strlen($params[8])-19);
+        // $coupon_click_url = substr($params[0],17,strlen($params[0])-17);
+        // $coupon = substr($params[1],7,strlen($params[1])-7);
+        // $price = substr($params[2],6,strlen($params[2])-6);
+        // $final_price = substr($params[3],12,strlen($params[3])-12);
+        // $volume = substr($params[4],7,strlen($params[4])-7);
+        // $pict_url = substr($params[5],9,strlen($params[5])-9);
+        // $content = substr($params[6],8,strlen($params[6])-8);
+        // $title = substr($params[7],6,strlen($params[7])-6);
+        // $coupon_total_count = substr($params[8],19,strlen($params[8])-19);
+        $coupon_click_url = $get['coupon_click_url'];
+        $coupon = $get['coupon'];
+        $price = $get['price'];
+        $final_price = $get['final_price'];
+        $volume = $get['volume'];
+        $pict_url = $get['pict_url'];
+        $content = $get['content'];
+        $title = $get['title'];
+        $coupon_total_count = $get['coupon_total_count'];
+        $item_id = $get['item_id'];
     }
 
     function is_weixin(){ 
@@ -59,7 +70,11 @@
         $('#tuwenLink').click(function(){
             if($('#tuwenContent').find('img').length == 0){
                $('#tuwenLoading').show();
+                <?php if(!isset($item_id)){?>
                 var itemId = '<?php echo !empty(get_post_meta($post->ID, "item_id", true))?get_post_meta($post->ID, "item_id", true):"526283530705";?>';
+                <?php }else{?>
+                    var itemId = '<?php echo $item_id;?>';
+                <?php }?>
                 $.ajax({
                 type:"get",
                 url:"http://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?&data={%22item_num_id%22:%22"+itemId+"%22}&type=jsonp&_=1502351053740",/*url写异域的请求地址*/
