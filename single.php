@@ -174,6 +174,21 @@
             <?php endwhile; ?>
         </div>
 
+        
+    </div>
+</div>
+
+<?php if(wp_is_mobile()){?>
+    <div class="layout page padding-top" >
+        <div id="content" class="container">
+            <div id="tuwenLink"><span>图文详情</span></div>
+            <div id="tuwenLoading"><span>稍等，加载中...</span></div>
+        </div>
+    </div>
+<?php }?>
+
+<div class="layout page padding-top" >
+    <div id="content" class="container">
         <div class="jingp">
             <img src="<?php bloginfo('template_directory'); ?>/img/jingpintuijian.png" />
         </div>
@@ -249,5 +264,26 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
 
+    $(function(){
+        $('#tuwenLink').click(function(){
+            $('#tuwenLoading').show();
+            var itemId = '526283530705';
+            $.ajax({
+            type:"get",
+            url:"http://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?&data={%22item_num_id%22:%22"+itemId+"%22}&type=jsonp&_=1502351053740",/*url写异域的请求地址*/
+            dataType:"jsonp",
+            success:function(res){
+                    $('#tuwenLoading').hide();
+                    var pages = res.data.images;
+                    $.each(pages, function(k,v){
+                        $('<img src='+v+' class="tuwenImg"/>').appendTo($('#tuwenLink').parent());
+                    });
+                }
+            });
+        });
+        
+    });
+</script>
 <?php get_footer(); ?>

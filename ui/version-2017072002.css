@@ -298,3 +298,30 @@ ul.cate-list{
 .shade .content>*{
     width: 100%;
 }
+.jingp {
+    margin: 14px auto 20px;
+}
+#tuwenLink{
+    text-align: center;
+    font-size: 16px;
+    line-height: 16px;
+    height: 36px;
+}
+#tuwenLink span{
+    color: #ffc300;
+    display: block;
+    border: 1px solid #ffc300;
+    width: 100px;
+    margin: 0 auto;
+    padding: 4px;
+    border-radius: 14px;
+}
+img.tuwenImg{
+    width: 100%
+}
+#tuwenLoading{
+    display: none;
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+}
