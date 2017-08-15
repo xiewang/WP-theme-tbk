@@ -118,7 +118,7 @@ ul.cate-list{
     background: #ffc300;
     color: #fff;
     position: fixed;
-    bottom: 20px;
+    top: 220px;
     right: 10px;
     border: 1px solid #ffc300;
     border-top-left-radius: 10px;
@@ -151,7 +151,7 @@ ul.cate-list{
 #qr{
 	position: fixed;
     right: 80px;
-    bottom: 20px;
+    top: 220px;
     overflow: hidden;
 }
 .qrImg{
