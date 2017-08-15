@@ -118,17 +118,12 @@
             <span class="xl">月销量<strong><?php echo count($params)>1?$volume:get_post_meta($post->ID, "hao_xiaol", true);?></strong>件</span>
         </div>
         <?php if ( wp_is_mobile() ){ ?>
-            <?php if (get_post_meta($post->ID, "hao_tkl", true)) { ?>
-                
-            <?php } else { ?>
-                    <div class="col1-d" onclick="jumpToTaobao()">
-                        <a href="#" >领券 & 购买</a>
-                    </div>
-                     
-            <?php } ?>
+            <div id="buyNow" onclick="jumpToTaobao()">
+                        <a href="#" >领券购买</a>
+            </div>
         <?php }else { ?>
             <div class="col1-d" onclick=" window.open('<?php echo count($params)>1?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>')">
-                <a href="#" >领券 & 购买</a>
+                <a href="#" >领券购买</a>
             </div>
            
         <?php } ?>
