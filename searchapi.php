@@ -23,6 +23,9 @@
         $page_no = 1;
     }
 
+    if($page_no > 10){
+        return ;
+    }
     include "taobao/TopSdk.php";
     $c = new TopClient;
     $c->appkey = "24545248";
@@ -131,7 +134,7 @@
           <?php endif;?>
 
           <p class="infinite-scroll-error infinite-scroll-last">
-            <?php echo isset($searchList)?'到底了噢':'抱歉，没帮你找到相关宝贝，试试其他的关键词呢？';?>
+            <?php echo isset($searchList)?'到底了噢！(提示：搜索词越长，搜索越准确！)':'抱歉，没帮你找到相关宝贝，试试其他的关键词呢？';?>
           </p>
         </div>
      </div>
