@@ -1,8 +1,9 @@
-<?php get_header(); ?>
+<?php session_start(); get_header(); ?>
 <?php get_sidebar(); ?>
 <?php 
     include "taobao/TopSdk.php";
     include "taobao/top/request/TbkUatmFavoritesItemGetRequest.php";
+
     $c = new TopClient;
     $c->appkey = "24545248";
     $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
