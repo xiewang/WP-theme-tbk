@@ -1,5 +1,18 @@
-<?php session_start(); get_header(); ?>
-<?php get_sidebar(); ?>
+<?php 
+
+session_start(); 
+$thiscat = get_category($cat); 
+$cate = $thiscat ->name;
+get_header(); 
+if($cate == '今日更新'){
+    get_sidebar();
+} else if($cate != '人气推荐'
+        &&$cate != '9块9包邮'
+        &&$cate != '明星周边'){
+    include "cateandsort.php";
+}
+
+?>
 <?php 
     include "taobao/TopSdk.php";
     include "taobao/top/request/TbkUatmFavoritesItemGetRequest.php";
@@ -49,8 +62,7 @@
     
     $req->setFields("coupon_total_count,coupon_info,coupon_click_url,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type");
     
-    $thiscat = get_category($cat); 
-    $cate = $thiscat ->name;
+    
     $main = false;
     if($cate == '人气推荐'){
          $favorites= getFavoritArr('人气');
@@ -199,7 +211,43 @@
             ?>
                 
             <?php }?>
-            <?php while (have_posts()&&!$main) : the_post(); 
+            <?php if (!$main) :
+                     // the_post(); 
+                    parse_str($_SERVER['QUERY_STRING'], $get);
+                    $sortType = $get['so'];
+                    $order = isset($get['o'])?$get['o']:'desc';
+                    switch($sortType){  
+                        case "1":  
+                            $sort = 'post_date'; //时间 
+                            break;
+                        case "2":  
+                            $sort = 'hao_xianj'; //价格 
+                            break;
+                        case "3":  
+                            $sort = 'hao_youh'; //优惠券 
+                            break;
+                        case "4":  
+                            $sort = 'hao_xiaol';  //销量
+                            break;      
+                        default:  
+                            $sort = 'post_date';  
+                            break;  
+                      }  
+                    $url = $_SERVER['REQUEST_URI'];
+                    if($_SERVER["QUERY_STRING"] == ''){
+                        $all = explode("/",$url);
+                    }else {
+                        $all = explode("/",explode("?",$url)[0]);
+                    }
+                    $page = $all[count($all)-1];
+                    $page = is_numeric($page)?$page:1;
+                    if($sort == 'post_date'){
+                        echo '222';
+                        $posts = get_posts("offset=".(10*($page-1))."&numberposts=10&orderby=post_date&order=".$order);
+                    }else {
+                        $posts = get_posts("offset=".(10*($page-1))."&numberposts=10&meta_key=".$sort."&orderby=meta_value_num&order=".$order);
+                    }
+                    foreach( $posts as $post ) :
                 if(get_post_meta($post->ID, "hao_zhutu", true) !=''){
             ?>
 
@@ -243,7 +291,7 @@
                 </div>
             
 
-            <?php } endwhile; ?>
+            <?php }  endforeach;endif;?>
         </div>
         <?php if($main){ 
             $next = $page_no;

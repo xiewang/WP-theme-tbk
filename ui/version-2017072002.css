@@ -100,7 +100,7 @@ ul.cate-list{
 	background: #ffc300;
     cursor: pointer;
     height: 45px;
-    line-height: 45px;
+    line-height: 29px;
     position: initial;
     padding: 8px 0;
     width: 100%;
@@ -345,4 +345,21 @@ img.tuwenImg{
     padding: 8px 40px;
     line-height: 40px;
     font-size: 16px;
+}
+#sort .container{
+    height: 36px;
+    line-height: 36px;
+    font-size: 14px;
+}
+#sort .container .content{
+    background: #f9f9f9;
+    border: #eee 1px solid;
+    width: 100%;
+    height: 100%;
+}
+#sort .container .content>*{
+    float: left;
+    padding: 0 20px;
+    border-right: #eee 1px solid;
+    cursor: pointer;
 }
