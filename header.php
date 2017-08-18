@@ -83,7 +83,10 @@
 	</div>
 </header>
 
-<?php if ( wp_is_mobile() ){ ?>
+<?php 
+	$thiscat = get_category($cat); 
+	$cate = $thiscat ->name;
+	if ( wp_is_mobile() ){ ?>
 	<div class="m-header">
 		<?php if ( is_single() ){ ?>
 			<div class="m-back " onclick="history.length>1?history.go(-1) :location.href='<?php bloginfo('url'); ?>'" >
@@ -110,7 +113,10 @@
 		</div>
 	</div>
 
-	<?php if ( !is_single()&&!is_search()&&!is_404() ){ ?>
+	<?php if ( !is_single()&&!is_search()&&!is_404() &&($cate == '人气推荐'
+	||$cate == '今日更新'
+    ||$cate == '9块9包邮'
+    ||$cate == '明星周边')){ ?>
 		<div class="layout">
 			<div class="m-slider">
 	            	<div class="banner">

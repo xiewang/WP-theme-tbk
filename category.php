@@ -4,11 +4,12 @@ session_start();
 $thiscat = get_category($cat); 
 $cate = $thiscat ->name;
 get_header(); 
-if($cate == '今日更新'){
+if($cate == '今日更新' 
+    ||$cate == '人气推荐'
+    ||$cate == '9块9包邮'
+    ||$cate == '明星周边'){
     get_sidebar();
-} else if($cate != '人气推荐'
-        &&$cate != '9块9包邮'
-        &&$cate != '明星周边'){
+} else {
     include "cateandsort.php";
 }
 
