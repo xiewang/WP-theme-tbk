@@ -179,7 +179,7 @@ if($cate == '今日更新'){
                             </a>
                         </div>
                         <div class="box-prod">
-                            <div class="box-btn">
+                            <div class="box-btn" style="display: block;top:<?php echo wp_is_mobile()? '8': '17'?>px">
                                 <?php if($item->user_type == 1){ ?>
                                     <img src="<?php bloginfo('template_url'); ?>/img/tm.png?>">
                                 <?php };?>
@@ -264,7 +264,7 @@ if($cate == '今日更新'){
                             </a>
                         </div>
                         <div class="box-prod">
-                            <div class="box-btn">
+                            <div class="box-btn" style="display: block;top:<?php echo wp_is_mobile()? '8': '17'?>px">
                                 <?php if(get_post_meta($post->ID, "hao_leix", true) == '天猫'){ ?>
                                     <img src="<?php bloginfo('template_url'); ?>/img/tm.png?>">
                                 <?php };?>
