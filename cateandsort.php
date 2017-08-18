@@ -3,6 +3,9 @@ $thiscat = get_category($cat);
 $cate = $thiscat ->name;
 parse_str($_SERVER['QUERY_STRING'], $get);
 $sortType = $get['so'];
+$orderType = $get['o'];
+$sortUrl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].explode("?",$_SERVER["REQUEST_URI"])[0]; 
+
 ?>
 <div id="sort" class="layout page padding-top">
     <div class="container">              
@@ -16,11 +19,11 @@ $sortType = $get['so'];
                 </div>
                 
             </div>
-            <div class="<?php echo $sortType==1||!isset($sortType)?'active':''?>"><span>最新</span></div>
-            <div class="<?php echo $sortType==4?'active':''?>"><span>销量高</span></div>
-            <div class="<?php echo $sortType==2?'active':''?>"><span>价格低</span></div>
-            <div class="<?php echo $sortType==3?'active':''?>"><span>大额优惠券</span></div>
-            <div class="<?php echo $sortType==3?'active':''?>"><span>小额优惠券</span></div>
+            <div class="<?php echo $sortType==1||!isset($sortType)?'active':''?>"><a href="<?php echo $sortUrl.'?so=1'?>">最新</a></div>
+            <div class="<?php echo $sortType==4?'active':''?>"><a href="<?php echo $sortUrl.'?so=4'?>">销量高</a></div>
+            <div class="<?php echo $sortType==2?'active':''?>"><a href="<?php echo $sortUrl.'?so=2&o=asc'?>">价格低</a></div>
+            <div class="<?php echo $sortType==3&&($orderType=='desc'||!isset($orderType))?'active':''?>"><a href="<?php echo $sortUrl.'?so=3&o=desc'?>">大额优惠券</a></div>
+            <div class="<?php echo $sortType==3&&$orderType=='asc'?'active':''?>"><a href="<?php echo $sortUrl.'?so=3&o=asc'?>">小额优惠券</a></div>
         </div>
         
     </div>
