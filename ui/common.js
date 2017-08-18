@@ -27,6 +27,13 @@ $(function(){
 		$('.m-back img').removeClass('hide');
 	}
 	
-	
+	$('#dropcate').mouseover(function(){
+        $('.drop').addClass('open');
+    })
+    
+    $('#dropcate').click(function(){
+        $('.drop').addClass('open');
+    })
+
 	
 });

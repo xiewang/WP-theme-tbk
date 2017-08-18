@@ -347,8 +347,8 @@ img.tuwenImg{
     font-size: 16px;
 }
 #sort .container{
-    height: 36px;
-    line-height: 36px;
+    height: 40px;
+    line-height: 32px;
     font-size: 14px;
 }
 #sort .container .content{
@@ -362,4 +362,26 @@ img.tuwenImg{
     padding: 0 20px;
     border-right: #eee 1px solid;
     cursor: pointer;
+    border-top: 3px solid #f9f9f9;
+    border-bottom: 3px solid #f9f9f9;
+}
+#sort .container .content>.active{
+    border-top: 3px solid #ffc300;
+}
+.drop .drop-menu li{
+    font-size: 12px;
+    height: 34px;
+    line-height: 14px;
+}
+.drop .drop-menu li a {
+    padding: 7px 20px;
+    margin: 0;
+}
+.drop .drop-menu li span.iconfont {
+    font-size: 16px;
+    line-height: 20px;
+    margin-right: 8px;
+}
+a:focus, a:hover{
+    color: #ffc300;
 }

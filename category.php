@@ -243,7 +243,6 @@ if($cate == '今日更新'){
                     $page = is_numeric($page)?$page:1;
                     $cat_ID = get_query_var('cat');
                     if($sort == 'post_date'){
-                        echo '222';
                         $posts = get_posts("category=".$cat_ID."&offset=".(10*($page-1))."&numberposts=10&orderby=post_date&order=".$order);
                     }else {
                         $posts = get_posts("category=".$cat_ID."&offset=".(10*($page-1))."&numberposts=10&meta_key=".$sort."&orderby=meta_value_num&order=".$order);
