@@ -110,6 +110,7 @@
 		</div>
 		<div class="m-cate" id='m-cate-icon'>
 			<img src="<?php bloginfo('template_url'); ?>/img/item.png">
+			<span>分类</span>
 		</div>
 	</div>
 

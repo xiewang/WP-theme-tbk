@@ -385,3 +385,14 @@ img.tuwenImg{
 a:focus, a:hover{
     color: #ffc300;
 }
+#m-cate-icon.m-cate img{
+    height: 26px;
+    width: 26px;
+    vertical-align: top;
+}
+#m-cate-icon.m-cate span{
+    display: block;
+    margin-top: -40px;
+    padding-top: 12px;
+    color: #fff;
+}
