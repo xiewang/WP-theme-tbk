@@ -215,7 +215,7 @@ if($cate == '今日更新'
             <?php if (!$main) :
                      // the_post(); 
                     parse_str($_SERVER['QUERY_STRING'], $get);
-                    $sortType = $get['so'];
+                    $sortType = isset($get['so'])?$get['so']:'1';
                     $order = isset($get['o'])?$get['o']:'desc';
                     switch($sortType){  
                         case "1":  

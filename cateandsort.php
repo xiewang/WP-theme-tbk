@@ -2,8 +2,8 @@
 $thiscat = get_category($cat); 
 $cate = $thiscat ->name;
 parse_str($_SERVER['QUERY_STRING'], $get);
-$sortType = $get['so'];
-$orderType = $get['o'];
+$sortType = isset($get['so'])?$get['so']:'';
+$orderType = isset($get['o'])?$get['o']:'';
 $sortUrl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].explode("?",$_SERVER["REQUEST_URI"])[0]; 
 
 ?>
@@ -11,7 +11,7 @@ $sortUrl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].explode
     <?php if ( wp_is_mobile() ){ ?>
         <div class="container mobile">              
             <div class="content">
-                <div class="<?php echo $sortType==1||!isset($sortType)?'active':''?>"><a href="<?php echo $sortUrl.'?so=1'?>">最新</a></div>
+                <div class="<?php echo $sortType==1||!isset($sortType)||$sortType==''?'active':''?>"><a href="<?php echo $sortUrl.'?so=1'?>">最新</a></div>
                 <div class="<?php echo $sortType==4?'active':''?>"><a href="<?php echo $sortUrl.'?so=4'?>">销量</a></div>
                 <div class="<?php echo $sortType==2?'active':''?>"><a href="<?php echo $sortUrl.'?so=2&o=asc'?>">价格</a></div>
                 <div class="<?php echo $sortType==3&&($orderType=='desc'||!isset($orderType))?'active':''?>"><a href="<?php echo $sortUrl.'?so=3&o=desc'?>">大额优惠券</a></div>
@@ -29,7 +29,7 @@ $sortUrl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].explode
                     </div>
                     
                 </div>
-                <div class="<?php echo $sortType==1||!isset($sortType)?'active':''?>"><a href="<?php echo $sortUrl.'?so=1'?>">最新</a></div>
+                <div class="<?php echo $sortType==1||!isset($sortType)||$sortType==''?'active':''?>"><a href="<?php echo $sortUrl.'?so=1'?>">最新</a></div>
                 <div class="<?php echo $sortType==4?'active':''?>"><a href="<?php echo $sortUrl.'?so=4'?>">销量高</a></div>
                 <div class="<?php echo $sortType==2?'active':''?>"><a href="<?php echo $sortUrl.'?so=2&o=asc'?>">价格低</a></div>
                 <div class="<?php echo $sortType==3&&($orderType=='desc'||!isset($orderType))?'active':''?>"><a href="<?php echo $sortUrl.'?so=3&o=desc'?>">大额优惠券</a></div>

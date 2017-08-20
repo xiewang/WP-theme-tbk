@@ -1,31 +1,25 @@
-<?php
-/**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://codex.wordpress.org/Template_Hierarchy
- *
- * @package weishang
- */
-
-get_header(); ?>
+<?php get_header(); ?>
 <?php get_sidebar(); ?>
+
 
 <div class="layout page padding-top padding-bottom">
 	<div id="content" class="container">
-		<?php if(function_exists('breadcrumbs')) breadcrumbs();?>
+		<?php 
 
-		<?php the_content(); ?>
+			$comments_args = array(
+        // change the title of send button 
+        'label_submit'=>'Send',
+        // change the title of the reply section
+        'title_reply'=>'Write a Reply or Comment',
+        // remove "Text or HTML to be displayed after the set of comment fields"
+        'comment_notes_after' => '',
+        // redefine your own textarea (the comment body)
+        'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><br /><textarea id="comment" name="comment" aria-required="true"></textarea></p>',
+);
 
-		<?php if ( wp_is_mobile() ){ ?>
-			<?php wp_redirect('https://temai.m.taobao.com/new/index.htm?pid=mm_14661123_33544947_119412095'); exit; ?> 
-		<?php }else { ?>
-			<?php wp_redirect('http://uland.taobao.com/coupon/list?pid=mm_14661123_33544947_119412095'); exit; ?>
-		<?php } ?>
+comment_form($comments_args);
+		?>
+		d
 	</div>
 </div>
 <?php get_footer(); ?>

@@ -8,7 +8,7 @@
         <div id='rightContact'>
             <div class="title"><span>联系客服</span></div>
             <div class="blank qrImgH" id="qunH"><span>QQ群</span></div>
-            <div class="blank qrImgH" id="gzhH"><span>微信公众号</span></div>
+            <div class="blank qrImgH" id="gzhH"><span>客服</span></div>
             <div class="blank"><span>意见反馈</span></div>
             <div id="gotop" class="toTop icon-arrow-circle-up"></div>
         </div>
@@ -21,7 +21,7 @@
             <div id="plus"><span>+</span></div>
             <div class="bling"><span>意见</span><span>反馈</span></div>
             <div class="bling" id="qunC"><span>QQ</span><span>群</span></div>
-            <div class="bling" id="gzhC"><span>公众</span><span>号</span></div>
+            <div class="bling" id="gzhC" style="line-height: 26px;"><span>客服</span></div>
         </div>
     <?php }?>
 

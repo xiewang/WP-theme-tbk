@@ -85,7 +85,7 @@
 
 <?php 
 	$thiscat = get_category($cat); 
-	$cate = $thiscat ->name;
+	$cate = isset($thiscat ->name)?$thiscat ->name:'今日更新';
 	if ( wp_is_mobile() ){ ?>
 	<div class="m-header">
 		<?php if ( is_single() ){ ?>
