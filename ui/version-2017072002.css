@@ -396,3 +396,25 @@ a:focus, a:hover{
     padding-top: 12px;
     color: #fff;
 }
+.container.mobile{
+    padding: 0;
+    height: 36px;
+    line-height: 26px;
+}
+#sort .container.mobile .content>*{
+    width: 25%;
+    text-align: center;
+    padding: 0;
+    padding-bottom: 6px;
+    border-right: none;
+    border-top: none;
+    border-bottom-color: #fff;
+}
+#sort .container.mobile .content{
+    background: #fff;
+    border: none;
+}
+#sort .container.mobile .content>.active{
+    border-top: none;
+    border-bottom: 2px solid #ffc300;
+}

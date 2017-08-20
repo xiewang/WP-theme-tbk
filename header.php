@@ -144,7 +144,7 @@
 			
 		</div>
 	<?php } else { ?>
-		<div style="width: 100%;height:40px;background:#fff"></div>
+		<div style="width: 100%;height:40px;background:#fff;margin-top: -8px;"></div>
 	<?php } ?>
 
 	<div class="m-cate-drop hide">
