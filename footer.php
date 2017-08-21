@@ -9,7 +9,7 @@
             <div class="title"><span>联系客服</span></div>
             <div class="blank qrImgH" id="qunH"><span>QQ群</span></div>
             <div class="blank qrImgH" id="gzhH"><span>客服</span></div>
-            <div class="blank"><span>意见反馈</span></div>
+            <div class="blank"><a href="/feedback"><span>意见反馈</span></a></div>
             <div id="gotop" class="toTop icon-arrow-circle-up"></div>
         </div>
         <div id="qr">
@@ -19,7 +19,7 @@
     <?php } else {?>
         <div id="rightContactMobile">
             <div id="plus"><span>+</span></div>
-            <div class="bling"><span>意见</span><span>反馈</span></div>
+            <div class="bling"><a href="/feedback"><span>意见</span><span>反馈</span></a></div>
             <div class="bling" id="qunC"><span>QQ</span><span>群</span></div>
             <div class="bling" id="gzhC" style="line-height: 26px;"><span>客服</span></div>
         </div>
