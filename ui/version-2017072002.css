@@ -69,7 +69,7 @@ ul.cate-list{
 	background-size: cover;
 }
 .m-main-cate ul li{
-	background: #fff;
+	background: #fff4d1;
 	border: 1px solid #ffc900;
 	height: 36px;
     line-height: 36px;
@@ -424,6 +424,9 @@ a:focus, a:hover{
 .current-menu-item{
     background-color: rgba(0, 0, 0, 0.4);
 }
+.current-menu-item a{
+    color: #ffc300;
+}
 .comment-respond{
     text-align: center;
 }
@@ -451,7 +454,7 @@ a:focus, a:hover{
     font-size: 18px;
     border-radius: 6px;
 }
-.layout.page{
+.layout.comment-page{
     background: #f6f6f6;
 }
 .comment-form-comment label{
@@ -465,4 +468,9 @@ a:focus, a:hover{
     padding-top: 6px;
     padding-bottom: 6px;
     background: #000;
+}
+.ad-sort img {
+    width: 100%;
+    max-height: 140px;
+    margin-bottom: 8px;
 }

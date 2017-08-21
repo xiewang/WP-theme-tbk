@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 
-<div class="layout page padding-top padding-bottom <?php echo wp_is_mobile()?'mobile':''?>">
+<div class="layout page padding-top padding-bottom <?php echo wp_is_mobile()?'mobile':''?> comment-page">
 	<div id="content" class="container">
 		<?php 
 

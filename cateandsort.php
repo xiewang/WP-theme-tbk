@@ -18,7 +18,12 @@ $sortUrl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].explode
             </div>
         </div>
     <?php }else { ?>
-        <div class="container">              
+        <div class="container"> 
+            <div class="ad-sort">
+                <a href="https://s.click.taobao.com/H9OCUcw" target="_blank">
+                    <img src="http://img.alicdn.com/tps/i4/TB1p9aJSVXXXXb7XVXXSutbFXXX.jpg">
+                </a>
+            </div>             
             <div class="content">
                 <div>
                     <a href="javascript:void(0)" id="dropcate"><?php echo $cate;?><span class="arrow"></span></a>
