@@ -28,6 +28,7 @@
     <div class="shade" id="gzhMobile">
         <div class="content">
             <img src="<?php bloginfo('template_url'); ?>/img/gzh.jpg">
+            <span id="scan">微信扫码，或长按识别</span>
         </div>
     </div>
     <div class="shade" id="qunMobile">

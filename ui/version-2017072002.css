@@ -457,3 +457,12 @@ a:focus, a:hover{
 .comment-form-comment label{
     display: none;
 }
+#scan{
+    display: block;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    background: #000;
+}
