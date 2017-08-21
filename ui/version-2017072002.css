@@ -421,3 +421,36 @@ a:focus, a:hover{
 .current-menu-item{
     background-color: rgba(0, 0, 0, 0.4);
 }
+.comment-respond{
+    text-align: center;
+}
+.comment-reply-title{
+    margin: 10px 0;
+    padding: 8px 0;
+    color: #666;
+    line-height: 22px;
+}
+.comment-form-comment textarea{
+    width: 50%;
+    border-color: rgb(255, 195, 0);
+    border-radius: 4px;
+}
+.mobile .comment-form-comment textarea{
+    width: 100%;
+}
+.comment-form .submit{
+    background: #ffc300;
+    border-color: #ffc300;
+    border-style: none;
+    width: 100px;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 6px;
+}
+.layout.page{
+    background: #f6f6f6;
+}
+.comment-form-comment label{
+    display: none;
+}
