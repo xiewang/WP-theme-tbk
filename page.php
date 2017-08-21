@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-<?php get_sidebar(); ?>
 
 
 <div class="layout page padding-top padding-bottom">
@@ -7,19 +6,22 @@
 		<?php 
 
 			$comments_args = array(
-        // change the title of send button 
-        'label_submit'=>'Send',
-        // change the title of the reply section
-        'title_reply'=>'Write a Reply or Comment',
-        // remove "Text or HTML to be displayed after the set of comment fields"
-        'comment_notes_after' => '',
-        // redefine your own textarea (the comment body)
-        'comment_field' => '<p class="comment-form-comment"><label for="comment">' . _x( 'Comment', 'noun' ) . '</label><br /><textarea id="comment" name="comment" aria-required="true"></textarea></p>',
-);
+				'comment_notes_before' =>'',
+				'comment_notes_after' => '',
+				'title_reply' => '半刀网一直在改进，不啬留下您的宝贵建议，我们会非常感谢！',
+				'label_submit'=>'提交',
 
-comment_form($comments_args);
+			 );
+		 	
+			comment_form($comments_args); 
+			$ob = ob_get_clean();
+			$ob = str_replace('class="comment-form-author"','class="comment-form-author" style="display:none;"',$ob);
+			$ob = str_replace('class="comment-form-email"','class="comment-form-email" style="display:none;"',$ob);
+			$ob = str_replace('class="comment-form-url"','class="comment-form-url" style="display:none;"',$ob);
+			$ob = str_replace('class="logged-in-as"','class="logged-in-as" style="display:none;"',$ob);
+			$ob = str_replace('<label for="comment">评论</label>','<label for="comment" style="display:none;">评论</label>',$ob);
+			echo $ob;
 		?>
-		d
 	</div>
 </div>
 <?php get_footer(); ?>
