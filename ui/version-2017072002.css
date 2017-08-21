@@ -424,7 +424,7 @@ a:focus, a:hover{
 .current-menu-item{
     background-color: rgba(0, 0, 0, 0.4);
 }
-.current-menu-item a{
+.drop .current-menu-item a{
     color: #ffc300;
 }
 .comment-respond{
@@ -473,4 +473,8 @@ a:focus, a:hover{
     width: 100%;
     max-height: 140px;
     margin-bottom: 8px;
+}
+#cate ul.cate-list li>* {
+    width: 100%;
+    display: block;
 }
