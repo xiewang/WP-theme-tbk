@@ -104,7 +104,7 @@
 		<div class="m-search">
 			<form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
             	
-            	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
+            	<input autocomplete="off" id="search" class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
             	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
             </form>
 		</div>
