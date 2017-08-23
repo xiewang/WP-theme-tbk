@@ -478,3 +478,8 @@ a:focus, a:hover{
     width: 100%;
     display: block;
 }
+.m-main-cate ul li{
+    width: 23%;
+    margin-right: 1%;
+    margin-left: 1%;
+}

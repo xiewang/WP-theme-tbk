@@ -79,6 +79,10 @@ if($cate == '今日更新'
         $favorites= getFavoritArr('明星'); 
         $main = true;
     }
+    elseif($cate == '你没见过'){
+        $favorites= getFavoritArr('你没见过'); 
+        $main = true;
+    }
 
     if($main == true){
         $_SESSION['favNo'] = $favNo;
