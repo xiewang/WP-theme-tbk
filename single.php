@@ -257,7 +257,7 @@
                 // echo $cate_count;
                 // echo get_category($category->cat_ID)->count;
             ?>
-            <?php $posts=get_posts('offset='.$offset.'&numberposts=20&category='.$category->term_id.'&exclude='.get_the_ID());foreach($posts as $post) : ?> 
+            <?php $posts=get_posts('offset='.$offset.'&numberposts=20&category='.($category->term_id!=49?$category->term_id:30).'&exclude='.get_the_ID());foreach($posts as $post) : ?> 
             <div class="post xl12 xs4 xm3 padding-bottom">
                 <?php if(wp_is_mobile()){?>
                     <div class="box" onclick=" location.href='<?php the_permalink(); ?>'">
