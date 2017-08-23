@@ -166,6 +166,7 @@ if($cate == '今日更新'
                                 $coupon = $arr[0];
                             }
                         }
+                        $coupon = ceil($coupon);
                                    
 
                         if(isset($item->coupon_click_url)){
@@ -282,7 +283,7 @@ if($cate == '今日更新'
                                     <a href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>><?php the_title(); ?></a>
                                 </dt> 
                                 <div class="box-txt">
-                                    <div class="box-juan-price"><span><?php echo get_post_meta($post->ID, "hao_youh", true);?>元</span></div>
+                                    <div class="box-juan-price"><span><?php echo ceil(get_post_meta($post->ID, "hao_youh", true));?>元</span></div>
                                     <div class="box-juan"><span>券</span></div>
                                 </div>
 
@@ -300,16 +301,20 @@ if($cate == '今日更新'
 
             <?php }  endforeach;endif;?>
         </div>
-        <?php if($main){ 
+        <?php 
             $next = $page_no;
             $temp = explode("?",$_SERVER["REQUEST_URI"]);
             $route = $temp[0];
+            if($main){ 
             ?>
             <div class="pagenavi">
               <a href="<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$route?>">更多</a>
             </div>
         <?php }else{?>
-            <div class="pagenavi"><?php next_posts_link('下一页') ?> <?php previous_posts_link('上一页') ?></div>
+            <?php 
+                $url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$route.'/page/2';
+            ?>
+            <div class="pagenavi"><?php if (count($posts) == 10) {next_posts_link('下一页');} else {echo '<a href='.$url.'>下一页</a>';} ?> <?php previous_posts_link('上一页') ?></div>
         <?php }?>
         <div class="page-load-status">
           <div class="infinite-scroll-request">
