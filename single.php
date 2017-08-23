@@ -115,7 +115,7 @@
             <span class="yj">在售价<i>¥<?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?></i></span>
         </div>
         <div class="col1-c">
-            <span class="zl">商家提供<strong><?php echo ($coupon_click_url!='')?$coupon_total_count:get_post_meta($post->ID, "hao_zongl", true);?></strong>张优惠券丨</span>
+            <!-- <span class="zl">商家提供<strong><?php echo ($coupon_click_url!='')?$coupon_total_count:get_post_meta($post->ID, "hao_zongl", true);?></strong>张优惠券丨</span> -->
             <span class="xl">月销量<strong><?php echo ($coupon_click_url!='')?$volume:get_post_meta($post->ID, "hao_xiaol", true);?></strong>件</span>
         </div>
         <?php if ( wp_is_mobile() ){ ?>

@@ -312,13 +312,14 @@ ul.cate-list{
     height: 36px;
 }
 #tuwenLink span{
-    color: #ffc300;
+    color: #f15482;
     display: block;
-    border: 1px solid #ffc300;
+    border: 2px solid #f15482;
     width: 100px;
     margin: 0 auto;
     padding: 4px;
     border-radius: 14px;
+    font-weight: bold;
 }
 img.tuwenImg{
     width: 100%
@@ -482,4 +483,12 @@ a:focus, a:hover{
     width: 23%;
     margin-right: 1%;
     margin-left: 1%;
+}
+.col1-a .text{
+    color: #f15482;
+    font-size: 16px;
+}
+.col1-c{
+    border-top: none; 
+    border-bottom: 1px solid #C9C9C9;
 }
