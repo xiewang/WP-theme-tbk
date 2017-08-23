@@ -115,9 +115,11 @@
 	</div>
 
 	<?php if ( !is_single()&&!is_search()&&!is_404() &&($cate == '人气推荐'
-	||$cate == '今日更新'
+	||$cate == '好券抢购'
     ||$cate == '9块9包邮'
-    ||$cate == '明星周边')){ ?>
+    ||$cate == '明星周边'
+    ||$cate == '明星周边'
+    ||$cate == '你没见过')){ ?>
 		<div class="layout">
 			<div class="m-slider">
 	            	<div class="banner">
