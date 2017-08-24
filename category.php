@@ -312,7 +312,12 @@ if($cate == '今日更新'
             </div>
         <?php }else{?>
             <?php 
-                $url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$route.'/page/2';
+                if(strstr($route,"/page")!==false){
+                    $url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$route;
+                } else {
+                    $url = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$route.'/page/2';
+                }
+                
             ?>
             <div class="pagenavi"><?php if (count($posts) == 10) {next_posts_link('下一页');} else {echo '<a href='.$url.'>下一页</a>';} ?> <?php previous_posts_link('上一页') ?></div>
         <?php }?>
