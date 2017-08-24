@@ -18,7 +18,7 @@
 	<script src="<?php bloginfo('template_url'); ?>/ui/respond.js" type="text/javascript" ></script>
 
 	<link href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" rel="shortcut icon">
-        <link href="<?php echo get_template_directory_uri(); ?>/img/touch.png" rel="apple-touch-icon-precomposed">
+        <link href="<?php echo get_template_directory_uri(); ?>/img/fav.png" rel="apple-touch-icon-precomposed">
 
 </head>
 <body>
