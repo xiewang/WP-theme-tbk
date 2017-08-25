@@ -37,15 +37,26 @@ $(function(){
 
 
     var mySwiper = new Swiper ('.swiper-container', {
-	    direction: 'horizontal',
-	    loop: true,
-	    
-	    // 如果需要分页器
-	    pagination: '.swiper-pagination',
-	    
-	    // 如果需要前进后退按钮
-	    nextButton: '.swiper-button-next',
-	    prevButton: '.swiper-button-prev',
+	    autoplay:3000,
+		speed:1000,
+		autoplayDisableOnInteraction : false,
+		loop:true,
+		centeredSlides : true,
+		slidesPerView:2,
+        pagination : '.swiper-pagination',
+		paginationClickable:true,
+		prevButton:'.swiper-button-prev',
+        nextButton:'.swiper-button-next',
+		onInit:function(swiper){
+			swiper.slides[2].className="swiper-slide swiper-slide-active";//第一次打开不要动画
+			},
+        breakpoints: { 
+                668: {
+                    slidesPerView: 1,
+                 }
+            }
 	  })  
 	
 });
+
+
