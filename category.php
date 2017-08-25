@@ -14,7 +14,6 @@ if($cate == '今日更新'
 } else {
     include "cateandsort.php";
 }
-
 ?>
 <?php 
     include "taobao/TopSdk.php";
