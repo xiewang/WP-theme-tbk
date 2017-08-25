@@ -492,3 +492,10 @@ a:focus, a:hover{
     border-top: none; 
     border-bottom: 1px solid #C9C9C9;
 }
+.swiper-container{
+    width: 100%;
+    height: 100%;
+}
+.swiper-container .swiper-slide img{
+    width: 100%;
+}

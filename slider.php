@@ -21,7 +21,26 @@
         }
         return $images;
     }
-    print_r(get_images_from_media_library());
+    $sliders = get_images_from_media_library();
 
 ?>
 
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        <?php foreach ($sliders as $key => $value) {
+        ?> 
+            <div class="swiper-slide">
+                <a href="<?php echo $value->url;?>" target="_blank">
+                    <img src="<?php echo $value->image;?>">
+                </a>
+            </div>
+        <?php }?>
+        
+    </div>
+    <!-- 如果需要分页器 -->
+    <div class="swiper-pagination"></div>
+    
+    <!-- 如果需要导航按钮 -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+</div>
