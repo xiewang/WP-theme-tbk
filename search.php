@@ -5,7 +5,7 @@
 <?php get_header(); ?>
 
 <div class="layout page padding-top">
-    <div class="container">
+    <div class="container <?php echo wp_is_mobile()?'mobile':''?>">
         <div id="content" class="line-middle">
             <?php while (have_posts()) : the_post(); ?>
             <?php if ( get_post_meta($post->ID, "hao_zhutu", true) ){ ?>
@@ -22,7 +22,7 @@
                         </a>
                     </div>
                     <div class="box-prod">
-                        <div class="box-btn">
+                        <div class="box-btn" style="display: block;top:<?php echo wp_is_mobile()? '0': '17'?>px">
                             <?php if(get_post_meta($post->ID, "hao_leix", true) == '天猫'){ ?>
                                 <img src="<?php bloginfo('template_url'); ?>/img/tm.png?>">
                             <?php };?>
@@ -41,7 +41,7 @@
                                  <span>￥<?php echo get_post_meta($post->ID, "hao_xianj", true);?></span>
                                  <del>￥<?php echo get_post_meta($post->ID, "hao_yuanj", true);?></del>  
                             </dd>
-                            <dd class="box-send">已有<?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人购买</dd>
+                            <dd class=""><?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人已买</dd>
                         </div>
                     </div>
                     

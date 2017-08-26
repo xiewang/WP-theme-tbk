@@ -290,7 +290,7 @@
                                  <span>￥<?php echo get_post_meta($post->ID, "hao_xianj", true);?></span>
                                  <del>￥<?php echo get_post_meta($post->ID, "hao_yuanj", true);?></del>  
                             </dd>
-                            <dd class="box-send">已有<?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人购买</dd>
+                            <dd class="box-send"><?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人已买</dd>
                         </div>
                     </div>
                     
