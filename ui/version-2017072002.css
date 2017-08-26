@@ -706,3 +706,20 @@ a:focus, a:hover{
     min-width: 7em;
     line-height: 2em;
 }
+.single-title{
+    font-size: 16px;
+    line-height: 18px;
+    color: #666;
+}
+.col1-a {
+    margin-top: 10px;
+    background: #fff;
+    border: 1px dotted #ffc300;
+    padding: 0 4px;
+    border-radius: 2px;
+    text-align: left;
+}
+.col1-b .xj strong {
+    font-size: 26px;
+    padding: 0px;
+}

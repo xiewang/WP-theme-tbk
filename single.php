@@ -105,14 +105,19 @@
          <img src="<?php echo ($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>" class=" img-responsive" alt=""/>
     </div>
     <div class="xl12 xs6 xm6 col1">
-        <span class='single-title'><?php echo ($coupon_click_url!='')?urldecode($title):the_title(); ?></span>
+        <div class="box-btn" style="position: absolute;display: block;top:<?php echo wp_is_mobile()? '12': '2'?>px">
+            <?php if(get_post_meta($post->ID, "hao_leix", true) == '天猫'){ ?>
+                <img src="<?php bloginfo('template_url'); ?>/img/tm.png?>">
+            <?php };?>
+        </div>
+        <span class='single-title' style="display: inline-block;text-indent: <?php echo (get_post_meta($post->ID, "hao_leix", true) == '天猫')? '20px': '0px'?>"><?php echo ($coupon_click_url!='')?urldecode($title):the_title(); ?></span>
     
         <div class="col1-a">
              <span class="text">推荐理由：<?php echo ($coupon_click_url!='')?urldecode($content):the_content(); ?></span> 
         </div>
         <div class="col1-b">
-            <span class="xj">用券后<i>¥<strong><?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?></strong></i></span>
-            <span class="yj">在售价<i>¥<?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?></i></span>
+            <span class="xj">用券后：<i>¥<strong><?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?></strong></i></span>
+            <span class="yj">在售价：<del>¥<?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?></i></span>
         </div>
         <div class="col1-c">
             <!-- <span class="zl">商家提供<strong><?php echo ($coupon_click_url!='')?$coupon_total_count:get_post_meta($post->ID, "hao_zongl", true);?></strong>张优惠券丨</span> -->
@@ -225,7 +230,7 @@
 <?php }?>
 
 <div class="layout page padding-top" >
-    <div id="content" class="container">
+    <div id="content" class="container <?php echo wp_is_mobile()?'mobile':''?>">
         <div class="jingp">
             <img src="<?php bloginfo('template_directory'); ?>/img/jingpintuijian.png" />
         </div>
@@ -271,7 +276,7 @@
                         </a>
                     </div>
                     <div class="box-prod">
-                        <div class="box-btn">
+                        <div class="box-btn" style="display: block;top:<?php echo wp_is_mobile()? '0': '17'?>px">
                             <?php if(get_post_meta($post->ID, "hao_leix", true) == '天猫'){ ?>
                                 <img src="<?php bloginfo('template_url'); ?>/img/tm.png?>">
                             <?php };?>
@@ -290,7 +295,7 @@
                                  <span>￥<?php echo get_post_meta($post->ID, "hao_xianj", true);?></span>
                                  <del>￥<?php echo get_post_meta($post->ID, "hao_yuanj", true);?></del>  
                             </dd>
-                            <dd class="box-send"><?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人已买</dd>
+                            <dd class=""><?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人已买</dd>
                         </div>
                     </div>
                     
