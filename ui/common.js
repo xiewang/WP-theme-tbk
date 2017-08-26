@@ -37,9 +37,10 @@ $(function(){
 
 
     var mySwiper = new Swiper ('.swiper-container', {
+    	autoHeight: true, 
 	    autoplay:3000,
 		speed:1000,
-		autoplayDisableOnInteraction : false,
+		autoplayDisableOnInteraction : true,
 		loop:true,
 		centeredSlides : true,
 		slidesPerView:2,

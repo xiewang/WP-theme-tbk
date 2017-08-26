@@ -57,31 +57,19 @@
 				</div>
 			</div>
 		<?php } ?>
-		
-    		
-		<?php if ( wp_is_mobile() ){ ?>
-		    <!-- <div class="find_nav fixed">
-	                <div class="find_nav_left">
-	                    <div class="find_nav_list">
-	                        <ul class="mNav">
-	                            <?php wp_nav_menu(array('theme_location'=>'header-menu'));?>
-	                            <li class="sideline"></li>
-	                        </ul>
-	                    </div>
-	                </div>
-		    </div> -->
-		<?php }else { ?>
-		    <button class="hao-button button icon-navicon" data-target="#nav">菜单</button>
-		    <div class="hao-nav bg-inverse nav-navicon fixed"  id="nav">
-	                <ul class="nav nav-inline nav-menu nav-split nav-justified">
-	                    <?php wp_nav_menu(array('theme_location'=>'header-menu'));?>
-	                </ul>
-		    </div>
-		<?php } ?>
 
 	</div>
 </header>
+<?php if ( wp_is_mobile() ){ ?>
 
+<?php }else { ?>
+    <button class="hao-button button icon-navicon" data-target="#nav">菜单</button>
+    <div class="hao-nav bg-inverse nav-navicon fixed"  id="nav">
+            <ul class="nav nav-inline nav-menu nav-split nav-justified">
+                <?php wp_nav_menu(array('theme_location'=>'header-menu'));?>
+            </ul>
+    </div>
+<?php } ?>
 <?php 
 	$thiscat = get_category($cat); 
 	$cate = isset($thiscat ->name)?$thiscat ->name:'今日更新';
@@ -119,22 +107,10 @@
     ||$cate == '明星周边'
     ||$cate == '好券抢购'
     ||$cate == '你没见过')){ ?>
-		<div class="layout">
+		<div class="">
 			<div class="m-slider">
-	            	<div class="banner">
-						<div class="carousel">
-							<!-- <div class="item">
-								<div id="img1" class="sliderImg" ></div>
-							</div> -->
-							<div class="item">
-								<div id="img2" class="sliderImg" ></div>
-							</div>
-							<div class="item">
-								<div id="img3" class="sliderImg" ></div>
-							</div>
-						</div>
-					</div>
-				</div>
+	        	<?php require('slider.php'); ?>    	
+			</div>
 		</div>
 		<div class="layout">
 			<div class="m-main-cate">
