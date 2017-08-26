@@ -239,26 +239,83 @@ ul.cate-list{
     left: initial;
 }
 #rightContactMobile.rotate {
+    -webkit-animation: rotate .8s;
+    -moz-animation: rotate .8s;
+    -o-animation: rotate .8s;
 	animation: rotate .8s;
 	transform: rotate(0deg);
 }
 #rightContactMobile.rotateR {
-	animation: rotateR .8s;
+	-webkit-animation: rotateR .8s;
+    -moz-animation: rotateR .8s;
+    -o-animation: rotateR .8s;
+    animation: rotateR .8s;
 	transform: rotate(-135deg);
 }
 .bling.scale{
+    -webkit-animation: scale .3s cubic-bezier(0.25, 1.15, 0.48, 1.35);
+    -moz-animation: scale .3s cubic-bezier(0.25, 1.15, 0.48, 1.35);
+    -o-animation: scale .3s cubic-bezier(0.25, 1.15, 0.48, 1.35);
     animation: scale .3s cubic-bezier(0.25, 1.15, 0.48, 1.35);
     transform: scale(1);
 }
+@-webkit-keyframes rotate
+{
+	from {-webkit-transform: rotate(-135deg);}
+	to {-webkit-transform: rotate(0deg);}
+}
+@-moz-keyframes rotate
+{
+    from {-moz-transform: rotate(-135deg);}
+    to {-moz-transform: rotate(0deg);}
+}
+@-o-keyframes rotate
+{
+    from {-o-transform: rotate(-135deg);}
+    to {-o-transform: rotate(0deg);}
+}
 @keyframes rotate
 {
-	from {transform: rotate(-135deg);}
-	to {transform: rotate(0deg);}
+    from {transform: rotate(-135deg);}
+    to {transform: rotate(0deg);}
+}
+
+@-webkit-keyframes rotateR
+{
+    from {-webkit-transform: rotate(0deg);}
+    to {-webkit-transform: rotate(-135deg);}
+}
+@-moz-keyframes rotateR
+{
+    from {-moz-transform: rotate(0deg);}
+    to {-moz-transform: rotate(-135deg);}
+}
+@-o-keyframes rotateR
+{
+    from {-o-transform: rotate(0deg);}
+    to {-o-transform: rotate(-135deg);}
 }
 @keyframes rotateR
 {
 	from {transform: rotate(0deg);}
 	to {transform: rotate(-135deg);}
+}
+
+
+@-webkit-keyframes scale
+{
+    from {-webkit-transform: scale(0.5);}
+    to {-webkit-transform: scale(1);}
+}
+@-moz-keyframes scale
+{
+    from {-moz-transform: scale(0.5);}
+    to {-moz-transform: scale(1);}
+}
+@-o-keyframes scale
+{
+    from {-o-transform: scale(0.5);}
+    to {-o-transform: scale(1);}
 }
 @keyframes scale
 {
