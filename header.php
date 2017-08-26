@@ -46,13 +46,33 @@
 	                			<img src="<?php echo get_template_directory_uri(); ?>/img/logo.png" alt="<?php bloginfo('name'); ?>"  />
 	            			</a>
 	        		</div>
-	        		<div class="xs12 xm8 xb8 hidden-s hidden-l">
+	        		<div class="xs12 xm4 xb4 hidden-s hidden-l">
 	            			<div class="search">
 				                <form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
 				                	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
 				                	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
 				                </form>
 				            </div>
+	        		</div>
+	        		<div class="slogan xs12 xm4 xb4 hidden-s hidden-l">
+	        			<div class="s-item">
+	        				<div class="s-k"><span>新</span></div>
+	        				<div class="s-d">
+	        					<span>每日更新</span>
+	        				</div>
+	        			</div>
+	        			<div class="s-item">
+	        				<div class="s-k"><span>精</span></div>
+	        				<div class="s-d">
+	        					<span>人工筛选</span>
+	        				</div>
+	        			</div>
+	        			<div class="s-item">
+	        				<div class="s-k"><span>省</span></div>
+	        				<div class="s-d">
+	        					<span>全网最低</span>
+	        				</div>
+	        			</div>
 	        		</div>
 				</div>
 			</div>

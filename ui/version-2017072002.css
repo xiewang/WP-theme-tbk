@@ -737,3 +737,26 @@ a:focus, a:hover{
     border-color: #ffc300;
     box-shadow: 0 0 10px 0 rgba(170,170,170,.63);
 }
+.icon-search{
+    font-size: 20px;
+}
+.sy-input{
+    width: 60%;
+}
+.slogan .s-item {
+    float: right;
+    text-align: center;
+    margin-left: 38px;
+    margin-top: 34px;
+}
+.slogan .s-k{
+    border: 2px solid #ffc300;
+    color: #ffc300;
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    line-height: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
