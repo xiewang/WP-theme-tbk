@@ -20,8 +20,8 @@ $sortUrl = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].explode
     <?php }else { ?>
         <div class="container"> 
             <div class="ad-sort">
-                <a href="https://s.click.taobao.com/H9OCUcw" target="_blank">
-                    <img src="http://img.alicdn.com/tps/i4/TB1p9aJSVXXXXb7XVXXSutbFXXX.jpg">
+                <a href="" target="_blank">
+                    <img src="<?php bloginfo('template_url'); ?>/img/img1.png">
                 </a>
             </div>             
             <div class="content">

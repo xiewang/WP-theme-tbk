@@ -723,3 +723,17 @@ a:focus, a:hover{
     font-size: 26px;
     padding: 0px;
 }
+@media only screen and (max-width: 760px){
+    .layout.list {
+        padding-bottom: 34px;
+        margin-bottom: 0;
+    }
+}
+.mobile .box{
+    border-right: none;
+    border-left: none;
+}
+.box:visited {
+    border-color: #ffc300;
+    box-shadow: 0 0 10px 0 rgba(170,170,170,.63);
+}
