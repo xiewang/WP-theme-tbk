@@ -149,7 +149,7 @@ if($cate == '今日更新'
 ?>
 <div class="layout page padding-top">
     <div class="container <?php echo wp_is_mobile()?'mobile':''?>">
-        <div id="content" class="line-middle">
+        <div id="content" class="<?php echo wp_is_mobile()?'':'line-middle'?>">
             <?php  
                 if($main && isset($mainList) && count($mainList)>0){
                     foreach ($mainList as $item){ 

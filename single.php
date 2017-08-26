@@ -235,7 +235,7 @@
             <img src="<?php bloginfo('template_directory'); ?>/img/jingpintuijian.png" />
         </div>
 
-        <div class="line-middle">
+        <div class="<?php echo wp_is_mobile()?'':'line-middle'?>">
             <?php if ( is_single() ) : global $post;   $categories = get_the_category();  foreach ($categories as $category) :  ?>  
             
             <?php

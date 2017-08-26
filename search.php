@@ -6,7 +6,7 @@
 
 <div class="layout page padding-top">
     <div class="container <?php echo wp_is_mobile()?'mobile':''?>">
-        <div id="content" class="line-middle">
+        <div id="content" class="<?php echo wp_is_mobile()?'':'line-middle'?>">
             <?php while (have_posts()) : the_post(); ?>
             <?php if ( get_post_meta($post->ID, "hao_zhutu", true) ){ ?>
             <div class="post xl12 xs4 xm3 padding-bottom">
