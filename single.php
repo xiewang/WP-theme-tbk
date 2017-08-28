@@ -206,7 +206,7 @@
             howKL = true;
             var clipboard = new Clipboard('.btn1');
             clipboard.on('success', function(e) {
-                alert("复制成功，快打开' 淘宝 'APP去领券吧！");
+                toast("复制成功，快打开' 淘宝 'APP去领券吧！");
             });
         <?php }else {?>
             window.open('<?php echo ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>');
@@ -231,7 +231,7 @@
         howKL = true;
         var clipboard = new Clipboard('.btn2');
         clipboard.on('success', function(e) {
-            alert("内容已经复制成功，去分享吧！");
+            toast("内容已经复制成功，去分享吧！");
         });
     }
 

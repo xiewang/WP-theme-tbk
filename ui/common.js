@@ -60,4 +60,13 @@ $(function(){
 	
 });
 
+var toast = function(text){
+	var div = document.createElement('div');
+	div.id = 'toast';
+	div.innerText = text;
+	$(div).appendTo(document.body);
+	setTimeout(function(){
+		$(div).remove();
+	},2500)
+}
 
