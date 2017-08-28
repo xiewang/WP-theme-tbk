@@ -35,11 +35,15 @@
         return false;
     }
     $kouling = '';
-    $c = new TopClient;
-    $c->appkey = "24545248";
-    $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
-    if (is_weixin()){
-        
+    // $c = new TopClient;
+    // $c->appkey = "24545248";
+    // $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
+ 
+    function get_kouling($post,$coupon_click_url,$pict_url,$coupon_click_url){
+        $kouling = '';
+        $c = new TopClient;
+        $c->appkey = "24545248";
+        $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
         $req = new WirelessShareTpwdCreateRequest;
         $tpwd_param = new GenPwdIsvParamDto;
         // $tpwd_param->ext="{\"xx\":\"xx\"}";
@@ -51,19 +55,17 @@
         $resp = $c->execute($req);
          
         $kouling = $resp->model;
+        return $kouling;
     }
-    
 
-    
-   
-    // echo $coupon_click_url.'</br>';
-    // echo $coupon.'</br>';
-    // echo $price.'</br>';
-    // echo $final_price.'</br>';
-    // echo $volume.'</br>';
-    // echo $pict_url.'</br>';
-    // echo $content.'</br>';
-    // print_r($params);
+    if(isset($_POST['kouling'])){
+        while (have_posts()) : 
+            the_post();
+            $kouling = get_kouling($post,$coupon_click_url);
+            echo $kouling;
+            return;
+        endwhile;
+    }
 ?>
 <script type="text/javascript">
 
@@ -98,10 +100,21 @@
 <div class="layout page padding-top" style="<?php echo wp_is_mobile() ? 'padding-top: 0;margin-top:-8px':''?>">
     <div id="content" class="container">
         <div class="main">
-            <?php while (have_posts()) : the_post(); ?>
+            <?php 
+                while (have_posts()) : the_post(); 
+                    if(get_post_meta($post->ID, "kouling", true)){
+                        $kouling = get_post_meta($post->ID, "kouling", true);
+                    } else if (is_weixin()){
+                        if($coupon_click_url!=''){
+                            $kouling = get_kouling($post,$coupon_click_url,$pict_url,$coupon_click_url);
+                        } else {
+                            $kouling = get_kouling($post,$coupon_click_url,'','');
+                        }
+                        
+                    }
+            ?>
 <article id="post-<?php the_ID(); ?>" class="line-big">
     <div class="xl12 xs6 xm4" style="<?php echo wp_is_mobile()?'padding: 0px':''?>">
-
          <img src="<?php echo ($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>" class=" img-responsive" alt=""/>
     </div>
     <div class="xl12 xs6 xm6 col1">
@@ -137,15 +150,23 @@
         <div class="col1-e">
             <p></p>
             <div class="text">
-                你还可以把这个宝贝分享给你的朋友：
-                <div class="bdsharebuttonbox">
-                    <a href="#" class="bds_more" data-cmd="more"></a>
-                    <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
-                    <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
-                    <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
-                    <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
-                    <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
-                </div>
+                <span>你还可以把这个宝贝分享给你的朋友：</span>
+                <?php if(wp_is_mobile()){?>
+                    <div class="bdsharebuttonbox">
+                        <div id="shareWeixin" onclick="shareWeixin()"></div>
+                        <div id="shareWeibo"></div>
+                    </div>
+                <?php }else{?>
+                    <div class="bdsharebuttonbox">
+                        <a href="#" class="bds_more" data-cmd="more"></a>
+                        <a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+                        <a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+                        <a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+                        <a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网"></a>
+                        <a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+                    </div>
+                <?php }?>
+                
             </div>
         </div>
     </div>
@@ -166,16 +187,6 @@
 </div>
 <script type="text/javascript">
     var showKL = false;
-    function copy(){
-        // var clip = new ZeroClipboard( document.getElementById("copy"), {
-        //   moviePath: "<?php bloginfo('template_url'); ?>/ui/ZeroClipboard.swf"
-        // }  );
-
-        // clip.on( 'complete', function(client, args) {
-        //    alert("复制成功，打开‘淘宝’APP去领券吧！");
-        //    showKL = false;
-        // } );
-    }
     function jumpToTaobao(){
         <?php if(is_weixin()){?>
             $('#kouling').removeClass('hide');
@@ -188,6 +199,27 @@
             window.open('<?php echo ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>');
         <?php }?>
 
+    }
+
+    function shareWeixin(){
+        var kouling = '<?php echo $kouling; ?>';
+        if(!kouling){
+             $.ajax({
+                type:"post",
+                url: "<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?>",
+                data:{kouling:"0"},
+                dataType:"json",
+                success:function(res){
+                        console.log(res);
+                    }
+                }); 
+        }
+        $('#kouling').removeClass('hide');
+        howKL = true;
+        var clipboard = new Clipboard('.btn');
+        clipboard.on('success', function(e) {
+            alert("内容已经复杂成功，去分享吧！");
+        });
     }
 
     $('#kouling').on('click', function(e){

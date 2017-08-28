@@ -37,7 +37,7 @@ $(function(){
 
 
     var mySwiper = new Swiper ('.swiper-container', {
-    	autoHeight: true, 
+    	autoHeight: false, 
 	    autoplay:3000,
 		speed:1000,
 		autoplayDisableOnInteraction : true,
