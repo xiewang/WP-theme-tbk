@@ -1,7 +1,7 @@
 <footer class="footer padding-large-top padding-large-bottom">
 	<div class="container">
-            <div class="line-middle">
-                <span class="beian">沪ICP备17030262号-1</span>
+            <div class="line-middle text-c">
+                <span class="beian">Copyright © 半刀网 2017, All Rights Reserved. 沪ICP备17030262号-1</span>
             </div>            
 	</div>
     <?php if(!wp_is_mobile()){?>
