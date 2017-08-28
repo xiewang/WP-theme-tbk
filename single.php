@@ -176,10 +176,23 @@
     <div class="col1-tkl">
         <div class="kouling-title">淘宝口令</div>
         <div class="kouling-content">
-            <textarea style="overflow-y:scroll" id="tkl" class="tkl" rows="7">复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券。&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;<?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>
+            <textarea style="overflow-y:scroll" id="tkl1" class="tkl" rows="7" cols="8">复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券。&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;<?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>
             </textarea>
            
-            <input id="copy" class="but-tkl btn" type="button" data-clipboard-action="copy" data-clipboard-target="#tkl" value="一键复制" onclick="copy()">
+            <input id="copy1" class="but-tkl btn1" type="button" data-clipboard-action="copy" data-clipboard-target="#tkl1" value="一键复制" >
+            <p style="text-align: center;">如果无法一键复制，请长按手动复制。</p>
+        </div>
+        
+    </div>
+</div>
+<div class="kouling hide" id="share">
+    <div class="col1-tkl">
+        <div class="kouling-title">分享</div>
+        <div class="kouling-content">
+            <textarea style="overflow-y:scroll" id="tkl2" class="tkl" rows="7" cols="18"><?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;【下单链接】<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?> 
+            </textarea>
+           
+            <input id="copy2" class="but-tkl btn2" type="button" data-clipboard-action="copy" data-clipboard-target="#tkl2" value="一键复制" >
             <p style="text-align: center;">如果无法一键复制，请长按手动复制。</p>
         </div>
         
@@ -191,7 +204,7 @@
         <?php if(is_weixin()){?>
             $('#kouling').removeClass('hide');
             howKL = true;
-            var clipboard = new Clipboard('.btn');
+            var clipboard = new Clipboard('.btn1');
             clipboard.on('success', function(e) {
                 alert("复制成功，快打开' 淘宝 'APP去领券吧！");
             });
@@ -202,30 +215,30 @@
     }
 
     function shareWeixin(){
-        var kouling = '<?php echo $kouling; ?>';
-        if(!kouling){
-             $.ajax({
-                type:"post",
-                url: "<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?>",
-                data:{kouling:"0"},
-                dataType:"json",
-                success:function(res){
-                        console.log(res);
-                    }
-                }); 
-        }
-        $('#kouling').removeClass('hide');
+        // var kouling = '<?php echo $kouling; ?>';
+        // if(!kouling){
+        //      $.ajax({
+        //         type:"post",
+        //         url: "<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?>",
+        //         data:{kouling:"0"},
+        //         dataType:"json",
+        //         success:function(res){
+        //                 console.log(res);
+        //             }
+        //         }); 
+        // }
+        $('#share').removeClass('hide');
         howKL = true;
-        var clipboard = new Clipboard('.btn');
+        var clipboard = new Clipboard('.btn2');
         clipboard.on('success', function(e) {
-            alert("内容已经复杂成功，去分享吧！");
+            alert("内容已经复制成功，去分享吧！");
         });
     }
 
-    $('#kouling').on('click', function(e){
+    $('.kouling').on('click', function(e){
         var $target  = $(e.target);
-        if($target.is("#kouling")){
-            $('#kouling').addClass('hide');
+        if($target.is(".kouling")){
+            $('.kouling').addClass('hide');
             howKL = false;
         }
         
