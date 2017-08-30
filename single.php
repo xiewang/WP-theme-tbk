@@ -150,7 +150,7 @@
                 <?php if(wp_is_mobile()){?>
                     <div class="bdsharebuttonbox">
                         <div id="shareWeixin" onclick="shareWeixin()"></div>
-                        <div id="shareWeibo" onclick="shareWeibo()"></div>
+                        <div id="shareWeibo" onclick="shareWeibo('<?php echo ($coupon_click_url!='')?urldecode($title):the_title(); ?>','<?php echo ($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>')"></div>
                     </div>
                 <?php }else{?>
                     <div class="bdsharebuttonbox">
@@ -351,29 +351,26 @@
         </div>
     </div>
 </div>
-<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3994075567&debug=true" type="text/javascript" charset="utf-8"></script>
-<script src="<?php bloginfo('template_url'); ?>/ui/base64.js" type="text/javascript" charset="utf-8"></script>
-
 <script type="text/javascript">
-    function shareWeibo(){
-        WB2.anyWhere(function(W){
-            var status = WB2.checkLogin();
-            if(!status){
-                WB2.login(function(res){
-                    console.log(res);
-                });
+    function shareWeibo(title,img) {
+        var content = title+'\n【在售价】<?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?>元\n'+'【券后价】<?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?>元\n【下单链接】';
+        (function (s, d, e) {
+            
+            var f = 'http://v.t.sina.com.cn/share/share.php?', 
+            u = d.location.href, 
+            p = ['url=', e(u), '&title=', e(content), '&appkey=3994075567', '&pic=', e(img)].join('');
+
+            function a() {
+                if (!window.open([f, p].join(''), 'mb', ['toolbar=0,status=0,resizable=1,width=620,height=450,left=', (s.width - 620) / 2, ',top=', (s.height - 450) / 2].join('')))u.href = [f, p].join('');
+            };
+            if (/Firefox/.test(navigator.userAgent)) {
+                setTimeout(a, 0)
+            } else {
+                a()
             }
-            // W.parseCMD("/users/show.json", function(sResult, bStatus){
-            //     try{
-            //         //to do something...
-            //     }catch(e){}
-            // },{
-            //     uid: '123456789'
-            // }{
-            //     method: 'get'
-            // });
-        });
+        })(screen, document, encodeURIComponent);
     }
+
 
     function getShortUrl(url){
         var request = "http://api.ft12.com/api.php?format=jsonp&url="+ encodeURIComponent(url);
