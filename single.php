@@ -235,6 +235,25 @@
         });
     }
 
+    function shareWeibo(title,img) {
+        var content = title+'\n【在售价】<?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?>元\n'+'【券后价】<?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?>元\n【下单链接】';
+        (function (s, d, e) {
+            
+            var f = 'http://v.t.sina.com.cn/share/share.php?', 
+            u = d.location.href, 
+            p = ['url=', e(u), '&title=', e(content), '&appkey=3994075567', '&pic=', e(img)].join('');
+
+            function a() {
+                if (!window.open([f, p].join(''), 'mb', ['toolbar=0,status=0,resizable=1,width=620,height=450,left=', (s.width - 620) / 2, ',top=', (s.height - 450) / 2].join('')))u.href = [f, p].join('');
+            };
+            if (/Firefox/.test(navigator.userAgent)) {
+                setTimeout(a, 0)
+            } else {
+                a()
+            }
+        })(screen, document, encodeURIComponent);
+    }
+
     $('.kouling').on('click', function(e){
         var $target  = $(e.target);
         if($target.is(".kouling")){
@@ -352,25 +371,6 @@
     </div>
 </div>
 <script type="text/javascript">
-    function shareWeibo(title,img) {
-        var content = title+'\n【在售价】<?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?>元\n'+'【券后价】<?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?>元\n【下单链接】';
-        (function (s, d, e) {
-            
-            var f = 'http://v.t.sina.com.cn/share/share.php?', 
-            u = d.location.href, 
-            p = ['url=', e(u), '&title=', e(content), '&appkey=3994075567', '&pic=', e(img)].join('');
-
-            function a() {
-                if (!window.open([f, p].join(''), 'mb', ['toolbar=0,status=0,resizable=1,width=620,height=450,left=', (s.width - 620) / 2, ',top=', (s.height - 450) / 2].join('')))u.href = [f, p].join('');
-            };
-            if (/Firefox/.test(navigator.userAgent)) {
-                setTimeout(a, 0)
-            } else {
-                a()
-            }
-        })(screen, document, encodeURIComponent);
-    }
-
 
     function getShortUrl(url){
         var request = "http://api.ft12.com/api.php?format=jsonp&url="+ encodeURIComponent(url);
