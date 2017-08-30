@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+
 
 <?php 
     include "taobao/TopSdk.php";
@@ -6,17 +6,12 @@
     $params = explode("&",$_SERVER["QUERY_STRING"]);
     parse_str($_SERVER['QUERY_STRING'], $get);
     $coupon_click_url = isset($get['coupon_click_url'])?$get['coupon_click_url']:'';
+    $pict_url = isset($get['pict_url'])?$get['pict_url']:'';
+    if($coupon_click_url!=''&&$pict_url==''){
+        wp_redirect(htmlspecialchars_decode('http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"])); exit;
+    }
+
     if($coupon_click_url!=''){
-        // $coupon_click_url = substr($params[0],17,strlen($params[0])-17);
-        // $coupon = substr($params[1],7,strlen($params[1])-7);
-        // $price = substr($params[2],6,strlen($params[2])-6);
-        // $final_price = substr($params[3],12,strlen($params[3])-12);
-        // $volume = substr($params[4],7,strlen($params[4])-7);
-        // $pict_url = substr($params[5],9,strlen($params[5])-9);
-        // $content = substr($params[6],8,strlen($params[6])-8);
-        // $title = substr($params[7],6,strlen($params[7])-6);
-        // $coupon_total_count = substr($params[8],19,strlen($params[8])-19);
-        $coupon_click_url = $get['coupon_click_url'];
         $coupon = $get['coupon'];
         $price = $get['price'];
         $final_price = $get['final_price'];
@@ -67,6 +62,7 @@
         endwhile;
     }
 ?>
+<?php get_header(); ?>
 <script type="text/javascript">
 
     $(function(){
@@ -79,10 +75,10 @@
                     var itemId = '<?php echo $item_id;?>';
                 <?php }?>
                 $.ajax({
-                type:"get",
-                url:"http://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?&data={%22item_num_id%22:%22"+itemId+"%22}&type=jsonp&_=1502351053740",/*url写异域的请求地址*/
-                dataType:"jsonp",
-                success:function(res){
+                    type:"get",
+                    url:"http://hws.m.taobao.com/cache/mtop.wdetail.getItemDescx/4.1/?&data={%22item_num_id%22:%22"+itemId+"%22}&type=jsonp&_=1502351053740",/*url写异域的请求地址*/
+                    dataType:"jsonp",
+                    success:function(res){
                         $('#tuwenLoading').hide();
                         var pages = res.data.images;
                         $.each(pages, function(k,v){
@@ -154,7 +150,7 @@
                 <?php if(wp_is_mobile()){?>
                     <div class="bdsharebuttonbox">
                         <div id="shareWeixin" onclick="shareWeixin()"></div>
-                        <div id="shareWeibo"></div>
+                        <div id="shareWeibo" onclick="shareWeibo()"></div>
                     </div>
                 <?php }else{?>
                     <div class="bdsharebuttonbox">
@@ -189,7 +185,7 @@
     <div class="col1-tkl">
         <div class="kouling-title">分享</div>
         <div class="kouling-content">
-            <textarea style="overflow-y:scroll" id="tkl2" class="tkl" rows="7" cols="18"><?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;【下单链接】<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?> 
+            <textarea style="overflow-y:scroll" id="tkl2" class="tkl" rows="7" cols="18"><?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;【下单链接】<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?> 
             </textarea>
            
             <input id="copy2" class="but-tkl btn2" type="button" data-clipboard-action="copy" data-clipboard-target="#tkl2" value="一键复制" >
@@ -203,7 +199,7 @@
     function jumpToTaobao(){
         <?php if(is_weixin()){?>
             $('#kouling').removeClass('hide');
-            howKL = true;
+            showKL = true;
             var clipboard = new Clipboard('.btn1');
             clipboard.on('success', function(e) {
                 toast("复制成功，快打开' 淘宝 'APP去领券吧！");
@@ -215,6 +211,7 @@
     }
 
     function shareWeixin(){
+        //异步get口令
         // var kouling = '<?php echo $kouling; ?>';
         // if(!kouling){
         //      $.ajax({
@@ -227,8 +224,11 @@
         //             }
         //         }); 
         // }
+        if('<?php echo $coupon_click_url?>' != ''){
+            getShortUrl("<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?>");
+        }
         $('#share').removeClass('hide');
-        howKL = true;
+        showKL = true;
         var clipboard = new Clipboard('.btn2');
         clipboard.on('success', function(e) {
             toast("内容已经复制成功，去分享吧！");
@@ -239,13 +239,13 @@
         var $target  = $(e.target);
         if($target.is(".kouling")){
             $('.kouling').addClass('hide');
-            howKL = false;
+            showKL = false;
         }
         
     });
 
     $(document).on('touchmove',function(e){
-        if(howKL)
+        if(showKL)
             e.preventDefault();
     })
 
@@ -351,5 +351,53 @@
         </div>
     </div>
 </div>
+<script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js?appkey=3994075567&debug=true" type="text/javascript" charset="utf-8"></script>
+<script src="<?php bloginfo('template_url'); ?>/ui/base64.js" type="text/javascript" charset="utf-8"></script>
+
+<script type="text/javascript">
+    function shareWeibo(){
+        WB2.anyWhere(function(W){
+            var status = WB2.checkLogin();
+            if(!status){
+                WB2.login(function(res){
+                    console.log(res);
+                });
+            }
+            // W.parseCMD("/users/show.json", function(sResult, bStatus){
+            //     try{
+            //         //to do something...
+            //     }catch(e){}
+            // },{
+            //     uid: '123456789'
+            // }{
+            //     method: 'get'
+            // });
+        });
+    }
+
+    function getShortUrl(url){
+        var request = "http://api.ft12.com/api.php?format=jsonp&url="+ encodeURIComponent(url);
+        var ret = '';
+        $.ajax({
+            type:"get",
+            url: request,
+            dataType:"jsonp",
+            success:function(response){
+                if (response.error == 0){
+                    ret = response.url;
+                } else {
+                    ret = '';
+                }
+                var text = $('#tkl2').val();
+                var array = text.split('】');
+                array[array.length-1] = ret;
+                $('#tkl2').val(array.join('】'));
+            }
+        }); 
+    }
+
+    
+    
+</script>
 
 <?php get_footer(); ?>
