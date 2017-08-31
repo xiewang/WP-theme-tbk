@@ -847,3 +847,8 @@ body.pc{
 .mobile .box-txt .box-juan{
     width: 36%;
 }
+.mobile .page-load-status{
+    margin-top: 6px;
+    width: 100%;
+    display: inline-block !important;
+}
