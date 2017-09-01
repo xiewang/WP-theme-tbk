@@ -127,11 +127,11 @@
       </div>
       <div class="page-load-status">
             <?php if(isset($searchList)):?>
-              <div class="infinite-scroll-request">
-                <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif" alt="Loading" />
-                加载中...
-              </div>
-          <?php endif;?>
+                  <div class="infinite-scroll-request <?php echo count($tbk_item)!=10?'hide':''?>">
+                    <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif" alt="Loading" />
+                    加载中...
+                  </div>
+            <?php endif;?>
 
           <p class="infinite-scroll-error infinite-scroll-last">
             <?php echo isset($searchList)?'到底了噢！(提示：搜索词越长，搜索越准确！)':'抱歉，没帮你找到相关宝贝，试试其他的关键词呢？';?>
