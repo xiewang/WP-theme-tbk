@@ -6,7 +6,7 @@
 	<meta name="renderer" content="webkit">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">	
 
-	<title><?php bloginfo('name'); ?>推荐:<?php if(wp_title('', false)=='') { echo '半刀网，专业人工值守，为您精选优质淘宝优惠券'; }else{wp_title('');} ?> </title>
+	<title><?php if(wp_title('', false)=='') { echo '半刀网，优质淘宝优惠券精选，专业人工值守'; }else{bloginfo('name'); echo '推荐：'; wp_title('');} ?> </title>
 	<meta name="keywords" content="<?php echo get_option('keywords'); ?>" />
 	<meta name="description" content="<?php bloginfo('description'); ?>">
 	<meta name="baidu-site-verification" content="XvZ5JrfmTv" />

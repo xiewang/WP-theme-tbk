@@ -565,6 +565,7 @@ a:focus, a:hover{
 .swiper-container .swiper-slide a img{
     width: 100%;
     height: 100%;
+    border-radius: 8px;
 }
 .swiper-slide a {
     background: #fff;
