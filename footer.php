@@ -90,9 +90,11 @@
 
             $('#gzhC').click(function(){
                 // $('#gzhMobile').show();
+                 $(".shade").slideUp('slow');
                 $("#gzhMobile").slideToggle();
             });
             $('#qunC').click(function(){
+                $(".shade").slideUp('slow');
                 $('#qunMobile').slideToggle();
             });
             $(document).bind("click",function(e){  
