@@ -855,3 +855,15 @@ body.pc{
     width: 100%;
     display: inline-block !important;
 }
+#article{
+    margin-top: 20px;
+}
+#article ul li{
+    list-style: decimal;
+    font-size: 18px;
+    color: #3a98ff;
+    margin-bottom: 8px;
+}
+#article ul li a{
+    color: #3a98ff;
+}
