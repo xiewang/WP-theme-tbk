@@ -55,7 +55,7 @@
     } 
 ?>
 
-<div class="layout page padding-top">
+<div class="layout page <?php echo wp_is_mobile()?'list':'padding-top'?>">
     <div class="container <?php echo wp_is_mobile()?'mobile':''?>">
         <div id="content" class="<?php echo wp_is_mobile()?'':'line-middle'?>">
             <?php  
