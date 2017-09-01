@@ -7,6 +7,11 @@
 <div class="layout page <?php echo wp_is_mobile()?'list':'padding-top'?>">
     <div class="container <?php echo wp_is_mobile()?'mobile':''?>">
         <div id="content" class="<?php echo wp_is_mobile()?'':'line-middle'?>">
+            <div class="ad-sort">
+                <a href="" target="_blank">
+                    <img src="<?php bloginfo('template_url'); ?>/img/img2.png">
+                </a>
+            </div>
             <?php while (have_posts()) : the_post(); ?>
             <?php if ( get_post_meta($post->ID, "hao_zhutu", true) ){ ?>
             <div class="post xl12 xs4 xm3 padding-bottom">
@@ -16,7 +21,7 @@
                     <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
                 <?php }?>
                     <div class="box-image">
-                        <a class="box-img" href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>>
+                        <a class="box-img" >
                             <span class="icon-spinner for-img"></span>
                             <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="hide img-responsive" alt="<?php the_title(); ?>"/>
                         </a>
@@ -30,7 +35,7 @@
 
                         <div class="box-name">
                             <dt style="text-indent: <?php echo get_post_meta($post->ID, "hao_leix", true) == '天猫'? '20px': '0px'?>"> 
-                                <a href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>><?php the_title(); ?></a>
+                                <a ><?php the_title(); ?></a>
                             </dt> 
                             <div class="box-txt">
                                 <div class="box-juan-price"><span><?php echo get_post_meta($post->ID, "hao_youh", true);?>元</span></div>

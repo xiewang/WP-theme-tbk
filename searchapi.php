@@ -58,6 +58,11 @@
 <div class="layout page <?php echo wp_is_mobile()?'list':'padding-top'?>">
     <div class="container <?php echo wp_is_mobile()?'mobile':''?>">
         <div id="content" class="<?php echo wp_is_mobile()?'':'line-middle'?>">
+            <div class="ad-sort">
+                <a href="" target="_blank">
+                    <img src="<?php bloginfo('template_url'); ?>/img/img2.png">
+                </a>
+            </div>
             <?php  
                 if(isset($searchList)){
                     foreach ($searchList as $item){ 
@@ -88,7 +93,7 @@
                         <div class="box" onclick=" window.open('<?php echo $jump_url; ?>')">
                         <?php }?>
                         <div class="box-image">
-                            <a class="box-img" href="<?php echo $jump_url; ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>>
+                            <a class="box-img" >
                                 <img src="<?php echo $item->pict_url?>" class="img-responsive" alt=""/>
                             </a>
                         </div>
@@ -101,7 +106,7 @@
 
                             <div class="box-name">
                                 <dt style="text-indent: <?php echo $item->user_type == 1? '20px': '0px'?>"> 
-                                    <a href="<?php echo $jump_url; ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>><?php echo $item->title; ?></a>
+                                    <a ><?php echo $item->title; ?></a>
                                 </dt> 
                                 
                                 <div class="box-txt">

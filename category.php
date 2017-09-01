@@ -181,7 +181,7 @@ if($cate == '今日更新'
                         <div class="box" onclick=" window.open('<?php echo $jump_url; ?>')">
                         <?php }?>
                         <div class="box-image">
-                            <a class="box-img" href="<?php echo $jump_url; ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>>
+                            <a class="box-img" >
                                 <img src="<?php echo $item->pict_url?>" class="img-responsive" alt=""/>
                             </a>
                         </div>
@@ -194,7 +194,7 @@ if($cate == '今日更新'
 
                             <div class="box-name">
                                 <dt style="text-indent: <?php echo $item->user_type == 1? '20px': '0px'?>"> 
-                                    <a href="<?php echo $jump_url; ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>><?php echo $item->title; ?></a>
+                                    <a ><?php echo $item->title; ?></a>
                                 </dt> 
                                 
                                 <div class="box-txt">
@@ -265,7 +265,7 @@ if($cate == '今日更新'
                         <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
                     <?php }?>
                         <div class="box-image">
-                            <a class="box-img" href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>>
+                            <a class="box-img" >
                                 <span class="icon-spinner for-img"></span>
                                 <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="hide img-responsive" alt="<?php the_title(); ?>"/>
                             </a>
@@ -279,7 +279,7 @@ if($cate == '今日更新'
 
                             <div class="box-name">
                                 <dt style="text-indent: <?php echo get_post_meta($post->ID, "hao_leix", true) == '天猫'? '20px': '0px'?>"> 
-                                    <a href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>><?php the_title(); ?></a>
+                                    <a ><?php the_title(); ?></a>
                                 </dt> 
                                 <div class="box-txt">
                                     <div class="box-juan-price"><span><?php echo ceil(get_post_meta($post->ID, "hao_youh", true));?>元</span></div>

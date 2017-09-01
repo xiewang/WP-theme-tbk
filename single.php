@@ -69,8 +69,11 @@
         $('#tuwenLink').click(function(){
             if($('#tuwenContent').find('img').length == 0){
                $('#tuwenLoading').show();
-                <?php if(!isset($item_id)){?>
-                var itemId = '<?php echo !empty(get_post_meta($post->ID, "item_id", true))?get_post_meta($post->ID, "item_id", true):"526283530705";?>';
+                <?php if(!isset($item_id)){
+                    $item_id_temp = get_post_meta($post->ID, "item_id", true);
+                    ?>
+
+                var itemId = '<?php echo !empty($item_id_temp)?get_post_meta($post->ID, "item_id", true):"526283530705";?>';
                 <?php }else{?>
                     var itemId = '<?php echo $item_id;?>';
                 <?php }?>
@@ -334,7 +337,7 @@
                     <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
                 <?php }?>
                     <div class="box-image">
-                        <a class="box-img" href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>>
+                        <a class="box-img" >
                             <span class="icon-spinner for-img"></span>
                             <img src="<?php echo get_post_meta($post->ID, "hao_zhutu", true);?>" class="hide img-responsive" alt="<?php the_title(); ?>"/>
                         </a>
@@ -348,7 +351,7 @@
 
                         <div class="box-name">
                             <dt style="text-indent: <?php echo get_post_meta($post->ID, "hao_leix", true) == '天猫'? '20px': '0px'?>"> 
-                                <a href="<?php the_permalink(); ?>" <?php echo wp_is_mobile()?'':'target="_blank"'?>><?php the_title(); ?></a>
+                                <a ><?php the_title(); ?></a>
                             </dt> 
                             <div class="box-txt">
                                 <div class="box-juan-price"><span><?php echo get_post_meta($post->ID, "hao_youh", true);?>元</span></div>
