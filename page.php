@@ -3,6 +3,13 @@
 
 <div class="layout page padding-top padding-bottom <?php echo wp_is_mobile()?'mobile':''?> comment-page">
 	<div id="content" class="container">
+		<?php if(!wp_is_mobile()){?>
+			<div class="ad-sort">
+	            <a href="" target="_blank">
+	                <img src="<?php bloginfo('template_url'); ?>/img/img2.png">
+	            </a>
+	        </div>
+	    <?php }?>
 		<?php 
 
 			$comments_args = array(
