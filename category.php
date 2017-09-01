@@ -2,7 +2,7 @@
 
 session_start(); 
 $thiscat = get_category($cat); 
-$cate = $thiscat ->name;
+$cate = isset($thiscat ->name)?$thiscat ->name:'今日更新';
 get_header(); 
 if($cate == '今日更新' 
     ||$cate == '人气推荐'
