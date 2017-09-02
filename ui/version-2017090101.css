@@ -567,6 +567,10 @@ a:focus, a:hover{
     height: 100%;
     border-radius: 8px;
 }
+.m-slider .swiper-container .swiper-slide a ,
+.m-slider .swiper-container .swiper-slide a img{
+    border-radius: 0;
+}
 .swiper-slide a {
     background: #fff;
     padding: 10px;
