@@ -16,7 +16,7 @@
             <?php if ( get_post_meta($post->ID, "hao_zhutu", true) ){ ?>
             <div class="post xl12 xs4 xm3 padding-bottom">
                 <?php if(wp_is_mobile()){?>
-                    <div class="box" onclick=" location.href='<?php the_permalink(); ?>'">
+                    <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
                 <?php }else {?>
                     <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
                 <?php }?>
