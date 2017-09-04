@@ -1,3 +1,6 @@
+<?php if (is_archive() && ($paged > 1) && ($paged < $wp_query->max_num_pages)) { ?>
+<link rel="prefetch prerender" href="<?php echo get_next_posts_page_link(); ?>">
+<?php } ?>
 <?php 
 
 session_start(); 
