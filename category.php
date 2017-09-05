@@ -174,7 +174,8 @@ if($cate == '今日更新'
                         if(isset($item->coupon_click_url)){
                             $jump_url = '/bd/32322/?coupon_click_url='.$item->coupon_click_url.'&coupon='.$coupon.'&price='.$item->zk_final_price.'&final_price='.($item->zk_final_price-$coupon).'&volume='.$item->volume.'&pict_url='.$item->pict_url.'&content='.$item->coupon_info.'&title='.$item->title.'&coupon_total_count='.$item->coupon_total_count.'&item_id='.$item->num_iid;
                         } else {
-                            $jump_url = $item->item_url;
+                            // $jump_url = $item->item_url;
+                            $jump_url = "http://www.996shop.com";
                         }
             ?>
                 <div class="post xl12 xs4 xm3 padding-bottom">
