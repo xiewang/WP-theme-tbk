@@ -14,14 +14,16 @@
     left: 0;
     width: 100%;
     height: 100%;
-    padding: 30px;
+    padding: 8%;
     background: rgba(0, 0, 0, 0.4);
 }
 #share>.col1-tkl{
-    margin-top: 50%;
-    transform: translate(0, -50%);
+    position: absolute;
+    top: 50%;
     background: #fff;
     border-radius: 10px;
+    margin-top: -145px;
+    width: 84%;
 }
 #kouling,
 #share{
@@ -816,7 +818,7 @@ body.pc{
     background: rgba(0,0,0,0.5);
     border-radius: 4px;
     position: fixed;
-    top: 40px;
+    top: 50%;
     right: 15%;
 }
 .mobile .post.xl12{
