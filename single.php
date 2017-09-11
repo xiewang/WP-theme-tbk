@@ -175,7 +175,7 @@
     <div class="col1-tkl">
         <div class="kouling-title">淘宝口令</div>
         <div class="kouling-content">
-            <textarea style="overflow-y:scroll" id="tkl1" class="tkl" rows="7" cols="8">复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券。&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;<?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>
+            <textarea style="overflow-y:scroll" id="tkl1" class="tkl" rows="7" cols="8">复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券购买。&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;---------------&#13;&#10;<?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>
             </textarea>
            
             <input id="copy1" class="but-tkl btn1" type="button" data-clipboard-action="copy" data-clipboard-target="#tkl1" value="一键复制" >
@@ -188,7 +188,7 @@
     <div class="col1-tkl">
         <div class="kouling-title">分享</div>
         <div class="kouling-content">
-            <textarea style="overflow-y:scroll" id="tkl2" class="tkl" rows="7" cols="18"><?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;【下单链接】<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?> 
+            <textarea style="overflow-y:scroll" id="tkl2" class="tkl" rows="7" cols="18"><?php echo ($coupon_click_url!='')?urldecode($title):the_title();?>&#13;&#10;---------------&#13;&#10;【在售价】 <?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?> 元&#13;&#10;【券后价】 <?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?> 元&#13;&#10;【下单链接】<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?> &#13;&#10;复制这条信息，{<?php echo $kouling; ?>}，打开【手机淘宝】即可领券购买。&#13;&#10;
             </textarea>
            
             <input id="copy2" class="but-tkl btn2" type="button" data-clipboard-action="copy" data-clipboard-target="#tkl2" value="一键复制" >
