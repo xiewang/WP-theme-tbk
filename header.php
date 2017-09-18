@@ -51,6 +51,15 @@
 				                <form class="s" method="get" action="<?php bloginfo('url'); ?>" role="search">
 				                	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
 				                	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
+				                	<div class="button-group" id="searchType">
+										<button type="button" class="button dropdown-toggle">
+											起步 <span class="downward"></span>
+										</button>
+										<ul class="drop-menu">
+											<li><a href="#">动画</a> </li>
+											<li><a href="#">模块</a> </li>
+										</ul>
+									</div>
 				                </form>
 				            </div>
 	        		</div>

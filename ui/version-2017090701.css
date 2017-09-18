@@ -874,3 +874,10 @@ body.pc{
 #article ul li a{
     color: #3a98ff;
 }
+#searchType{
+    height: 40px;
+    border-bottom-right-radius: 0;
+    border-top-right-radius: 0;
+    border-color: #ffc300;
+    border-right: none;
+}
