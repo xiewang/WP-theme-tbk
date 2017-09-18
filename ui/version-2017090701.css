@@ -766,7 +766,7 @@ a:focus, a:hover{
     font-size: 20px;
 }
 .sy-input{
-    width: 60%;
+    width: 50%;
 }
 .slogan .s-item {
     float: right;
@@ -874,10 +874,11 @@ body.pc{
 #article ul li a{
     color: #3a98ff;
 }
-#searchType{
+#searchType>button{
     height: 40px;
     border-bottom-right-radius: 0;
     border-top-right-radius: 0;
     border-color: #ffc300;
     border-right: none;
+    padding: 6px;
 }

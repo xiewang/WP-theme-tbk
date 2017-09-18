@@ -32,6 +32,14 @@
 				effect : "fadeIn"
 			});
 		});
+		function changeST(type){
+			$('input[name="searchType"]').val(type);
+			if(type === 0){
+				$('#searchTypePlace').text('超级搜索');
+			} else {
+				$('#searchTypePlace').text('内部优惠');
+			}
+		}
 	</script>
 </head>
 <body class="<?php echo wp_is_mobile()?'':'pc'?>">
@@ -53,13 +61,14 @@
 				                	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
 				                	<div class="button-group" id="searchType">
 										<button type="button" class="button dropdown-toggle">
-											超级搜索 <span class="downward"></span>
+											<span id="searchTypePlace">超级搜索</span> <span class="downward"></span>
 										</button>
 										<ul class="drop-menu">
-											<li><a href="#">超级搜索</a> </li>
-											<li><a href="#">内部优惠</a> </li>
+											<li><a href="#" onClick="changeST(0)">超级搜索</a> </li>
+											<li><a href="#" onClick="changeST(1)">内部优惠</a> </li>
 										</ul>
 									</div>
+									<input type="hidden" name="searchType"></input>
 				                </form>
 				            </div>
 	        		</div>
