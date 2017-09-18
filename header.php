@@ -39,6 +39,7 @@
 			} else {
 				$('#searchTypePlace').text('内部优惠');
 			}
+			$('#searchType').removeClass('open');
 		}
 	</script>
 </head>
@@ -61,14 +62,18 @@
 				                	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
 				                	<div class="button-group" id="searchType">
 										<button type="button" class="button dropdown-toggle">
-											<span id="searchTypePlace">超级搜索</span> <span class="downward"></span>
+											<?php 
+											    parse_str($_SERVER['QUERY_STRING'], $get);
+											    $searchType = isset($get['searchType'])?$get['searchType']:0;
+											?>
+											<span id="searchTypePlace"><?php echo $searchType==0?'超级搜索':'内部优惠'?></span> <span class="downward"></span>
 										</button>
 										<ul class="drop-menu">
 											<li><a href="#" onClick="changeST(0)">超级搜索</a> </li>
 											<li><a href="#" onClick="changeST(1)">内部优惠</a> </li>
 										</ul>
 									</div>
-									<input type="hidden" name="searchType"></input>
+									<input type="hidden" name="searchType" value="0"></input>
 				                </form>
 				            </div>
 	        		</div>

@@ -1,6 +1,11 @@
 <?php 
-    require 'searchapi.php';
-    return;
+    parse_str($_SERVER['QUERY_STRING'], $get);
+    $searchType = $get['searchType'];
+    if($searchType == 0){
+        require 'searchapi.php';
+        return; 
+    }
+    
 ?>
 <?php get_header(); ?>
 
@@ -56,7 +61,30 @@
             <?php endwhile; ?>
         </div>
       <div class="pagenavi"><?php next_posts_link('下一页') ?> <?php previous_posts_link('上一页') ?></div>
+      <div class="page-load-status">
+          <div class="infinite-scroll-request">
+            <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/jiazai.gif" alt="Loading" />
+            加载中...
+          </div>
+          <p class="infinite-scroll-error infinite-scroll-last">
+            到底了噢！
+          </p>
+        </div>
      </div>
 </div>
-
+<script type="text/javascript">
+    
+    jQuery(document).ready(function(){ 
+            var infScroll = new InfiniteScroll( '#content', {
+              append: '.post',
+              path: '.pagenavi a',
+              history: false,
+              checkLastPage: true,
+              status: '.page-load-status',
+            });
+            infScroll.on( 'append', function(){
+                loadImg();
+            } );
+        });
+</script>
 <?php get_footer(); ?>
