@@ -882,3 +882,15 @@ body.pc{
     border-right: none;
     padding: 6px;
 }
+#searchType.mobile{
+    position: absolute;
+    width: 84px;
+}
+#searchType.mobile>button{
+    width: 100%;
+    height: 32px;
+    margin-top: 4px;
+}
+#searchType.mobile>input[type="search"]{
+    width: calc(72% - 82px);
+}
