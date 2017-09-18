@@ -53,11 +53,11 @@
 				                	<input class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
 				                	<div class="button-group" id="searchType">
 										<button type="button" class="button dropdown-toggle">
-											起步 <span class="downward"></span>
+											超级搜索 <span class="downward"></span>
 										</button>
 										<ul class="drop-menu">
-											<li><a href="#">动画</a> </li>
-											<li><a href="#">模块</a> </li>
+											<li><a href="#">超级搜索</a> </li>
+											<li><a href="#">内部优惠</a> </li>
 										</ul>
 									</div>
 				                </form>
