@@ -32,15 +32,6 @@
 				effect : "fadeIn"
 			});
 		});
-		function changeST(type){
-			$('input[name="searchType"]').val(type);
-			if(type === 0){
-				$('#searchTypePlace').text('超级搜索');
-			} else {
-				$('#searchTypePlace').text('内部优惠');
-			}
-			$('#searchType').removeClass('open');
-		}
 	</script>
 </head>
 <body class="<?php echo wp_is_mobile()?'':'pc'?>">
@@ -100,7 +91,17 @@
 				</div>
 			</div>
 		<?php } ?>
-
+		<script type="text/javascript">
+			function changeST(type){
+				$('input[name="searchType"]').val(type);
+				if(type === 0){
+					$('#searchTypePlace').text('超级搜索');
+				} else {
+					$('#searchTypePlace').text('内部优惠');
+				}
+				$('#searchType').removeClass('open');
+			}
+		</script>
 	</div>
 </header>
 <?php if ( wp_is_mobile() ){ ?>
@@ -139,7 +140,7 @@
 						    parse_str($_SERVER['QUERY_STRING'], $get);
 						    $searchType = isset($get['searchType'])?$get['searchType']:0;
 						?>
-						<span id="searchTypePlace"><?php echo $searchType==0?'超级搜索':'内部优惠'?></span> <span class="downward"></span>
+						<span id="searchTypePlace"><?php echo $searchType==0?'超级':'内部'?></span> <span class="downward"></span>
 					</button>
 					<ul class="drop-menu">
 						<li><a href="#" onClick="changeST(0)">超级搜索</a> </li>
@@ -190,5 +191,17 @@
 			</div>
 		</div>
 	</div>
+
+	<script type="text/javascript">
+		function changeST(type){
+			$('input[name="searchType"]').val(type);
+			if(type === 0){
+				$('#searchTypePlace').text('超级');
+			} else {
+				$('#searchTypePlace').text('内部');
+			}
+			$('#searchType').removeClass('open');
+		}
+	</script>
 <?php } ?>
 

@@ -884,7 +884,7 @@ body.pc{
 }
 #searchType.mobile{
     position: absolute;
-    width: 84px;
+    width: 58px;
 }
 #searchType.mobile>button{
     width: 100%;
@@ -892,6 +892,9 @@ body.pc{
     margin-top: 4px;
 }
 .m-header .m-search input.sy-input.mobile{
-    padding-left: 84px;
+    padding-left: 58px;
     width: calc(72% - 82px);
+}
+.mobile ul.drop-menu li{
+    line-height: 20px;
 }
