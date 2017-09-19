@@ -147,7 +147,7 @@
 					</ul>
 				</div>
 				<input type="hidden" name="searchType" value="0"></input>
-            	<input autocomplete="off" id="search" class="sy-input" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
+            	<input autocomplete="off" id="search" class="sy-input mobile" type="search" name="s" placeholder="宝贝搜索..." value="<?php the_search_query(); ?>">
             	<button class="sy-submit" type="submit" role="button"><span class="icon-search"></span></button>
             </form>
 		</div>

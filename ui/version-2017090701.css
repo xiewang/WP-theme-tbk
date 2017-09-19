@@ -891,6 +891,7 @@ body.pc{
     height: 32px;
     margin-top: 4px;
 }
-#searchType.mobile>input[type="search"]{
+.m-header .m-search input.sy-input.mobile{
+    padding-left: 84px;
     width: calc(72% - 82px);
 }
