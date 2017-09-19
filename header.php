@@ -14,7 +14,7 @@
 	<link href="<?php bloginfo('template_url'); ?>/ui/pintuer.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/iconfont.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />
-	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017090701.css" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017091901.css" rel="stylesheet" type="text/css" />
 	<script src="<?php bloginfo('template_url'); ?>/ui/jquery.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/pintuer.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/infinite-scroll.pkgd.min.js" type="text/javascript" ></script>
