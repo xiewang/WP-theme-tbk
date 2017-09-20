@@ -197,6 +197,22 @@
 </div>
 <script type="text/javascript">
     var showKL = false;
+    var openApp = function(url) {
+        var appUrl = url.replace("http://", "").replace("https://", "");
+        var ifr = document.createElement('iframe');
+        ifr.src = 'taobao://' + appUrl;
+        ifr.style.display = 'none';
+        document.body.appendChild(ifr);
+        window.location = url;
+    };
+    var openAppIos9 = function(url) {
+        var appUrl = url.replace("http://", "").replace("https://", ""),
+            newUrl = 'taobao://' + appUrl;
+        window.location = newUrl;
+        window.setTimeout(function () {
+            window.location = url;
+        }, 3000);
+    };
     function jumpToTaobao(){
         <?php if(is_weixin()){?>
             $('#kouling').removeClass('hide');
@@ -206,7 +222,17 @@
                 toast("复制成功，快打开' 淘宝 'APP去领券吧！");
             });
         <?php }else {?>
-            window.open('<?php echo ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>');
+            $("body").html("<center style='margin-top: 10px;'>唤醒手机淘宝中...</center>");
+
+            var ua = navigator.userAgent.toLowerCase();
+            var taobaoUrl = '<?php echo ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>';
+            if (ua.match(/iphone os 9/i) == "iphone os 9") {
+                openAppIos9(taobaoUrl);
+            } else {
+                openApp(taobaoUrl);
+            }
+            // window.open();
+        
         <?php }?>
 
     }
