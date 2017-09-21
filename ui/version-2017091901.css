@@ -898,3 +898,12 @@ body.pc{
 .mobile ul.drop-menu li{
     line-height: 20px;
 }
+.pc-buy-botton{
+    cursor: pointer;
+}
+.pc-buy-botton:hover a{
+    color: #000
+}
+.pc-buy-botton a:hover{
+    color: #000
+}
