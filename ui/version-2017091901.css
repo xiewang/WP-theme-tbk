@@ -728,7 +728,7 @@ a:focus, a:hover{
     line-height: 1.4em;
     font-size: 1.4em;
     padding-top: .1em;
-    height: 1.3em;
+    height: 3.6em;
 }
 .mobile .box-txt{
     margin-top: .8em;
@@ -914,4 +914,11 @@ body.pc{
     position: absolute;
     right: 4px;
     bottom: -4px;
+}
+.mobile dd.buy-count{
+    position: absolute;
+    bottom: 24px;
+}
+.mobile dd.post-time{
+    bottom: 4px;
 }
