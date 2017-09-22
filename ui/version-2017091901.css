@@ -907,3 +907,11 @@ body.pc{
 .pc-buy-botton a:hover{
     color: #000
 }
+.box-txt{
+    bottom: 30px;
+}
+.post-time{
+    position: absolute;
+    right: 4px;
+    bottom: -4px;
+}
