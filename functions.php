@@ -300,6 +300,26 @@ class description_walker extends Walker_Nav_Menu
         $output .= apply_filters( 'walker_nav_menu_start_el', $item_output, $item, $depth, $args,$id );
     }
 }
-
+function timeago( $ptime ) {
+    $ptime = strtotime($ptime);
+    $etime = time() - $ptime;
+    if ($etime < 1) return '刚刚';     
+    $interval = array (         
+        12 * 30 * 24 * 60 * 60  =>  '年前 ('.date('Y-m-d', $ptime).')',
+        30 * 24 * 60 * 60       =>  '个月前 ('.date('m-d', $ptime).')',
+        7 * 24 * 60 * 60        =>  '周前 ('.date('m-d', $ptime).')',
+        24 * 60 * 60            =>  '天前',
+        60 * 60                 =>  '小时前',
+        60                      =>  '分钟前',
+        1                       =>  '秒前'
+    );
+    foreach ($interval as $secs => $str) {
+        $d = $etime / $secs;
+        if ($d >= 1) {
+            $r = round($d);
+            return $r . $str;
+        }
+    };
+}
 include 'schedule.php';
 ?>
