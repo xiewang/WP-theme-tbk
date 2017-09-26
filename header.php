@@ -41,7 +41,7 @@
 			   lifespan: 20,
 			   message:{
 			   	ios:'为了更方便使用，您可以将半刀网收藏到桌面: 点击 %icon 然后点击 <strong>添加到主屏幕</strong>.',
-			   	android:'为了更方便使用，您可将半刀网收藏到桌面，点击菜单按钮<small> %icon.</small>，然后<strong>添加到主屏幕</strong>。 <small>部分安卓浏览器可能没有<strong>添加到主屏幕</strong>功能😭，你也可以点击菜单中的“添加到首页导航”、“添加到书签”等类似功能。</small>'
+			   	android:'为了更方便使用，您可将半刀网收藏到桌面，点击菜单按钮<small> %icon.</small>，然后<strong>添加到主屏幕</strong>（“加快捷方式”）。 <small>部分安卓浏览器可能没有<strong>添加到主屏幕</strong>功能😭，你也可以点击菜单中的“添加到首页导航”、“添加到书签”等类似功能。</small>'
 			   }
 			});
 			addtohome.show();
