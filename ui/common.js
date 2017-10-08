@@ -51,7 +51,7 @@ $(function(){
 		onInit:function(swiper){
 			swiper.slides[2].className="swiper-slide swiper-slide-active";//第一次打开不要动画
 			},
-        breakpoints: { 
+        breakpoints: {  
                 668: {
                     slidesPerView: 1,
                  }
