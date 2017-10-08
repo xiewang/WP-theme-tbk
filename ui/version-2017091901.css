@@ -810,12 +810,13 @@ body.pc{
 #toast{
     z-index: 100000;
     width: 70%;
-    height: 40px;
+    min-height: 40px;
+    padding: 0 4px;
     line-height: 40px;
     font-size: 14px;
     color: #fff;
     text-align: center;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.8);
     border-radius: 4px;
     position: fixed;
     top: 50%;

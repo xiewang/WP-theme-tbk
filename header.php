@@ -48,7 +48,6 @@
 				addtohome.show();
 			<?php }?>
 		});
-
 	</script>
 </head>
 <body class="<?php echo wp_is_mobile()?'':'pc'?>">
