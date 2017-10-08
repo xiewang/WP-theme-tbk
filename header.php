@@ -55,7 +55,7 @@
 		});
 	</script>
 </head>
-<body class="<?php echo wp_is_mobile()?'':'pc'?>">
+<body class="<?php echo wp_is_mobile()?'':'pc'?>" style="top:0;left:0;margin: 0 auto;">
 
 <header class="layout page header">
 	<div class="container-layout padding-top" id="headerC">

@@ -1,3 +1,30 @@
+try{
+    var mySwiper = new Swiper ('.swiper-container', {
+    	autoHeight: false, 
+	    autoplay:3000,
+		speed:1000,
+		autoplayDisableOnInteraction : true,
+		loop:true,
+		centeredSlides : true,
+		slidesPerView:2,
+        pagination : '.swiper-pagination',
+		paginationClickable:true,
+		prevButton:'.swiper-button-prev',
+        nextButton:'.swiper-button-next',
+		onInit:function(swiper){
+			swiper.slides[2].className="swiper-slide swiper-slide-active";//第一次打开不要动画
+			},
+        breakpoints: {  
+                668: {
+                    slidesPerView: 1,
+                 }
+            }
+	  }) 	
+} catch(e){
+	alert(e)
+}
+     
+
 $(function(){
 	$('#m-cate-icon').on('click', function(){
 		if($('.m-cate-drop').hasClass('hide'))
@@ -34,31 +61,6 @@ $(function(){
     $('#dropcate').click(function(){
         $('.drop').addClass('open');
     })
-
-
-    var mySwiper = new Swiper ('.swiper-container', {
-    	autoHeight: false, 
-	    autoplay:3000,
-		speed:1000,
-		autoplayDisableOnInteraction : true,
-		loop:true,
-		centeredSlides : true,
-		slidesPerView:2,
-        pagination : '.swiper-pagination',
-		paginationClickable:true,
-		prevButton:'.swiper-button-prev',
-        nextButton:'.swiper-button-next',
-		onInit:function(swiper){
-			swiper.slides[2].className="swiper-slide swiper-slide-active";//第一次打开不要动画
-			},
-        breakpoints: {  
-                668: {
-                    slidesPerView: 1,
-                 }
-            }
-	  })  
-
-
 
     if(window.localStorage){
     	judge();

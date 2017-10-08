@@ -180,7 +180,7 @@ if($cate == '今日更新'
             ?>
                 <div class="post xl12 xs4 xm3 padding-bottom">
                     <?php if(wp_is_mobile()){?>
-                        <div class="box" onclick=" window.open('<?php echo $jump_url; ?>')" >
+                        <div class="box" onclick=" location.href = '<?php echo $jump_url; ?>'" >
                     <?php }else {?>
                         <div class="box" onclick=" window.open('<?php echo $jump_url; ?>')">
                         <?php }?>
@@ -265,7 +265,7 @@ if($cate == '今日更新'
 
                 <div class="post xl12 xs4 xm3 padding-bottom">
                     <?php if(wp_is_mobile()){?>
-                        <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
+                        <div class="box" onclick=" location.href = '<?php the_permalink(); ?>'">
                     <?php }else {?>
                         <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
                     <?php }?>

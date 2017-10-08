@@ -136,7 +136,7 @@
             <span class="xl">月销量<strong><?php echo ($coupon_click_url!='')?$volume:get_post_meta($post->ID, "hao_xiaol", true);?></strong>件</span>
         </div>
         <?php if ( wp_is_mobile() ){ ?>
-            <div id="buyNow" onclick="jumpToTaobao()">
+            <div id="buyNow" onclick="jumpToTaobao()" style="">
                         <a href="#" >领券购买</a>
             </div>
         <?php }else { ?>
