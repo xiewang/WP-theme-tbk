@@ -210,7 +210,8 @@ if($cate == '今日更新'
                                      <span>￥<?php echo ($item->zk_final_price-$coupon);?></span>
                                      <del>￥<?php echo $item->zk_final_price;?></del>  
                                 </dd>
-                                <dd class=""><?php echo $item->volume;?>人已买</dd>
+                                <dd class="post-time">活动开始于<?php echo timeago( get_gmt_from_date($item->event_start_time) );?></dd>
+                                <dd class="buy-count"><?php echo $item->volume;?>人已买</dd>
                             </div>
                         </div>
                         
@@ -294,8 +295,8 @@ if($cate == '今日更新'
                                      <span>￥<?php echo get_post_meta($post->ID, "hao_xianj", true);?></span>
                                      <del>￥<?php echo get_post_meta($post->ID, "hao_yuanj", true);?></del>  
                                 </dd>
-                                <dd><?php echo timeago( get_gmt_from_date(get_the_time('Y-m-d G:i:s')) );?></dd>
-                                <dd class=""><?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人已买</dd>
+                                <dd class="post-time"><?php echo timeago( get_gmt_from_date(get_the_time('Y-m-d G:i:s')) );?></dd>
+                                <dd class="buy-count"><?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人已买</dd>
                             </div>
                         </div>
                         

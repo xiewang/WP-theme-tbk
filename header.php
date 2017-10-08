@@ -14,7 +14,9 @@
 	<link href="<?php bloginfo('template_url'); ?>/ui/pintuer.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/iconfont.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />
-	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017091901.css" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017100801.css" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('template_url'); ?>/ui/add-to-homescreen-master/style/addtohomescreen.css" rel="stylesheet" type="text/css" />
+
 	<script src="<?php bloginfo('template_url'); ?>/ui/jquery.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/pintuer.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/infinite-scroll.pkgd.min.js" type="text/javascript" ></script>
@@ -22,6 +24,7 @@
 	<script src="<?php bloginfo('template_url'); ?>/ui/ZeroClipboard.min.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/respond.js" type="text/javascript" ></script>
 	<script src="<?php bloginfo('template_url'); ?>/ui/clipboard.min.js" type="text/javascript" ></script>
+	<script src="<?php bloginfo('template_url'); ?>/ui/add-to-homescreen-master/src/addtohomescreen.min.js" type="text/javascript" ></script>
 	<link href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" rel="shortcut icon">
     <link href="<?php echo get_template_directory_uri(); ?>/img/fav.png" rel="apple-touch-icon-precomposed">
 	<script src="<?php bloginfo('template_url'); ?>/ui/jquery.lazyload.js" type="text/javascript"></script>
@@ -31,6 +34,19 @@
 			$(".box-img img").lazyload({
 				effect : "fadeIn"
 			});
+			var addtohome = addToHomescreen({
+			   skipFirstVisit: true,
+			   maxDisplayCount: 2,
+			   autostart: false,
+			   lifespan: 40,
+			   message:{
+			   	ios:'为了更方便使用，您可以将半刀网收藏到桌面: 点击 %icon 然后点击 <strong>添加到主屏幕</strong>.',
+			   	android:'为了更方便使用，您可将半刀网收藏到桌面，点击菜单按钮<small> %icon.</small>，然后<strong>添加到主屏幕</strong>（“加快捷方式”）。 <small>部分安卓浏览器可能没有<strong>添加到主屏幕</strong>功能😭，你也可以点击菜单中的“添加到首页导航”、“添加到书签”等类似功能。</small>'
+			   }
+			});
+			<?php if ( wp_is_mobile() ){ ?>
+				addtohome.show();
+			<?php }?>
 		});
 	</script>
 </head>
