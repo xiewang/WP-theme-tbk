@@ -78,8 +78,8 @@ var toast = function(text,sec){
 
 var timeFormat = function (time, parrent) {
     var data = new Date(time);
-    let cal = (fmt)=> {
-        let o = {
+    var cal = function(fmt) {
+        var o = {
             "M+": data.getMonth() + 1, //月份
             "d+": data.getDate(), //日
             "h+": data.getHours(), //小时
