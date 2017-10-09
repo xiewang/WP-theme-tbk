@@ -124,7 +124,7 @@ var tips = function(latestTime, current){
 	        url:"http://996shop.com/?json=get_missed&time="+latestTime,
 	        dataType:"json",
 	        success:function(res){
-	            toast("亲，距你上次浏览半刀网，你已经错过了 <span style='color: #ff5f5f;'>"+res.count+"</span> 件新增的商品, 赶紧看看错过了什么！", 6000);
+	            toast("亲，距您上次来逛半刀网，我们已经新增了 <span style='color: #ff5f5f;'><b>"+res.count+"</b></span> 件商品, 赶紧看看都错过了什么！", 6000);
 	        }
 	    }); 
 	}	
