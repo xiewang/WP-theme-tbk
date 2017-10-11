@@ -76,27 +76,13 @@ function infinite_scroll_js() {
         <?php  if(strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
             loadImg();
         <?php }?>
+        // loadImg();
+            // alert("<?php echo $_SERVER['HTTP_USER_AGENT'];?>")
         
         jQuery(document).ready(function(){ 
             <?php  if(!strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
                 loadImg();
             <?php }?>
-
-                // var infScroll = new InfiniteScroll( '#content', {
-                //   append: '.post',
-                //   path: function() {
-                //       var pageNumber = this.loadCount + 1;
-                //       var path = $('.pagenavi a').attr('href')+'?page='+pageNumber;
-                //       return path;
-                //     },
-                //   status: '.page-load-status',
-                // });
-
-                // infScroll.on( 'load.infiniteScroll', function(){
-                //     loadImg();
-                // } );
-
-
             });
         </script>
         <?php
@@ -130,7 +116,6 @@ function infinite_scroll_js() {
             <?php  if(strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
                 loadImg();
             <?php }?>
-
              jQuery(document).ready(function(){ 
                 <?php  if(!strpos($_SERVER['HTTP_USER_AGENT'],'MSIE')){?>
                     loadImg();

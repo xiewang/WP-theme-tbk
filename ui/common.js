@@ -1,3 +1,30 @@
+try{
+    var mySwiper = new Swiper ('.swiper-container', {
+    	autoHeight: false, 
+	    autoplay:3000,
+		speed:1000,
+		autoplayDisableOnInteraction : true,
+		loop:true,
+		centeredSlides : true,
+		slidesPerView:2,
+        pagination : '.swiper-pagination',
+		paginationClickable:true,
+		prevButton:'.swiper-button-prev',
+        nextButton:'.swiper-button-next',
+		onInit:function(swiper){
+			swiper.slides[2].className="swiper-slide swiper-slide-active";//第一次打开不要动画
+			},
+        breakpoints: {  
+                668: {
+                    slidesPerView: 1,
+                 }
+            }
+	  }) 	
+} catch(e){
+	alert(e)
+}
+     
+
 $(function(){
 	$('#m-cate-icon').on('click', function(){
 		if($('.m-cate-drop').hasClass('hide'))
@@ -35,31 +62,6 @@ $(function(){
         $('.drop').addClass('open');
     })
 
-
-    var mySwiper = new Swiper ('.swiper-container', {
-    	autoHeight: false, 
-	    autoplay:3000,
-		speed:1000,
-		autoplayDisableOnInteraction : true,
-		loop:true,
-		centeredSlides : true,
-		slidesPerView:2,
-        pagination : '.swiper-pagination',
-		paginationClickable:true,
-		prevButton:'.swiper-button-prev',
-        nextButton:'.swiper-button-next',
-		onInit:function(swiper){
-			swiper.slides[2].className="swiper-slide swiper-slide-active";//第一次打开不要动画
-			},
-        breakpoints: { 
-                668: {
-                    slidesPerView: 1,
-                 }
-            }
-	  })  
-
-
-
     if(window.localStorage){
     	judge();
     }
@@ -78,8 +80,8 @@ var toast = function(text,sec){
 
 var timeFormat = function (time, parrent) {
     var data = new Date(time);
-    let cal = (fmt)=> {
-        let o = {
+    var cal = function(fmt) {
+        var o = {
             "M+": data.getMonth() + 1, //月份
             "d+": data.getDate(), //日
             "h+": data.getHours(), //小时
@@ -122,7 +124,7 @@ var tips = function(latestTime, current){
 	        url:"http://996shop.com/?json=get_missed&time="+latestTime,
 	        dataType:"json",
 	        success:function(res){
-	            toast("亲，距你上次浏览半刀网，你已经错过了 <span style='color: #ff5f5f;'>"+res.count+"</span> 件新增的商品, 赶紧看看错过了什么！", 6000);
+	            toast("亲，距您上次来逛半刀网，我们已经新增了 <span style='color: #ff5f5f;'><b>"+res.count+"</b></span> 件商品, 赶紧看看都错过了什么！", 6000);
 	        }
 	    }); 
 	}	

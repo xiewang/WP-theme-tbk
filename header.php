@@ -44,13 +44,18 @@
 			   	android:'为了更方便使用，您可将半刀网收藏到桌面，点击菜单按钮<small> %icon.</small>，然后<strong>添加到主屏幕</strong>（“加快捷方式”）。 <small>部分安卓浏览器可能没有<strong>添加到主屏幕</strong>功能😭，你也可以点击菜单中的“添加到首页导航”、“添加到书签”等类似功能。</small>'
 			   }
 			});
-			<?php if ( wp_is_mobile() ){ ?>
-				addtohome.show();
+			<?php if ( wp_is_mobile()&&window.localStorage ){ ?>
+				try{
+					addtohome.show();
+				}catch(e){
+					console.log(e)
+				}
+				
 			<?php }?>
 		});
 	</script>
 </head>
-<body class="<?php echo wp_is_mobile()?'':'pc'?>">
+<body class="<?php echo wp_is_mobile()?'':'pc'?>" style="top:0;left:0;margin: 0 auto;">
 
 <header class="layout page header">
 	<div class="container-layout padding-top" id="headerC">
