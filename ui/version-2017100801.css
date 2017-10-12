@@ -553,7 +553,8 @@ a:focus, a:hover{
 }
 .col1-a .text{
     color: #f15482;
-    font-size: 16px;
+    font-size: 14px;
+    line-height: 24px;
 }
 .col1-c{
     border-top: none; 
@@ -922,4 +923,8 @@ body.pc{
 }
 .mobile dd.post-time{
     bottom: 4px;
+}
+.col1-d{
+    background: #f15482;
+    border: 2px solid #f15482;
 }
