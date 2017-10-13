@@ -39,17 +39,23 @@
         $c = new TopClient;
         $c->appkey = "24545248";
         $c->secretKey = "9e69eb2ab9fa086d31ddf043493a6a49";
-        $req = new WirelessShareTpwdCreateRequest;
-        $tpwd_param = new GenPwdIsvParamDto;
-        // $tpwd_param->ext="{\"xx\":\"xx\"}";
-        $tpwd_param->logo= ($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);
-        $tpwd_param->url= ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);;
-        $tpwd_param->text= '来自半刀网分享的一件优质宝贝优惠券';
-        // $tpwd_param->user_id="24234234234";
-        $req->setTpwdParam(json_encode($tpwd_param));
+        $req = new TbkTpwdCreateRequest;
+        // $tpwd_param = new GenPwdIsvParamDto;
+        // // $tpwd_param->ext="{\"xx\":\"xx\"}";
+        // $tpwd_param->logo= ($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);
+        // $tpwd_param->url= ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);;
+        // $tpwd_param->text= '来自半刀网分享的一件优质宝贝优惠券';
+        // // $tpwd_param->user_id="24234234234";
+        // $req->setTpwdParam(json_encode($tpwd_param));
+
+        // $req->setUserId("123");
+        $req->setText(来自半刀网分享的一件优质宝贝优惠券);
+        $req->setUrl(($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true));
+        $req->setLogo(($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true));
+        $req->setExt("{}");
         $resp = $c->execute($req);
-         
-        $kouling = $resp->model;
+
+        $kouling = $resp->data->model;
         return $kouling;
     }
 
@@ -109,7 +115,6 @@
                         } else {
                             $kouling = get_kouling($post,$coupon_click_url,'','');
                         }
-                        
                     }
             ?>
 <article id="post-<?php the_ID(); ?>" class="line-big">
