@@ -1,3 +1,9 @@
+<?php 
+if(get_query_var('pagename') == 'double11'){
+	require 'double11/double11.php';
+	return;
+}
+?>
 <?php get_header(); ?>
 
 
@@ -46,7 +52,10 @@
 					</li>
 				</ul>
 			</div>
-		<?php }?>
+		<?php }
+		
+		?>
+
 	</div>
 </div>
 <?php get_footer(); ?>
