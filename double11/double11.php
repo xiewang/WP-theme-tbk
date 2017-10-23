@@ -226,7 +226,7 @@ z-index:666;
 					
 				<li>
 				<div class="nbdivmain">
-				<img class="jumppic jumppicmain" data-kouling="￥xjLn05B88uj￥" src="<?php bloginfo('template_url');?>/double11/res/TB1nOSRmgMPMeJjy1XbXXcwxVXa-440-180.jpg" data-url="https://s.click.taobao.com/1PUVGZw" id="https://img.alicdn.com/tfs/TB1nOSRmgMPMeJjy1XbXXcwxVXa-440-180.jpg" data-name="双11超级红包等你来抢">
+				<img class="jumppic jumppicmain" data-kouling="￥Hs1Q0gYuh1v￥" src="<?php bloginfo('template_url');?>/double11/res/TB1nOSRmgMPMeJjy1XbXXcwxVXa-440-180.jpg" data-url="https://s.click.taobao.com/RKqDEZw" id="https://img.alicdn.com/tfs/TB1nOSRmgMPMeJjy1XbXXcwxVXa-440-180.jpg" data-name="双11超级红包等你来抢">
 				<div class="span" style="color:#fff;background:rgba(0,0,0,0.5);margin-top:-40px;z-index:998;position:absolute;width:97%;"><div style="text-align:center;margin:0 auto;">点击领取双11超级红包</div></div>
 				</div>
 				</li>
@@ -239,12 +239,12 @@ z-index:666;
 			<ul class="list_box nb100" id="goods_box">
 					
 				<li>
-
+<a href="http://mm.youhuipi.com/app/index.php?i=7&amp;c=entry&amp;jumpurl=http%253A%252F%252Fmo.m.taobao.com%252Funion%252F1111yushou%253Fpid%253Dmm_14661123_33544947_119412095%2526cpsrc%253Dfeiv_tfeiv&amp;shopid=&amp;do=jump&amp;m=bsht_tbk">
 				<div class="nbdivmain">
 				<img class="jumppicmain2" data-kouling="￥2hv005B9Ru1￥" src="<?php bloginfo('template_url');?>/double11/res/bimai.png" data-url="http://g.vio37.com/h.uMq2C5" id="http://mm.youhuipi.com/addons/bsht_1111/nb1111/imgs/bimai.png" data-name="查看双11预售必买清单">
 				<div class="span" style="color:#fff;background:rgba(0,0,0,0.5);margin-top:-40px;z-index:998;position:absolute;width:97%;"><div style="text-align:center;margin:0 auto;">查看双11预售必买清单</div></div>
 				</div>
-
+</a>
 				</li>
 				
 			</ul>
@@ -714,13 +714,13 @@ z-index:666;
                         <div class="share_content am-margin-bottom am-badge-success am-badge" id="share_content"></div>
                         <div class="am-text-center am-margin-top-sm ">
                             <a class="am-padding-vertical-xs am-padding-horizontal-lg am-round am-inline-block share" id="copybtn" style="background: #f54d23; color: white;" data-taowords="">一键复制</a>
-                            <div class="am-margin-top-sm am-text-xs am-text-primary am-margin-horizontal-sm">点击复制后，请打开【手机APP】购买！</div>
+                            <div class="am-margin-top-sm am-text-xs am-text-primary am-margin-horizontal-sm">点击复制后，请打开【淘宝APP】购买！</div>
                         </div>
                         </div>
                     <div class="am-text-left am-text-xs am-padding-vertical-sm am-padding-horizontal-lg" style="background:#f3f3f3; border-radius:0 0 5px 5px;color:#86564B">
                         <span>
 						<span>使用说明：</span>
-                            <span>复制后打开【手机APP】即可领取优惠！</span>
+                            <span>复制后打开【淘宝APP】即可领取优惠！</span>
                         </span>
                             <br>
                         <span>
