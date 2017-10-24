@@ -679,6 +679,14 @@ a:focus, a:hover{
     background-size: 100%;
 }
 .m-main-cate li:nth-child(4) a {
+    background: url(../img/11.png) center no-repeat;
+    background-color: #ff0000; 
+    background-size: 100%;
+}
+.m-main-cate li:nth-child(5){
+    display: none;
+}
+.m-main-cate li:nth-child(5) a {
     background: url(../img/special.png) center no-repeat;
     background-color: #149a0f; 
     background-size: 80%;
