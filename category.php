@@ -287,7 +287,7 @@ if($cate == '今日更新'
                                     <a ><?php the_title(); ?></a>
                                 </dt> 
                                 <div class="box-txt">
-                                    <div class="box-juan-price"><span><?php echo ceil(get_post_meta($post->ID, "hao_youh", true));?>元</span></div>
+                                    <div class="box-juan-price"><span><?php echo ceil(get_post_meta($post->ID, "hao_youh", true))==0?没有:ceil(get_post_meta($post->ID, "hao_youh", true)).'元';?></span></div>
                                     <div class="box-juan"><span>券</span></div>
                                 </div>
 
