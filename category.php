@@ -295,8 +295,8 @@ if($cate == '今日更新'
                                      <span>￥<?php echo get_post_meta($post->ID, "hao_xianj", true);?></span>
                                      <del>￥<?php echo get_post_meta($post->ID, "hao_yuanj", true);?></del>  
                                 </dd>
-                                <dd class="post-time"><?php echo timeago( get_gmt_from_date(get_the_time('Y-m-d G:i:s')) );?></dd>
-                                <dd class="buy-count"><?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人已买</dd>
+                                <dd style="<?php echo $cate == '双十一'?'visibility: hidden;':''?>" class="post-time"><?php echo timeago( get_gmt_from_date(get_the_time('Y-m-d G:i:s')) );?></dd>
+                                <dd style="<?php echo $cate == '双十一'?'visibility: hidden;':''?>" class="buy-count"><?php echo get_post_meta($post->ID, "hao_xiaol", true);?>人已买</dd>
                             </div>
                         </div>
                         
