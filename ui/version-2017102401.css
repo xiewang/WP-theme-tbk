@@ -701,6 +701,8 @@ a:focus, a:hover{
     text-align: center;
     color: #582c1a;
     border-radius: 25px;
+    font-size: 10px;
+    box-shadow: 0px 0px 2px 0px #000;
 }
 .m-main-cate ul li.current-menu-item a{
     color: #582c1a;
@@ -935,4 +937,16 @@ body.pc{
 .col1-d{
     background: #f15482;
     border: 2px solid #f15482;
+}
+#ad-scroll{
+    background: #fff;
+}
+#ad-scroll>div{
+    height: 20px;
+    line-height: 20px;
+    background: #000;
+    opacity: .5;
+    margin-bottom: 8px;
+    color: #fff;
+    text-align: center;
 }

@@ -191,6 +191,11 @@
 			</div>
 		</div>
 		<div class="layout">
+			<div id="ad-scroll" onclick="location.href='http://996shop.com/double11'">
+				<div>
+					<span>双十一超级红包，11.11前，每天发放2.5亿，先到先得</span>
+				</div>
+			</div>
 			<div class="m-main-cate">
 				<ul>
 	                <?php wp_nav_menu(array('theme_location'=>'header-menu'));?>
