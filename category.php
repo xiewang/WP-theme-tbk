@@ -180,7 +180,7 @@ if($cate == '今日更新'
             ?>
                 <div class="post xl12 xs4 xm3 padding-bottom">
                     <?php if(wp_is_mobile()){?>
-                        <div class="box" onclick=" location.href = '<?php echo $jump_url; ?>'" >
+                        <div class="box" onclick=" jumpToNextPage('<?php echo $jump_url; ?>')" >
                     <?php }else {?>
                         <div class="box" onclick=" window.open('<?php echo $jump_url; ?>')">
                         <?php }?>
@@ -265,7 +265,7 @@ if($cate == '今日更新'
 
                 <div class="post xl12 xs4 xm3 padding-bottom">
                     <?php if(wp_is_mobile()){?>
-                        <div class="box" onclick=" location.href = '<?php the_permalink(); ?>'">
+                        <div class="box" onclick=" jumpToNextPage('<?php the_permalink(); ?>')">
                     <?php }else {?>
                         <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
                     <?php }?>
@@ -338,7 +338,13 @@ if($cate == '今日更新'
      </div>
 </div>
 <script type="text/javascript">
-    
+    function jumpToNextPage(url){
+        if(navigator.userAgent.indexOf('UCBrowser')>-1){
+            location.href = url;
+        } else {
+            window.open(url);
+        }
+    }
     jQuery(document).ready(function(){ 
         <?php if($main){?>
             var infScroll = new InfiniteScroll( '#content', {
