@@ -361,7 +361,7 @@ if($cate == '今日更新'
                   }
                   
                 },
-              history: false,
+              history: 'push',
               checkLastPage: true,
               status: '.page-load-status',
             });
@@ -370,7 +370,7 @@ if($cate == '今日更新'
               append: '.post',
               path: '.pagenavi a',
               status: '.page-load-status',
-              history: false,
+              history: 'push',
             });
         <?php }?>
         infScroll.on( 'append', function(){
