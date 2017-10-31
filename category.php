@@ -144,7 +144,12 @@ if($cate == '今日更新'
         }
         return $arr;
     }
-    
+    function is_weixin(){ 
+        if ( strpos($_SERVER['HTTP_USER_AGENT'], 'MicroMessenger') !== false ) {
+                return true;
+        }   
+        return false;
+    }
 ?>
 
 <?php 
@@ -180,7 +185,7 @@ if($cate == '今日更新'
             ?>
                 <div class="post xl12 xs4 xm3 padding-bottom">
                     <?php if(wp_is_mobile()){?>
-                        <div class="box" onclick=" jumpToNextPage('<?php echo $jump_url; ?>')" >
+                        <div class="box" onclick=" jumpToNextPage('<?php echo $jump_url; ?>','<?php echo $item->title; ?>')" >
                     <?php }else {?>
                         <div class="box" onclick=" window.open('<?php echo $jump_url; ?>')">
                         <?php }?>
@@ -265,7 +270,7 @@ if($cate == '今日更新'
 
                 <div class="post xl12 xs4 xm3 padding-bottom">
                     <?php if(wp_is_mobile()){?>
-                        <div class="box" onclick=" jumpToNextPage('<?php the_permalink(); ?>')">
+                        <div class="box" onclick=" jumpToNextPage('<?php the_permalink(); ?>','<?php the_title(); ?>')">
                     <?php }else {?>
                         <div class="box" onclick=" window.open('<?php the_permalink(); ?>')">
                     <?php }?>
@@ -338,14 +343,54 @@ if($cate == '今日更新'
      </div>
 </div>
 <script type="text/javascript">
-    function jumpToNextPage(url){
+alert(history.pushState)
+    var scrollTop = document.documentElement.scrollTop;
+    function jumpToNextPage(url,title){
         if(navigator.userAgent.indexOf('UCBrowser')>-1){
             location.href = url;
         } else {
-            window.open(url);
+            // location.href = url;
+            // window.open(url);
+
+            document.title = title;
+            jumpWithoutFresh(url);
+            history.pushState({title:'d'}, "ee", url);
         }
     }
+
+    var jumpWithoutFresh = function(url){
+        $.ajax({
+            type:"get",
+            url: url,
+            success:function(response){
+                if(response){
+                    $('body>*').hide();
+                    var div = document.createElement('div');
+                    div.id = 'single';
+                    var html = $.parseHTML( response,'',false )
+                    // div.innerHTML = response;
+                    var html1 = [];
+                    for(i=0;i<html.length;i++){
+                        if(html[i].localName !== 'meta' || html[i].localName !== 'link'){
+                            html1.push(html[i])
+                        }
+                    }
+                    $('body').append(div);
+                    // $('<div>d</div>').appendTo('body');
+                    $(div).append(html1);
+                    $(window).scrollTop(0);
+                }
+            }
+        }); 
+    }
     jQuery(document).ready(function(){ 
+         window.onpopstate = function (e) { 
+            if(!e.state){
+                $('body>*').show();
+                $('#single').remove();
+                $(window).scrollTop(scrollTop);
+            }
+        }
         <?php if($main){?>
             var infScroll = new InfiniteScroll( '#content', {
               append: '.post',
@@ -361,8 +406,8 @@ if($cate == '今日更新'
                   }
                   
                 },
-              history: 'push',
-              checkLastPage: true,
+              history: '<?php echo is_weixin()? false:false?>',
+
               status: '.page-load-status',
             });
         <?php }else{?>
@@ -370,7 +415,7 @@ if($cate == '今日更新'
               append: '.post',
               path: '.pagenavi a',
               status: '.page-load-status',
-              history: 'push',
+              history: '<?php echo is_weixin()? false:false?>',
             });
         <?php }?>
         infScroll.on( 'append', function(){
