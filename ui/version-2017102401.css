@@ -177,7 +177,7 @@ ul.cate-list{
     height: 260px;
     border: 1px solid #ddd;
 }
-#rightContactMobile{
+.rightContactMobile{
 	position: fixed;
     right: 10px;
     bottom: 10px;
@@ -191,7 +191,7 @@ ul.cate-list{
     font-family: "Times New Roman",Georgia,Serif;
     z-index: 1000;
 }
-#plus{
+.plus{
 	position: absolute;
     transform: rotate(45deg);
     transform-origin: center;
@@ -202,14 +202,14 @@ ul.cate-list{
     color: #fff;
     opacity: 0.7;
 }
-#plus{
+.plus{
 	font-size: 40px;
 	display: block;
 	width: 50px;
     height: 50px;
     border-radius: 25px;
 }
-#plus>span{
+.plus>span{
 	display: block;
     height: 50px;
     width: 50px;
@@ -261,14 +261,14 @@ ul.cate-list{
     right: 90px;
     left: initial;
 }
-#rightContactMobile.rotate {
+.rightContactMobile.rotate {
     -webkit-animation: rotate .8s;
     -moz-animation: rotate .8s;
     -o-animation: rotate .8s;
 	animation: rotate .8s;
 	transform: rotate(0deg);
 }
-#rightContactMobile.rotateR {
+.rightContactMobile.rotateR {
 	-webkit-animation: rotateR .8s;
     -moz-animation: rotateR .8s;
     -o-animation: rotateR .8s;

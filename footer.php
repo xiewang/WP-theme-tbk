@@ -19,8 +19,8 @@
             <div id="qun" class="qrImg"><img src="<?php bloginfo('template_url'); ?>/img/qun.jpg"></div>
         </div>
     <?php } else {?>
-        <div id="rightContactMobile">
-            <div id="plus"><span>+</span></div>
+        <div class="rightContactMobile">
+            <div class="plus"><span>+</span></div>
             <div class="bling"><a href="/feedback"><span>意见</span><span>反馈</span></a></div>
             <div class="bling" id="jiaochengC"><a href="/article"><span>使用</span><span>教程</span></a></div>
 
@@ -70,7 +70,7 @@
                 $('.qrImg').hide();
             })
 
-            $('#plus').click(function(){
+            $(document).on('click','.plus',function(){
                 var the = this;
                 if($(this).parent().hasClass('rotate')){
                     $(this).parent().removeClass('rotate');
