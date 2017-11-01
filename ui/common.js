@@ -155,5 +155,111 @@ $(function(){
     });
     
 });
+function getShortUrl(url){
+    var request = "http://api.ft12.com/api.php?format=jsonp&url="+ encodeURIComponent(url);
+    var ret = '';
+    $.ajax({
+        type:"get",
+        url: request,
+        dataType:"jsonp",
+        success:function(response){
+            if (response.error == 0){
+                ret = response.url;
+            } else {
+                ret = '';
+            }
+            var text = $('#tkl2').val();
+            var array = text.split('】');
+            array[array.length-1] = ret;
+            $('#tkl2').val(array.join('】'));
+        }
+    }); 
+}
+
+var showKL = false;
+var openApp = function(url) {
+    var appUrl = url.replace("http://", "").replace("https://", "");
+    var ifr = document.createElement('iframe');
+    ifr.src = 'taobao://' + appUrl;
+    ifr.style.display = 'none';
+    document.body.appendChild(ifr);
+    window.location = url;
+};
+var openAppIos9 = function(url) {
+    var appUrl = url.replace("http://", "").replace("https://", ""),
+        newUrl = 'taobao://' + appUrl;
+    window.location = newUrl;
+    window.setTimeout(function () {
+        window.location = url;
+    }, 3000);
+};
+function jumpToTaobao(is_weixin,taobaoUrl){
+    if(is_weixin == 'true'){
+        $('#kouling').removeClass('hide');
+        showKL = true;
+        var clipboard = new Clipboard('.btn1');
+        clipboard.on('success', function(e) {
+            toast("复制成功，快打开' 淘宝 'APP去领券吧！");
+        });
+    }else {
+        $("body").html("<center style='margin-top: 10px;'>唤醒手机淘宝中...</center>");
+
+        var ua = navigator.userAgent.toLowerCase();
+        if (ua.match(/iphone os 9/i) == "iphone os 9") {
+            openAppIos9(taobaoUrl);
+        } else {
+            openApp(taobaoUrl);
+        }
+        // window.open();
+    
+    }
+
+}
+
+function shareWeixin(coupon_click_url,url){
+    if(coupon_click_url != ''){
+        getShortUrl(url);
+    }
+    $('#share').removeClass('hide');
+    showKL = true;
+    var clipboard = new Clipboard('.btn2');
+    clipboard.on('success', function(e) {
+        toast("内容已经复制成功，去分享吧！");
+    });
+}
+
+function shareWeibo(img, content) {
+    (function (s, d, e) {
+        
+        var f = 'http://v.t.sina.com.cn/share/share.php?', 
+        u = d.location.href, 
+        p = ['url=', e(u), '&title=', e(content), '&appkey=3994075567', '&pic=', e(img)].join('');
+
+        function a() {
+            if (!window.open([f, p].join(''), 'mb', ['toolbar=0,status=0,resizable=1,width=620,height=450,left=', (s.width - 620) / 2, ',top=', (s.height - 450) / 2].join('')))u.href = [f, p].join('');
+        };
+        if (/Firefox/.test(navigator.userAgent)) {
+            setTimeout(a, 0)
+        } else {
+            a()
+        }
+    })(screen, document, encodeURIComponent);
+}
+
+$('document').on('click', '.kouling', function(e){
+    var $target  = $(e.target);
+    if(!$target.is(".kouling")){
+        $('.kouling').addClass('hide');
+        showKL = false;
+    }
+    
+});
+
+$(document).on('touchmove',function(e){
+    if(showKL)
+        e.preventDefault();
+})
+
+
 //====================for single page end===================//
 

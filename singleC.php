@@ -93,7 +93,10 @@
                     }
             ?>
 <article id="post-<?php the_ID(); ?>" class="line-big">
-    <div onclick="jumpToTaobao()" class="xl12 xs6 xm4" style="<?php echo wp_is_mobile()?'padding: 0px':''?>">
+    <?php         
+        $taobaoUrl = ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);
+    ?>
+    <div onclick="jumpToTaobao('<?php echo is_weixin()?'true':'false';?>','<?php echo $taobaoUrl;?>')" class="xl12 xs6 xm4" style="<?php echo wp_is_mobile()?'padding: 0px':''?>">
          <img src="<?php echo ($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>" class=" img-responsive" alt=""/>
     </div>
     <div class="xl12 xs6 xm6 col1">
@@ -116,7 +119,7 @@
             <span class="xl">月销量<strong><?php echo ($coupon_click_url!='')?$volume:get_post_meta($post->ID, "hao_xiaol", true);?></strong>件</span>
         </div>
         <?php if ( wp_is_mobile() ){ ?>
-            <div id="buyNow" onclick="jumpToTaobao()" style="">
+            <div id="buyNow" onclick="jumpToTaobao('<?php echo is_weixin()?'true':'false';?>','<?php echo $taobaoUrl;?>')" style="">
                         <a href="#" >领券购买</a>
             </div>
         <?php }else { ?>
@@ -132,8 +135,12 @@
                 <span>你还可以把这个宝贝分享给你的朋友：</span>
                 <?php if(wp_is_mobile()){?>
                     <div class="bdsharebuttonbox">
-                        <div id="shareWeixin" onclick="shareWeixin()"></div>
-                        <div id="shareWeibo" onclick="shareWeibo('<?php echo ($coupon_click_url!='')?urldecode($title):the_title(); ?>','<?php echo ($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>')"></div>
+                        <?php 
+                            $urlF = 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; 
+                            $contentF = ($coupon_click_url!='')?urldecode($title):get_the_title().'\n【在售价'.(($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true)).'元\n【券后价】'.(($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true)).'元\n【下单链接】';
+                        ?>
+                        <div id="shareWeixin" onclick="shareWeixin('<?php echo $coupon_click_url?>','<?php echo $urlF;?>')"></div>
+                        <div id="shareWeibo" onclick="shareWeibo('<?php echo ($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true);?>','<?php echo $contentF;?>')"></div>
                     </div>
                 <?php }else{?>
                     <div class="bdsharebuttonbox">
@@ -176,110 +183,7 @@
     </div>
 </div>
 <script type="text/javascript">
-    var showKL = false;
-    var openApp = function(url) {
-        var appUrl = url.replace("http://", "").replace("https://", "");
-        var ifr = document.createElement('iframe');
-        ifr.src = 'taobao://' + appUrl;
-        ifr.style.display = 'none';
-        document.body.appendChild(ifr);
-        window.location = url;
-    };
-    var openAppIos9 = function(url) {
-        var appUrl = url.replace("http://", "").replace("https://", ""),
-            newUrl = 'taobao://' + appUrl;
-        window.location = newUrl;
-        window.setTimeout(function () {
-            window.location = url;
-        }, 3000);
-    };
-    function jumpToTaobao(){
-        <?php if(is_weixin()){?>
-            $('#kouling').removeClass('hide');
-            showKL = true;
-            var clipboard = new Clipboard('.btn1');
-            clipboard.on('success', function(e) {
-                toast("复制成功，快打开' 淘宝 'APP去领券吧！");
-            });
-        <?php }else {?>
-            $("body").html("<center style='margin-top: 10px;'>唤醒手机淘宝中...</center>");
 
-            var ua = navigator.userAgent.toLowerCase();
-            var taobaoUrl = '<?php echo ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>';
-            if (ua.match(/iphone os 9/i) == "iphone os 9") {
-                openAppIos9(taobaoUrl);
-            } else {
-                openApp(taobaoUrl);
-            }
-            // window.open();
-        
-        <?php }?>
-
-    }
-
-    function shareWeixin(){
-        //异步get口令
-        // var kouling = '<?php echo $kouling; ?>';
-        // if(!kouling){
-        //      $.ajax({
-        //         type:"post",
-        //         url: "<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?>",
-        //         data:{kouling:"0"},
-        //         dataType:"json",
-        //         success:function(res){
-        //                 console.log(res);
-        //             }
-        //         }); 
-        // }
-        if('<?php echo $coupon_click_url?>' != ''){
-            getShortUrl("<?php echo 'http://'.$_SERVER['SERVER_NAME'].':'.$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"]; ?>");
-        }
-        $('#share').removeClass('hide');
-        showKL = true;
-        var clipboard = new Clipboard('.btn2');
-        clipboard.on('success', function(e) {
-            toast("内容已经复制成功，去分享吧！");
-        });
-    }
-
-    function shareWeibo(title,img) {
-        var content = title+'\n【在售价】<?php echo ($coupon_click_url!='')?$price:get_post_meta($post->ID, "hao_yuanj", true);?>元\n'+'【券后价】<?php echo ($coupon_click_url!='')?$final_price:get_post_meta($post->ID, "hao_xianj", true);?>元\n【下单链接】';
-        (function (s, d, e) {
-            
-            var f = 'http://v.t.sina.com.cn/share/share.php?', 
-            u = d.location.href, 
-            p = ['url=', e(u), '&title=', e(content), '&appkey=3994075567', '&pic=', e(img)].join('');
-
-            function a() {
-                if (!window.open([f, p].join(''), 'mb', ['toolbar=0,status=0,resizable=1,width=620,height=450,left=', (s.width - 620) / 2, ',top=', (s.height - 450) / 2].join('')))u.href = [f, p].join('');
-            };
-            if (/Firefox/.test(navigator.userAgent)) {
-                setTimeout(a, 0)
-            } else {
-                a()
-            }
-        })(screen, document, encodeURIComponent);
-    }
-
-    $('.kouling').on('click', function(e){
-        var $target  = $(e.target);
-        if($target.is(".kouling")){
-            $('.kouling').addClass('hide');
-            showKL = false;
-        }
-        
-    });
-
-    $(document).on('touchmove',function(e){
-        if(showKL)
-            e.preventDefault();
-    })
-
-    $(function(){
-        <?php if(($coupon_click_url!='')){?>
-            document.title = '<?php echo "半刀网推荐：".urldecode($title);?>'
-        <?php }?>
-    });
     
 </script>
 
@@ -377,32 +281,7 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
 
-    function getShortUrl(url){
-        var request = "http://api.ft12.com/api.php?format=jsonp&url="+ encodeURIComponent(url);
-        var ret = '';
-        $.ajax({
-            type:"get",
-            url: request,
-            dataType:"jsonp",
-            success:function(response){
-                if (response.error == 0){
-                    ret = response.url;
-                } else {
-                    ret = '';
-                }
-                var text = $('#tkl2').val();
-                var array = text.split('】');
-                array[array.length-1] = ret;
-                $('#tkl2').val(array.join('】'));
-            }
-        }); 
-    }
-
-    
-    
-</script>
 <script src="<?php bloginfo('template_url'); ?>/ui/single.js" type="text/javascript" ></script>
 
 <?php get_footer(); ?>
