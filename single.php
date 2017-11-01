@@ -54,7 +54,7 @@ if(1==1){
         // $req->setTpwdParam(json_encode($tpwd_param));
 
         // $req->setUserId("123");
-        $req->setText(来自半刀网分享的一件优质宝贝优惠券);
+        $req->setText('来自半刀网分享的一件优质宝贝优惠券');
         $req->setUrl(($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true));
         $req->setLogo(($coupon_click_url!='')?$pict_url:get_post_meta($post->ID, "hao_zhutu", true));
         $req->setExt("{}");

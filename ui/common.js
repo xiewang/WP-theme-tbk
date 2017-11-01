@@ -177,7 +177,9 @@ function getShortUrl(url){
             }
             var text = $('#tkl2').val();
             var array = text.split('】');
-            array[array.length-1] = ret;
+            var array2 = array[array.length-2].split('\n');
+            array2[0] = ret;
+            array[array.length-2] = array2.join('\n')
             $('#tkl2').val(array.join('】'));
         }
     }); 
@@ -224,7 +226,7 @@ function jumpToTaobao(is_weixin,taobaoUrl){
 }
 
 function shareWeixin(coupon_click_url,url){
-    if(coupon_click_url != ''){
+    if(coupon_click_url != '' ||url.length>20){
         getShortUrl(url);
     }
     $('#share').removeClass('hide');
