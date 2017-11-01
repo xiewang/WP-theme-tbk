@@ -345,7 +345,7 @@ if($cate == '今日更新'
 <script type="text/javascript">
     var scrollTop = document.documentElement.scrollTop;
     function jumpToNextPage(url,title){
-        if(navigator.userAgent.indexOf('UCBrowser')>-1){
+        if(navigator.userAgent.indexOf('UCBrowser')>-1){//uc 
             location.href = url;
         } else {
             // location.href = url;
@@ -359,7 +359,7 @@ if($cate == '今日更新'
 
     var jumpWithoutFresh = function(url,title){
         document.title = '半刀网推荐：'+title;
-        history.pushState({title:'d'}, "ee", url);
+        history.pushState({title:document.title,type:'signle'}, "signle", url);
         showKL = false;
         $.ajax({
             type:"get",
@@ -367,6 +367,7 @@ if($cate == '今日更新'
             success:function(response){
                 if(response){
                     $('body>*').hide();
+                    $('#single').remove();
                     var div = document.createElement('div');
                     div.id = 'single';
                     var html = $.parseHTML( response,'',false )
@@ -389,8 +390,11 @@ if($cate == '今日更新'
          window.onpopstate = function (e) { 
             if(!e.state){
                 $('body>*').show();
-                $('#single').remove();
+                $('#single').hide();
                 $(window).scrollTop(scrollTop);
+            } else {
+                $('body>*').hide();
+                $('#single').show();
             }
         }
         <?php if($main){?>

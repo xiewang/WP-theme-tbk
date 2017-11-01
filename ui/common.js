@@ -153,7 +153,14 @@ $(function(){
         }
         
     });
-    
+    $(document).on('click', '.kouling', function(e){
+	    var $target  = $(e.target);
+	    if($target.is(".kouling")){
+	        $('.kouling').addClass('hide');
+	        showKL = false;
+	    }
+	    
+	});
 });
 function getShortUrl(url){
     var request = "http://api.ft12.com/api.php?format=jsonp&url="+ encodeURIComponent(url);
@@ -246,14 +253,6 @@ function shareWeibo(img, content) {
     })(screen, document, encodeURIComponent);
 }
 
-$('document').on('click', '.kouling', function(e){
-    var $target  = $(e.target);
-    if(!$target.is(".kouling")){
-        $('.kouling').addClass('hide');
-        showKL = false;
-    }
-    
-});
 
 $(document).on('touchmove',function(e){
     if(showKL)
