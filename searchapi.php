@@ -53,6 +53,7 @@
     } else if(count($tbk_item) <= 10 && is_array($tbk_item)){
         $searchList = array2object($tbk_item);
     } 
+
 ?>
 
 <div class="layout page <?php echo wp_is_mobile()?'list':'padding-top'?>">
@@ -90,7 +91,7 @@
             ?>
                 <div class="post xl12 xs4 xm3 padding-bottom">
                     <?php if(wp_is_mobile()){?>
-                        <div class="box" onclick=" jumpToNextPage('<?php echo $jump_url; ?>')" >
+                        <div class="box" onclick=" jumpToNextPage('<?php echo $jump_url; ?>','<?php echo $item->title; ?>')" >
                     <?php }else {?>
                         <div class="box" onclick=" window.open('<?php echo $jump_url; ?>')">
                         <?php }?>
@@ -147,25 +148,73 @@
         </div>
      </div>
 </div>
+<div class="spinner hide">
+    <div class=" icon-spinner for-img"></div>
+</div>
 <script type="text/javascript">
-    function jumpToNextPage(url){
-        if(navigator.userAgent.indexOf('UCBrowser')>-1){
+    var scrollTop = document.documentElement.scrollTop;
+    function jumpToNextPage(url,title){
+        if(navigator.userAgent.indexOf('UCBrowser')>-1){//uc 
             location.href = url;
+        } else if('<?php echo is_weixin();?>' == 1) {
+            jumpWithoutFresh(url,title);
         } else {
             window.open(url);
         }
     }
+
+    var jumpWithoutFresh = function(url,title){
+        document.title = '半刀网推荐：'+title;
+        history.pushState({title:document.title,type:'signle'}, "signle", url);
+        showKL = false;
+        $('.spinner').removeClass('hide');
+        $.ajax({
+            type:"get",
+            url: url,
+            success:function(response){
+                if(response){
+                    $('body>*').not('.m-header').hide();
+                    $('#single').remove();
+                    var div = document.createElement('div');
+                    div.id = 'single';
+                    var html = $.parseHTML( response,'',false )
+                    // div.innerHTML = response;
+                    var html1 = [];
+                    for(i=0;i<html.length;i++){
+                        if(html[i].localName !== 'meta' && html[i].localName !== 'link' && html[i].className !== 'm-header'){
+                            html1.push(html[i])
+                        }
+                    }
+                    $('body').parent().append(div);
+                    // $('<div>d</div>').appendTo('body');
+                    $(div).append(html1);
+                    $(window).scrollTop(0);
+                    $('.spinner').addClass('hide');
+                }
+            }
+        }); 
+    }
     jQuery(document).ready(function(){ 
-            var infScroll = new InfiniteScroll( '#content', {
-              append: '.post',
-              path: '.pagenavi a',
-              history: false,
-              checkLastPage: true,
-              status: '.page-load-status',
-            });
-            infScroll.on( 'append', function(){
-                loadImg();
-            } );
+        window.onpopstate = function (e) { 
+            if(!e.state){
+                $('body>*').not('.m-header').show();
+                $('#single').hide();
+                $(window).scrollTop(scrollTop);
+            } else {
+                $('body>*').not('.m-header').hide();
+                $('#single').show();
+            }
+        }
+        var infScroll = new InfiniteScroll( '#content', {
+          append: '.post',
+          path: '.pagenavi a',
+          history: false,
+          checkLastPage: true,
+          status: '.page-load-status',
         });
+        infScroll.on( 'append', function(){
+            loadImg();
+        } );
+    });
 </script>
 <?php get_footer(); ?>
