@@ -353,6 +353,7 @@ if($cate == '今日更新'
         } else if('<?php echo is_weixin();?>' == 1) {
             jumpWithoutFresh(url,title);
         } else {
+            // jumpWithoutFresh(url,title);
             window.open(url);
         }
     }
@@ -379,7 +380,7 @@ if($cate == '今日更新'
                             html1.push(html[i])
                         }
                     }
-                    $('body').parent().append(div);
+                    $('body').append(div);
                     // $('<div>d</div>').appendTo('body');
                     $(div).append(html1);
                     $(window).scrollTop(0);
@@ -390,10 +391,12 @@ if($cate == '今日更新'
     }
     jQuery(document).ready(function(){ 
          window.onpopstate = function (e) { 
+            $('.spinner').removeClass('hide');
             if(!e.state){
                 $('body>*').not('.m-header').show();
                 $('#single').hide();
                 $(window).scrollTop(scrollTop);
+                $('.spinner').addClass('hide');
             } else {
                 $('body>*').not('.m-header').hide();
                 $('#single').show();

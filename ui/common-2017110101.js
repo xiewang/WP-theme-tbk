@@ -226,7 +226,7 @@ function jumpToTaobao(is_weixin,taobaoUrl){
 }
 
 function shareWeixin(coupon_click_url,url){
-    if(coupon_click_url != '' ||url.length>20){
+    if(coupon_click_url != '' ||url.length>50){
         getShortUrl(url);
     }
     $('#share').removeClass('hide');

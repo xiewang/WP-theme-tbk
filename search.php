@@ -115,7 +115,7 @@
                             html1.push(html[i])
                         }
                     }
-                    $('body').parent().append(div);
+                    $('body').append(div);
                     // $('<div>d</div>').appendTo('body');
                     $(div).append(html1);
                     $(window).scrollTop(0);
