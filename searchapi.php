@@ -156,7 +156,8 @@
     function jumpToNextPage(url,title){
         if(navigator.userAgent.indexOf('UCBrowser')>-1){//uc 
             location.href = url;
-        } else if('<?php echo is_weixin();?>' == 1) {
+        } else if('<?php echo is_weixin();?>' == 1
+            || navigator.userAgent.toLowerCase().indexOf('weibo')) {
             jumpWithoutFresh(url,title);
         } else {
             window.open(url);

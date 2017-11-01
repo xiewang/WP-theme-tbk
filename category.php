@@ -346,11 +346,13 @@ if($cate == '今日更新'
     <div class=" icon-spinner for-img"></div>
 </div>
 <script type="text/javascript">
+// alert(navigator.userAgent)
     var scrollTop = document.documentElement.scrollTop;
     function jumpToNextPage(url,title){
         if(navigator.userAgent.indexOf('UCBrowser')>-1){//uc 
             location.href = url;
-        } else if('<?php echo is_weixin();?>' == 1) {
+        } else if('<?php echo is_weixin();?>' == 1 
+            || navigator.userAgent.toLowerCase().indexOf('weibo')) {
             jumpWithoutFresh(url,title);
         } else {
             // jumpWithoutFresh(url,title);
