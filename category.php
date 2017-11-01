@@ -350,13 +350,10 @@ if($cate == '今日更新'
     function jumpToNextPage(url,title){
         if(navigator.userAgent.indexOf('UCBrowser')>-1){//uc 
             location.href = url;
-        } else {
-            // location.href = url;
-            // window.open(url);
-
-            
+        } else if('<?php echo is_weixin();?>' == 1) {
             jumpWithoutFresh(url,title);
-            
+        } else {
+            window.open(url);
         }
     }
 

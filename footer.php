@@ -113,6 +113,6 @@
 
 
 <script src="<?php bloginfo('template_url'); ?>/ui/swiper-3.4.2.jquery.min.js"></script>
-<script src="<?php bloginfo('template_url'); ?>/ui/common.js" type="text/javascript" ></script>
+<script src="<?php bloginfo('template_url'); ?>/ui/common-2017110101.js" type="text/javascript" ></script>
 </body>
 </html>

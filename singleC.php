@@ -120,7 +120,7 @@
         </div>
         <?php if ( wp_is_mobile() ){ ?>
             <div id="buyNow" onclick="jumpToTaobao('<?php echo is_weixin()?'true':'false';?>','<?php echo $taobaoUrl;?>')" style="">
-                        <a href="#" >领券购买</a>
+                        <a href="javascript:void(0);" >领券购买</a>
             </div>
         <?php }else { ?>
             <div class="col1-d pc-buy-botton" onclick=" window.open('<?php echo ($coupon_click_url!='')?$coupon_click_url:get_post_meta($post->ID, "hao_ljgm", true);?>')">
