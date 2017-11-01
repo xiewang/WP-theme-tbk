@@ -342,6 +342,9 @@ if($cate == '今日更新'
         </div>
      </div>
 </div>
+<div class="spinner hide">
+    <div class=" icon-spinner for-img"></div>
+</div>
 <script type="text/javascript">
     var scrollTop = document.documentElement.scrollTop;
     function jumpToNextPage(url,title){
@@ -361,12 +364,13 @@ if($cate == '今日更新'
         document.title = '半刀网推荐：'+title;
         history.pushState({title:document.title,type:'signle'}, "signle", url);
         showKL = false;
+        $('.spinner').removeClass('hide');
         $.ajax({
             type:"get",
             url: url,
             success:function(response){
                 if(response){
-                    $('body>*').hide();
+                    $('body>*').not('.m-header').hide();
                     $('#single').remove();
                     var div = document.createElement('div');
                     div.id = 'single';
@@ -374,14 +378,15 @@ if($cate == '今日更新'
                     // div.innerHTML = response;
                     var html1 = [];
                     for(i=0;i<html.length;i++){
-                        if(html[i].localName !== 'meta' || html[i].localName !== 'link'){
+                        if(html[i].localName !== 'meta' && html[i].localName !== 'link' && html[i].className !== 'm-header'){
                             html1.push(html[i])
                         }
                     }
-                    $('body').append(div);
+                    $('body').parent().append(div);
                     // $('<div>d</div>').appendTo('body');
                     $(div).append(html1);
                     $(window).scrollTop(0);
+                    $('.spinner').addClass('hide');
                 }
             }
         }); 
@@ -389,11 +394,11 @@ if($cate == '今日更新'
     jQuery(document).ready(function(){ 
          window.onpopstate = function (e) { 
             if(!e.state){
-                $('body>*').show();
+                $('body>*').not('.m-header').show();
                 $('#single').hide();
                 $(window).scrollTop(scrollTop);
             } else {
-                $('body>*').hide();
+                $('body>*').not('.m-header').hide();
                 $('#single').show();
             }
         }

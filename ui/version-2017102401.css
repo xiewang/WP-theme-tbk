@@ -950,3 +950,16 @@ body.pc{
     color: #fff;
     text-align: center;
 }
+.spinner{
+    z-index: 100000;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .5);
+}
+.spinner .icon-spinner.for-img{
+    margin-top: 200px;
+    font-size: 100px;
+}
