@@ -281,7 +281,13 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript">
+    $(function(){
+        <?php if(($coupon_click_url!='')){?>
+            document.title = '<?php echo "半刀网推荐：".urldecode($title);?>'
+        <?php }?>
+    });
+</script>
 <script src="<?php bloginfo('template_url'); ?>/ui/single.js" type="text/javascript" ></script>
 
 <?php get_footer(); ?>
