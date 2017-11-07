@@ -905,7 +905,7 @@ body.pc{
 }
 .m-header .m-search input.sy-input.mobile{
     padding-left: 58px;
-    width: calc(72% - 82px);
+    width: calc(87% - 82px);
 }
 .mobile ul.drop-menu li{
     line-height: 20px;
@@ -962,4 +962,7 @@ body.pc{
 .spinner .icon-spinner.for-img{
     margin-top: 200px;
     font-size: 100px;
+}
+.m-header .m-search form {
+    margin-left: 25px;
 }
