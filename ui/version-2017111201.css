@@ -678,7 +678,7 @@ a:focus, a:hover{
     background: url(../img/9.png) 0px 0px no-repeat;
     background-size: 100%;
 }
-.m-main-cate li:nth-child(4) a {
+.m-main-cate li:nth-child(5) a {
     background: url(../img/11.png) center no-repeat;
     background-color: #ff0000; 
     background-size: 100%;
@@ -686,7 +686,7 @@ a:focus, a:hover{
 .m-main-cate li:nth-child(5){
     display: none;
 }
-.m-main-cate li:nth-child(5) a {
+.m-main-cate li:nth-child(4) a {
     background: url(../img/special.png) center no-repeat;
     background-color: #149a0f; 
     background-size: 80%;
@@ -933,6 +933,8 @@ body.pc{
 }
 .mobile dd.post-time{
     bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
 }
 .col1-d{
     background: #f15482;

@@ -14,7 +14,7 @@
 	<link href="<?php bloginfo('template_url'); ?>/ui/pintuer.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/iconfont.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/style.css" rel="stylesheet" type="text/css" />
-	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017110101.css" rel="stylesheet" type="text/css" />
+	<link href="<?php bloginfo('template_url'); ?>/ui/version-2017111201.css" rel="stylesheet" type="text/css" />
 	<link href="<?php bloginfo('template_url'); ?>/ui/add-to-homescreen-master/style/addtohomescreen.css" rel="stylesheet" type="text/css" />
 
 	<script src="<?php bloginfo('template_url'); ?>/ui/jquery.js" type="text/javascript" ></script>
@@ -196,7 +196,7 @@
 		<div class="layout">
 			<div id="ad-scroll" onclick="location.href='http://996shop.com/double11'">
 				<div>
-					<span>双十一超级红包，11.11前，每天发放2.5亿，先到先得</span>
+					<span>每日精选优惠，实时滚动更新</span>
 				</div>
 			</div>
 			<div class="m-main-cate">
