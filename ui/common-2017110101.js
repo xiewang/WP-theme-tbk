@@ -107,18 +107,23 @@ var judge = function(){
 	var storage=window.localStorage;
 	var current = timeFormat((new Date()).getTime(), 'yyyy-MM-dd hh:mm:ss');
 	var latestTime = 0;
+    var visit = 0;
 	if(storage.getItem("latestTime")){
 		latestTime = storage.getItem("latestTime");
+        visit = storage.getItem("visit");
 		storage.setItem("latestTime", current);
-		tips(latestTime,current);
+        visit = visit?++visit:1
+        storage.setItem("visit", visit);
+		tips(latestTime,current,storage.getItem("visit"));
 	} else {
 		storage.setItem("latestTime", current);
+        storage.setItem("visit", 1);
 	}
 }
 
-var tips = function(latestTime, current){
+var tips = function(latestTime, current, visit){
 	var dis = (new Date(current).getTime() - new Date(latestTime).getTime())/1000/60;
-	if(dis>=60*2){
+	if(dis>=60*2 && visit < 20){
 		$.ajax({
 	        type:"get",
 	        url:"http://996shop.com/?json=get_missed&time="+latestTime,
